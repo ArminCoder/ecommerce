@@ -1899,18 +1899,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       message: '',
       texts: [{
-        text: 'Shop Now'
+        "class": 'fas fa-shopping-cart',
+        text: 'Browse Best Quality Sneakers'
       }, {
-        text: 'Free Delivery'
+        "class": '',
+        text: 'Free Standard Shipping'
       }, {
-        text: 'Log in to get coupons'
+        "class": 'fas fa-percent',
+        text: 'Buy two products and get 10% off total price'
       }, {
-        text: 'Get 20% off second item'
+        "class": 'fab fa-paypal',
+        text: 'Secure Checkout'
       }],
       i: 0,
       change: true
@@ -1936,23 +1941,6 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.message = this.texts[this.i].text;
-    },
-    textBack: function textBack() {
-      var _this2 = this;
-
-      if (this.i == 0) {
-        this.i = 3;
-        this.message = this.texts[this.i].text;
-        return;
-      }
-
-      this.i = this.i - 1;
-      clearInterval(this.i);
-      this.message = this.texts[this.i].text;
-      this.change = false;
-      setTimeout(function () {
-        _this2.change = true;
-      }, 1000);
     }
   }
 });
@@ -1992,6 +1980,16 @@ __webpack_require__.r(__webpack_exports__);
       console.log(res.data);
       _this.products = res.data;
     });
+  },
+  methods: {
+    changeImg: function changeImg(product, event) {
+      console.log('product', product);
+      console.log(event.target.src);
+      event.target.src = product.image2;
+    },
+    originalImg: function originalImg(product, event) {
+      event.target.src = product.image1;
+    }
   }
 });
 
@@ -6527,7 +6525,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.center[data-v-91dc7d54] {\n\ttext-align: center;\n\tbackground: #f8fafc;\n\tpadding: 15px 0;\n}\n.fa-chevron-left[data-v-91dc7d54] {\n\tposition: absolute;\n\tleft: 10vw;\n}\n.fa-chevron-right[data-v-91dc7d54] {\n\tposition: absolute;\n\tright: 10vw;\n}\n.sliderMessage[data-v-91dc7d54] {\n\tfont-size: 16px;\n\tfont-size: 17px;\n\tfont-weight: 600;\n}\n", ""]);
+exports.push([module.i, "\n.center[data-v-91dc7d54] {\n\ttext-align: center;\n\tbackground: #f8fafc;\n\tpadding: 15px 0;\n}\n.fa-chevron-left[data-v-91dc7d54] {\n\tposition: absolute;\n\tleft: 10vw;\n}\n.fa-chevron-right[data-v-91dc7d54] {\n\tposition: absolute;\n\tright: 10vw;\n}\n.sliderMessage[data-v-91dc7d54] {\n\tfont-size: 16px;\n\tfont-size: 17px;\n\tfont-weight: 600;\n}\n#free-shipping[data-v-91dc7d54] {\n\twidth: 22px;\n\tposition: relative;\n\tbottom: 5px;\n\tright: 5px;\n}\n", ""]);
 
 // exports
 
@@ -6546,7 +6544,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\ndiv.products[data-v-5fb0a042] {\n    \tdisplay: grid;\n    \tgrid-template-columns: repeat(3,1fr);\n}\n.columnDisplay[data-v-5fb0a042] {\n    \tdisplay: -webkit-box;\n    \tdisplay: flex;\n    \t-webkit-box-orient: vertical;\n    \t-webkit-box-direction: normal;\n    \t        flex-direction: column;\n    \t-webkit-box-pack: justify;\n    \t        justify-content: space-between;\n}\n.p-2[data-v-5fb0a042] {\n    \tpadding: 5px;\n}\nimg[data-v-5fb0a042] {\n\t\twidth: 100%;\n}\n.productInfo span.productHeader[data-v-5fb0a042] {\n\t\tfont-size: 17px;\n\t\tfont-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\ndiv.products[data-v-5fb0a042] {\n    \tdisplay: grid;\n    \tgrid-template-columns: repeat(3,1fr);\n}\n.columnDisplay[data-v-5fb0a042] {\n    \tdisplay: -webkit-box;\n    \tdisplay: flex;\n    \t-webkit-box-orient: vertical;\n    \t-webkit-box-direction: normal;\n    \t        flex-direction: column;\n    \t-webkit-box-pack: justify;\n    \t        justify-content: space-between;\n}\n.p-2[data-v-5fb0a042] {\n    \tpadding: 5px;\n}\nimg[data-v-5fb0a042] {\n\t\twidth: 100%;\n\t\t-webkit-transition: all 2s ease-in;\n\t\ttransition: all 2s ease-in;\n}\n.productInfo span.productHeader[data-v-5fb0a042] {\n\t\tfont-size: 17px;\n\t\tfont-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -38214,7 +38212,7 @@ var staticRenderFns = [
                     _c("hr", {
                       staticClass:
                         "deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto",
-                      staticStyle: { width: "60px" }
+                      staticStyle: { width: "10px" }
                     }),
                     _vm._v(" "),
                     _c("p", [
@@ -38239,7 +38237,7 @@ var staticRenderFns = [
                     _c("hr", {
                       staticClass:
                         "deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto",
-                      staticStyle: { width: "60px" }
+                      staticStyle: { width: "10px" }
                     }),
                     _vm._v(" "),
                     _c("p", [
@@ -38275,7 +38273,7 @@ var staticRenderFns = [
                     _c("hr", {
                       staticClass:
                         "deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto",
-                      staticStyle: { width: "60px" }
+                      staticStyle: { width: "10px" }
                     }),
                     _vm._v(" "),
                     _c("p", [
@@ -38304,7 +38302,7 @@ var staticRenderFns = [
                     _c("hr", {
                       staticClass:
                         "deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto",
-                      staticStyle: { width: "60px" }
+                      staticStyle: { width: "10px" }
                     }),
                     _vm._v(" "),
                     _c("i", { staticClass: "fas fa-envelope mr-3" }),
@@ -38354,27 +38352,22 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "center" }, [
     _c("div", [
-      _c("i", {
-        staticClass: "fas fa-chevron-left",
-        on: {
-          click: function($event) {
-            return _vm.textBack()
-          }
-        }
-      }),
-      _vm._v(" "),
       _c("span", { staticClass: "sliderMessage" }, [
-        _vm._v(_vm._s(_vm.message))
-      ]),
-      _vm._v(" "),
-      _c("i", {
-        staticClass: "fas fa-chevron-right",
-        on: {
-          click: function($event) {
-            return _vm.textChange()
-          }
-        }
-      })
+        _vm.i != 1
+          ? _c("i", { staticClass: "mr-2", class: _vm.texts[_vm.i].class })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.i == 1
+          ? _c("img", {
+              attrs: {
+                id: "free-shipping",
+                src: "img/free-shipping.png",
+                alt: ""
+              }
+            })
+          : _vm._e(),
+        _vm._v("\n\t\t\t" + _vm._s(_vm.message))
+      ])
     ])
   ])
 }
@@ -38405,7 +38398,17 @@ var render = function() {
     { staticClass: "products" },
     _vm._l(_vm.products, function(product) {
       return _c("div", { staticClass: "columnDisplay p-4 p-relative" }, [
-        _c("img", { attrs: { src: product.image1, alt: product.name } }),
+        _c("img", {
+          attrs: { src: product.image1, alt: product.name },
+          on: {
+            mouseover: function($event) {
+              return _vm.changeImg(product, $event)
+            },
+            mouseleave: function($event) {
+              return _vm.originalImg(product, $event)
+            }
+          }
+        }),
         _vm._v(" "),
         _c(
           "span",

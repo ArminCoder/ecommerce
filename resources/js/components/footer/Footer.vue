@@ -47,7 +47,7 @@
 
 		        <!-- Content -->
 		        <h6 class="text-uppercase font-weight-bold">Fair Shoes</h6>
-		        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+		        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 10px;">
 		        <p><strong>Fair Shoes</strong> is an online shop with affordable and quality shoes, updating our collections daily
 		        </p>
 
@@ -59,7 +59,7 @@
 
 		        <!-- Links -->
 		        <h6 class="text-uppercase font-weight-bold">Products</h6>
-		        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+		        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 10px;">
 		        <p>
 		          <a href="#!">All Products</a>
 		        </p>
@@ -81,7 +81,7 @@
 
 		        <!-- Links -->
 		        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
-		        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+		        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 10px;">
 		        <p>
 		          <a href="#!">Contact Us</a>
 		        </p>
@@ -96,7 +96,7 @@
 
 		        <!-- Links -->
 		        <h6 class="text-uppercase font-weight-bold">Contact</h6>
-		        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+		        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 10px;">
 		          <i class="fas fa-envelope mr-3"></i> info@fairShoes.com</p>
 		      </div>
 		      <!-- Grid column -->

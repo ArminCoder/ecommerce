@@ -1,9 +1,10 @@
 <template>
 	<div class="center">
 		<div>
-			<i @click='textBack()' class="fas fa-chevron-left"></i>
-			<span class="sliderMessage">{{ message }}</span>
-			<i @click='textChange()' class="fas fa-chevron-right"></i>
+			<span class="sliderMessage">
+				<i v-if='i != 1' :class="texts[i].class" class="mr-2"></i>
+				<img id="free-shipping" v-if='i == 1' src="img/free-shipping.png" alt="">
+				{{ message }}</span>
 		</div>
 	</div>
 </template>
@@ -14,10 +15,10 @@
 			return {
 				message: '',
 				texts: [ 
-					{ text: 'Shop Now' },
-					{ text: 'Free Delivery' },
-					{ text: 'Log in to get coupons' },
-					{ text: 'Get 20% off second item' },
+					{ class: 'fas fa-shopping-cart', text: 'Browse Best Quality Sneakers' },
+					{ class: '', text: 'Free Standard Shipping' },
+					{ class: 'fas fa-percent', text: 'Buy two products and get 10% off total price' },
+					{ class: 'fab fa-paypal', text: 'Secure Checkout' },
 				],
 				i: 0,
 				change: true
@@ -41,22 +42,22 @@
 				}	
 				this.message = this.texts[this.i].text;
 			},
-			textBack() {
-				if(this.i == 0)
-				{
-					this.i = 3;
-					this.message = this.texts[this.i].text;
-					return; 
-				}	
-				this.i = this.i - 1; 
-				clearInterval(this.i);
+			// textBack() {
+			// 	if(this.i == 0)
+			// 	{
+			// 		this.i = 3;
+			// 		this.message = this.texts[this.i].text;
+			// 		return; 
+			// 	}	
+			// 	this.i = this.i - 1; 
+			// 	clearInterval(this.i);
 
-				this.message = this.texts[this.i].text;
-				this.change = false;
-				setTimeout (() => {
-					this.change = true;
-				}, 1000)
-			}
+			// 	this.message = this.texts[this.i].text;
+			// 	this.change = false;
+			// 	setTimeout (() => {
+			// 		this.change = true;
+			// 	}, 1000)
+			// }
 		}
 	};
 </script>
@@ -79,5 +80,11 @@
 		font-size: 16px;
 		font-size: 17px;
 		font-weight: 600;
+	}
+	#free-shipping {
+		width: 22px;
+		position: relative;
+		bottom: 5px;
+		right: 5px;
 	}
 </style>

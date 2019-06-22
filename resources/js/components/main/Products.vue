@@ -1,7 +1,7 @@
 <template>
 	<div class="products">
 		<div class="columnDisplay p-4 p-relative" v-for='product in products'>
-				<img :src="product.image1" :alt="product.name">
+				<img @mouseover='changeImg(product, $event)' @mouseleave='originalImg(product, $event)' :src="product.image1" :alt="product.name">
 				<span class="productInfo w-100 text-center columnDisplay absBottom">
 					<span class="productHeader">{{ product.name }}</span>
 					<small class="productSubheader">{{ product.category }}</small>
@@ -21,6 +21,16 @@
 				console.log(res.data);
 				this.products = res.data;
 			})
+		},
+		methods: {
+			changeImg(product , event) {
+				console.log('product', product);
+				console.log(event.target.src);
+				event.target.src = product.image2;
+			},
+			originalImg(product , event) {
+				event.target.src = product.image1;
+			}
 		}
 	};
 </script>
@@ -40,6 +50,7 @@
     }
 	img {
 		width: 100%;
+		transition: all 2s ease-in;
 	}
 	
 	.productInfo span.productHeader {
