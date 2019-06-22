@@ -14153,7 +14153,8 @@ a.text-dark:focus {
   }
 }
 
-.fas {
+.fas,
+.fab {
   font-family: FontAwesome;
 }
 

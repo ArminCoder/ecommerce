@@ -4,7 +4,7 @@
 		<nav class="navbar navbar-expand-lg navbar-dark primary-color">
 
 		  <!-- Navbar brand -->
-		  <a class="navbar-brand" href="#">
+		  <a class="navbar-brand" href="/">
 		  	<img id="logoImg" src="/img/logo.png" alt="">
 		  </a>
 
@@ -19,11 +19,6 @@
 
 		    <!-- Links -->
 		    <ul class="navbar-nav m-auto">
-		      <li class="nav-item active">
-		        <a class="nav-link" href="#">Home
-		          <span class="sr-only">(current)</span>
-		        </a>
-		      </li>
 		      <li class="nav-item">
 		        <a class="nav-link" href="#">Men</a>
 		      </li>

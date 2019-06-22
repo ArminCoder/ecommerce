@@ -11,5 +11,5 @@
 @import '~bootstrap/scss/bootstrap';
 
 // Font Awesome 5 fix
-.fas { font-family: FontAwesome }
+.fas, .fab { font-family: FontAwesome }
 body { background: #fff }
