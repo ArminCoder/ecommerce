@@ -38,7 +38,7 @@
 <style scoped>
     div.products {
     	display: grid;
-    	grid-template-columns: repeat(3,1fr);
+    	grid-template-columns: repeat(4,1fr);
     }
     .columnDisplay {
     	display: flex;
@@ -57,4 +57,16 @@
 		font-size: 17px;
 		font-weight: bold;
 	}
+
+@media(max-width: 1400px) {
+	div.products {
+    	grid-template-columns: repeat(3,1fr);
+    }
+}    
+
+@media(max-width: 768px) {
+	div.products {
+    	grid-template-columns: repeat(2,1fr);
+    }    
+}
 </style>
