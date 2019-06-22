@@ -1846,38 +1846,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      products: [{
-        id: 0,
-        img: '/img/products/Casual-Shoes-Lace-up-Men-B.jpg',
-        name: 'Nike fd345',
-        category: "Men's running"
-      }, {
-        id: 1,
-        img: '/img/products/sneaker2.png',
-        name: 'Nike fgreg',
-        category: "Men's casual"
-      }, {
-        id: 2,
-        img: '/img/products/sneaker3.jpg',
-        name: 'Nike fd4335',
-        category: "Men's lifestyle"
-      }, {
-        id: 3,
-        img: '/img/products/sneaker4.jpg',
-        name: 'Addidas fd64363',
-        category: "Men's running"
-      }, {
-        id: 4,
-        img: '/img/products/sneaker5.jpg',
-        name: 'Reebok fd345',
-        category: "Men's casual"
-      }, {
-        id: 5,
-        img: '/img/products/sneaker6.jpeg',
-        name: 'Starke',
-        category: "Men's running"
-      }]
+      products: []
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/api/products').then(function (res) {
+      console.log(res.data);
+      _this.products = res.data;
+    });
   }
 });
 
@@ -38034,7 +38012,7 @@ var render = function() {
     { staticClass: "products" },
     _vm._l(_vm.products, function(product) {
       return _c("div", { staticClass: "columnDisplay p-4 p-relative" }, [
-        _c("img", { attrs: { src: product.img, alt: product.name } }),
+        _c("img", { attrs: { src: product.image1, alt: product.name } }),
         _vm._v(" "),
         _c(
           "span",
