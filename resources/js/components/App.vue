@@ -1,16 +1,18 @@
 <template>
     <div class="container-fluid">
         <navbar></navbar>
-       <h1>App Vue Component</h1>
+        <slider></slider>
     </div>
 </template>
 
 <script>
     import navbar from './navigation/Navbar.vue'
+    import slider from './helpers/Slider.vue'
 
     export default {
         components: {
-            navbar
+            navbar,
+            slider
         }
     };
 </script>

@@ -25,35 +25,23 @@
 		        </a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="#">Features</a>
+		        <a class="nav-link" href="#">Men</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="#">Pricing</a>
+		        <a class="nav-link" href="#">Women</a>
 		      </li>
-
-		      <!-- Dropdown -->
-		      <li class="nav-item dropdown">
-		        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-		          aria-haspopup="true" aria-expanded="false">Dropdown</a>
-		        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-		          <a class="dropdown-item" href="#">Action</a>
-		          <a class="dropdown-item" href="#">Another action</a>
-		          <a class="dropdown-item" href="#">Something else here</a>
-		        </div>
+		       <li class="nav-item">
+		        <a class="nav-link" href="#">Kids</a>
 		      </li>
-
 		    </ul>
-		    <!-- Links -->
-
 		    <form class="form-inline">
 		      <div class="md-form my-0">
-		        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+		        <input class="form-control mr-sm-4" type="text" placeholder="Search" aria-label="Search">
 		      </div>
 		    </form>
-		    <a class="fas fa-shopping-cart"></a>
+		    <a class="fas fa-shopping-cart fa-2x"></a>
 		  </div>
 		  <!-- Collapsible content -->
-
 		</nav>
 		<!--/.Navbar-->
 	</div>
@@ -64,10 +52,17 @@
 </script>
 
 <style scoped>
-	a {
-		color: #0a0a0a !important;
-	}
 	#logoImg {
 		width: 140px;
+	}
+	.navbar-toggler {
+		background: black;
+	}
+	a.nav-link {
+		font-weight: 600;
+		text-transform: uppercase;
+		font-size: 1rem;
+		margin: 0 10px;
+		color: #0a0a0a !important;
 	}
 </style>
