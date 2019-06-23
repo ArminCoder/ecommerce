@@ -2,7 +2,7 @@
 	<div class="products">
 		<div class="columnDisplay p-4 p-relative" v-for='product in products'>
 				<img @mouseover='changeImg(product, $event)' @mouseleave='originalImg(product, $event)' :src="product.image1" :alt="product.name">
-				<span class="productInfo w-100 text-center columnDisplay absBottom">
+				<span class="productInfo w-100 text-center columnDisplay absBottom mt-1">
 					<span class="productHeader">{{ product.name }}</span>
 					<small class="productSubheader">{{ product.type }}</small>
 					<span class="productPrice font-weight-bold">${{ product.price }}</span>
@@ -43,6 +43,12 @@
     	display: flex;
     	flex-direction: column;
     	justify-content: space-between;
+    }
+    div.columnDisplay {
+    	border: 1px solid #dcdcdc;
+    	border-radius: 8px;
+    	margin: 6px;
+    	background: #f8fafc;
     }
     .p-2 {
     	padding: 5px;
