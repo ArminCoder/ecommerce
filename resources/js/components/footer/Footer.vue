@@ -14,7 +14,8 @@
 		        <!-- Content -->
 		        <h6 class="text-uppercase font-weight-bold">Fair Shoes</h6>
 		        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 10px;">
-		        <p><strong>Fair Shoes</strong> is an online shop with affordable and quality shoes, updating our collections daily
+		        <p><strong>Fair Shoes</strong> is an online shop with only the best quality footwear from trusted brands,
+		        offered at fair prices, updating our collections daily.
 		        </p>
 
 		      </div>

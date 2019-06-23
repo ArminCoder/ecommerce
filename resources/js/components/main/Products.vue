@@ -5,6 +5,7 @@
 				<span class="productInfo w-100 text-center columnDisplay absBottom">
 					<span class="productHeader">{{ product.name }}</span>
 					<small class="productSubheader">{{ product.category }}</small>
+					<span class="productPrice font-weight-bold">${{ product.price }}</span>
 				</span>
 		</div>
 	</div>
@@ -49,11 +50,15 @@
 	img {
 		width: 100%;
 		transition: all 2s ease-in;
+    	cursor: pointer;
 	}
 	
 	.productInfo span.productHeader {
 		font-size: 17px;
 		font-weight: bold;
+	}
+	.productPrice {
+		font-size: 21px;
 	}
 
 @media(max-width: 1400px) {

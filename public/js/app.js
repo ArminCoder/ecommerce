@@ -1861,6 +1861,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -1941,6 +1942,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -6526,7 +6528,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\ndiv.products[data-v-5fb0a042] {\n    \tdisplay: grid;\n    \tgrid-template-columns: repeat(4,1fr);\n}\n.columnDisplay[data-v-5fb0a042] {\n    \tdisplay: -webkit-box;\n    \tdisplay: flex;\n    \t-webkit-box-orient: vertical;\n    \t-webkit-box-direction: normal;\n    \t        flex-direction: column;\n    \t-webkit-box-pack: justify;\n    \t        justify-content: space-between;\n}\n.p-2[data-v-5fb0a042] {\n    \tpadding: 5px;\n}\nimg[data-v-5fb0a042] {\n\t\twidth: 100%;\n\t\t-webkit-transition: all 2s ease-in;\n\t\ttransition: all 2s ease-in;\n}\n.productInfo span.productHeader[data-v-5fb0a042] {\n\t\tfont-size: 17px;\n\t\tfont-weight: bold;\n}\n@media(max-width: 1400px) {\ndiv.products[data-v-5fb0a042] {\n    \tgrid-template-columns: repeat(3,1fr);\n}\n}\n@media(max-width: 768px) {\ndiv.products[data-v-5fb0a042] {\n    \tgrid-template-columns: repeat(2,1fr);\n}\n}\n", ""]);
+exports.push([module.i, "\ndiv.products[data-v-5fb0a042] {\n    \tdisplay: grid;\n    \tgrid-template-columns: repeat(4,1fr);\n}\n.columnDisplay[data-v-5fb0a042] {\n    \tdisplay: -webkit-box;\n    \tdisplay: flex;\n    \t-webkit-box-orient: vertical;\n    \t-webkit-box-direction: normal;\n    \t        flex-direction: column;\n    \t-webkit-box-pack: justify;\n    \t        justify-content: space-between;\n}\n.p-2[data-v-5fb0a042] {\n    \tpadding: 5px;\n}\nimg[data-v-5fb0a042] {\n\t\twidth: 100%;\n\t\t-webkit-transition: all 2s ease-in;\n\t\ttransition: all 2s ease-in;\n    \tcursor: pointer;\n}\n.productInfo span.productHeader[data-v-5fb0a042] {\n\t\tfont-size: 17px;\n\t\tfont-weight: bold;\n}\n.productPrice[data-v-5fb0a042] {\n\t\tfont-size: 21px;\n}\n@media(max-width: 1400px) {\ndiv.products[data-v-5fb0a042] {\n    \tgrid-template-columns: repeat(3,1fr);\n}\n}\n@media(max-width: 768px) {\ndiv.products[data-v-5fb0a042] {\n    \tgrid-template-columns: repeat(2,1fr);\n}\n}\n", ""]);
 
 // exports
 
@@ -38194,7 +38196,7 @@ var staticRenderFns = [
                     _c("p", [
                       _c("strong", [_vm._v("Fair Shoes")]),
                       _vm._v(
-                        " is an online shop with affordable and quality shoes, updating our collections daily\n\t        "
+                        " is an online shop with only the best quality footwear from trusted brands,\n\t        offered at fair prices, updating our collections daily.\n\t        "
                       )
                     ])
                   ]
@@ -38392,6 +38394,10 @@ var render = function() {
             _vm._v(" "),
             _c("small", { staticClass: "productSubheader" }, [
               _vm._v(_vm._s(product.category))
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "productPrice font-weight-bold" }, [
+              _vm._v("$" + _vm._s(product.price))
             ])
           ]
         )

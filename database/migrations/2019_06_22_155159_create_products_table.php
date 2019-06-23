@@ -17,8 +17,14 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('name');
-            $table->string('category');
+            $table->enum('category', ['Lifestyle', 'Running', 'Athletic', 'Gym', 'Slip-on', 'High-Top', 'Lace-up']);
             $table->integer('price');
+            $table->enum('gender', ['men', 'women', 'kids'])->default('men');                        
+            $table->enum('brand', ['Nike', 'Adidas', 'Puma', 'Jordan', 'Reebok', 
+               'Vans', 'Converse', 'Under Armour', 'New Balance','Skechers', 
+               'Johnston and Murphy', 'Bostonian', 'Fila', 'LeBron', 'Testoni',
+               'Berluti', 'ASICS', 'Tommy Hilfiger', 'Other'])->default('Nike');                                             
+                });
             $table->string('image1');
             $table->string('image2')->default(null);
             $table->string('image3')->default(null);
