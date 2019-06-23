@@ -2,42 +2,8 @@
 	<div>
 		<!-- Footer -->
 		<footer class="page-footer font-small unique-color-dark">
-
-		  <div>
-		    <div class="container">
-
-		      <!-- Grid row-->
-		      <div class="row py-4 d-flex align-items-center">
-
-		        <!-- Grid column -->
-		        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-		          <h6 class="mb-0">Get connected with us on social networks!</h6>
-		        </div>
-		        <!-- Grid column -->
-
-		        <!-- Grid column -->
-		        <div class="col-md-6 col-lg-7 text-center text-md-right">
-
-		          <!-- Facebook -->
-		          <a class="fb-ic">
-		            <span class="fab fa-facebook-f white-text mr-4"> </span>
-		          </a>
-		          <!--Instagram-->
-		          <a class="ins-ic">
-		            <span class="fab fa-instagram white-text"> </span>
-		          </a>
-
-		        </div>
-		        <!-- Grid column -->
-
-		      </div>
-		      <!-- Grid row-->
-
-		    </div>
-		  </div>
-
 		  <!-- Footer Links -->
-		  <div class="container text-center text-md-left mt-5">
+		  <div class="container text-center text-md-left mt-5 pt-1">
 
 		    <!-- Grid row -->
 		    <div class="row mt-3">
@@ -109,7 +75,7 @@
 
 		  <!-- Copyright -->
 		  <div class="footer-copyright text-center py-3">© 2019 Copyright:
-		    <a href="https://mdbootstrap.com/education/bootstrap/"> FairShoes.store</a>
+		    <a href="/"> FairShoes.store</a>
 		  </div>
 		  <!-- Copyright -->
 

@@ -2,7 +2,6 @@
 	<div>
 		<!--Navbar-->
 		<nav class="navbar navbar-expand-lg navbar-dark primary-color">
-
 		  <!-- Navbar brand -->
 		  <a class="navbar-brand" href="/">
 		  	<img id="logoImg" src="/img/logo.png" alt="">
@@ -35,6 +34,10 @@
 		      </div>
 		    </form>
 		    <a class="fas fa-shopping-cart fa-2x"></a>
+		    <div id="auth">
+                <a href="/login">Login</a>
+                <a href="register">Register</a>
+            </div>  
 		  </div>
 		  <!-- Collapsible content -->
 		</nav>
@@ -59,5 +62,13 @@
 		font-size: 1rem;
 		margin: 0 10px;
 		color: #0a0a0a !important;
+	}
+	#auth {
+		margin: 0 10px 0 20px;
+		display: flex;
+	}
+	#auth a {
+		margin: 0 5px;
+		color: #0a0a0a;
 	}
 </style>

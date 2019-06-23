@@ -1842,40 +1842,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2002,6 +1968,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+//
+//
+//
 //
 //
 //
@@ -6563,7 +6532,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#logoImg[data-v-5b3d3f60] {\n\twidth: 140px;\n}\n.navbar-toggler[data-v-5b3d3f60] {\n\tbackground: black;\n}\na.nav-link[data-v-5b3d3f60] {\n\tfont-weight: 600;\n\ttext-transform: uppercase;\n\tfont-size: 1rem;\n\tmargin: 0 10px;\n\tcolor: #0a0a0a !important;\n}\n", ""]);
+exports.push([module.i, "\n#logoImg[data-v-5b3d3f60] {\n\twidth: 140px;\n}\n.navbar-toggler[data-v-5b3d3f60] {\n\tbackground: black;\n}\na.nav-link[data-v-5b3d3f60] {\n\tfont-weight: 600;\n\ttext-transform: uppercase;\n\tfont-size: 1rem;\n\tmargin: 0 10px;\n\tcolor: #0a0a0a !important;\n}\n#auth[data-v-5b3d3f60] {\n\tmargin: 0 10px 0 20px;\n\tdisplay: -webkit-box;\n\tdisplay: flex;\n}\n#auth a[data-v-5b3d3f60] {\n\tmargin: 0 5px;\n\tcolor: #0a0a0a;\n}\n", ""]);
 
 // exports
 
@@ -38157,46 +38126,9 @@ var staticRenderFns = [
         "footer",
         { staticClass: "page-footer font-small unique-color-dark" },
         [
-          _c("div", [
-            _c("div", { staticClass: "container" }, [
-              _c("div", { staticClass: "row py-4 d-flex align-items-center" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0"
-                  },
-                  [
-                    _c("h6", { staticClass: "mb-0" }, [
-                      _vm._v("Get connected with us on social networks!")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-md-6 col-lg-7 text-center text-md-right"
-                  },
-                  [
-                    _c("a", { staticClass: "fb-ic" }, [
-                      _c("span", {
-                        staticClass: "fab fa-facebook-f white-text mr-4"
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "ins-ic" }, [
-                      _c("span", { staticClass: "fab fa-instagram white-text" })
-                    ])
-                  ]
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
           _c(
             "div",
-            { staticClass: "container text-center text-md-left mt-5" },
+            { staticClass: "container text-center text-md-left mt-5 pt-1" },
             [
               _c("div", { staticClass: "row mt-3" }, [
                 _c(
@@ -38316,13 +38248,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "footer-copyright text-center py-3" }, [
             _vm._v("© 2019 Copyright:\n\t    "),
-            _c(
-              "a",
-              {
-                attrs: { href: "https://mdbootstrap.com/education/bootstrap/" }
-              },
-              [_vm._v(" FairShoes.store")]
-            )
+            _c("a", { attrs: { href: "/" } }, [_vm._v(" FairShoes.store")])
           ])
         ]
       )
@@ -38526,7 +38452,13 @@ var staticRenderFns = [
                 ])
               ]),
               _vm._v(" "),
-              _c("a", { staticClass: "fas fa-shopping-cart fa-2x" })
+              _c("a", { staticClass: "fas fa-shopping-cart fa-2x" }),
+              _vm._v(" "),
+              _c("div", { attrs: { id: "auth" } }, [
+                _c("a", { attrs: { href: "/login" } }, [_vm._v("Login")]),
+                _vm._v(" "),
+                _c("a", { attrs: { href: "register" } }, [_vm._v("Register")])
+              ])
             ]
           )
         ]
