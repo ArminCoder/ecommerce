@@ -1964,7 +1964,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/api/products').then(function (res) {
-      console.log(res.data);
+      console.log(res);
       _this.products = res.data.data;
     });
   },
@@ -38393,7 +38393,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("small", { staticClass: "productSubheader" }, [
-              _vm._v(_vm._s(product.category))
+              _vm._v(_vm._s(product.type))
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "productPrice font-weight-bold" }, [

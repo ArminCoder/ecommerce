@@ -7,9 +7,9 @@ use App\Product;
 
 class ProductsController extends Controller
 {
-	public function index()
+	public function index(Request $request)
 	{
-	    $products = Product::paginate(5);
+	    $products = Product::filter($request)->paginate(5);
 
 	    return response()->json($products);
 	}

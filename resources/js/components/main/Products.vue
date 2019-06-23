@@ -4,7 +4,7 @@
 				<img @mouseover='changeImg(product, $event)' @mouseleave='originalImg(product, $event)' :src="product.image1" :alt="product.name">
 				<span class="productInfo w-100 text-center columnDisplay absBottom">
 					<span class="productHeader">{{ product.name }}</span>
-					<small class="productSubheader">{{ product.category }}</small>
+					<small class="productSubheader">{{ product.type }}</small>
 					<span class="productPrice font-weight-bold">${{ product.price }}</span>
 				</span>
 		</div>
@@ -19,7 +19,7 @@
 		},
 		mounted() {
 			axios.get('/api/products').then((res) => {
-				console.log(res.data);
+				console.log(res);
 				this.products = res.data.data;
 			})
 		},
