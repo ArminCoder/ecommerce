@@ -17,9 +17,10 @@
         <!-- Styles -->
     </head>
     <body>
-        <div id="app">
-            <app></app>
-        </div>
-        <script src="{{ asset('js/app.js') }}"></script>
+    <div id="app">
+        @yield('content')
+    </div>
+        @yield('scripts')
+            <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

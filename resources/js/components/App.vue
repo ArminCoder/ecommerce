@@ -12,13 +12,15 @@
     import slider from './helpers/Slider.vue'
     import products from './main/Products.vue'
     import productsFooter from './footer/Footer.vue'
+    import dashboard from './dashboard/Dashboard.vue'
 
     export default {
         components: {
             navbar,
             slider,
             products,
-            productsFooter
+            productsFooter,
+            dashboard
         }
     };
 </script>

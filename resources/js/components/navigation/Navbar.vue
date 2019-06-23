@@ -33,11 +33,7 @@
 		        <input class="form-control mr-sm-4" type="text" placeholder="Search" aria-label="Search">
 		      </div>
 		    </form>
-		    <a class="fas fa-shopping-cart fa-2x"></a>
-		    <div id="auth">
-                <a href="/login">Login</a>
-                <a href="register">Register</a>
-            </div>  
+		    <a class="fas fa-shopping-cart fa-2x"></a> 
 		  </div>
 		  <!-- Collapsible content -->
 		</nav>

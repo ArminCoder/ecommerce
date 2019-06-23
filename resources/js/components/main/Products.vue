@@ -19,13 +19,11 @@
 		mounted() {
 			axios.get('/api/products').then((res) => {
 				console.log(res.data);
-				this.products = res.data;
+				this.products = res.data.data;
 			})
 		},
 		methods: {
 			changeImg(product , event) {
-				console.log('product', product);
-				console.log(event.target.src);
 				event.target.src = product.image2;
 			},
 			originalImg(product , event) {

@@ -12,8 +12,13 @@
 */
 
 Route::get('/', function() {
-	return view('welcome');
+	return view('landing');
 });
+
+Route::get('/dashboard', function() {
+	return view('admin/dashboard');
+});
+
 
 Auth::routes();
 
