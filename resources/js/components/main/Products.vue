@@ -1,0 +1,72 @@
+<template>
+	<div class="products">
+		<div class="columnDisplay p-4 p-relative" v-for='product in products'>
+				<img @mouseover='changeImg(product, $event)' @mouseleave='originalImg(product, $event)' :src="product.image1" :alt="product.name">
+				<span class="productInfo w-100 text-center columnDisplay absBottom">
+					<span class="productHeader">{{ product.name }}</span>
+					<small class="productSubheader">{{ product.category }}</small>
+				</span>
+		</div>
+	</div>
+</template>
+<script>
+	export default {
+		data() {
+			return {
+				products: []
+			}
+		},
+		mounted() {
+			axios.get('/api/products').then((res) => {
+				console.log(res.data);
+				this.products = res.data;
+			})
+		},
+		methods: {
+			changeImg(product , event) {
+				console.log('product', product);
+				console.log(event.target.src);
+				event.target.src = product.image2;
+			},
+			originalImg(product , event) {
+				event.target.src = product.image1;
+			}
+		}
+	};
+</script>
+
+<style scoped>
+    div.products {
+    	display: grid;
+    	grid-template-columns: repeat(4,1fr);
+    }
+    .columnDisplay {
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: space-between;
+    }
+    .p-2 {
+    	padding: 5px;
+    }
+	img {
+		width: 100%;
+		transition: all 2s ease-in;
+	}
+	
+	.productInfo span.productHeader {
+		font-size: 17px;
+		font-weight: bold;
+	}
+
+@media(max-width: 1400px) {
+	div.products {
+    	grid-template-columns: repeat(3,1fr);
+    }
+}    
+
+@media(max-width: 768px) {
+	div.products {
+    	grid-template-columns: repeat(2,1fr);
+    }    
+}
+</style>
