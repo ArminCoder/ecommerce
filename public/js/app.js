@@ -1921,6 +1921,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      pickedGender: [],
+      pickedCategory: [],
+      pickedBrand: [],
+      pickedPrice: [],
       genderOptions: [{
         option: 'men'
       }, {
@@ -1972,6 +1976,8 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         name: 'Gym'
       }, {
+        name: 'Formal'
+      }, {
         name: 'Slip-on'
       }, {
         name: 'High-Top'
@@ -1990,6 +1996,12 @@ __webpack_require__.r(__webpack_exports__);
         value: '200$ and Over'
       }]
     };
+  },
+  methods: {
+    pickGender: function pickGender() {},
+    pickCategory: function pickCategory() {},
+    pickBrand: function pickBrand() {},
+    pickPrice: function pickPrice() {}
   }
 });
 
@@ -2086,24 +2098,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      products: []
+      products: [],
+      pickedGender: ['women'],
+      pickedCategory: [],
+      pickedBrand: [],
+      pickedPrice: []
     };
   },
   mounted: function mounted() {
-    var _this = this;
-
-    axios.get('/api/products').then(function (res) {
-      console.log(res);
-      _this.products = res.data.data;
-    });
+    this.getProducts();
   },
   methods: {
+    getProducts: function getProducts() {
+      var _this = this;
+
+      axios.get('/api/products', {
+        params: {
+          // type: this.pickedCategory
+          type: 'Lifestyle'
+        }
+      }).then(function (res) {
+        console.log(res);
+        _this.products = res.data.data;
+      });
+    },
     changeImg: function changeImg(product, event) {
       event.target.src = product.image2;
     },
     originalImg: function originalImg(product, event) {
       event.target.src = product.image1;
     }
+  },
+  computed: {
+    filteredProducts: function filteredProducts() {}
   }
 });
 
@@ -38567,7 +38594,45 @@ var render = function() {
         _vm._v(" "),
         _vm._l(_vm.genderOptions, function(gender) {
           return _c("span", [
-            _c("input", { attrs: { type: "checkbox" } }),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pickedGender,
+                  expression: "pickedGender"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                value: gender.option,
+                checked: Array.isArray(_vm.pickedGender)
+                  ? _vm._i(_vm.pickedGender, gender.option) > -1
+                  : _vm.pickedGender
+              },
+              on: {
+                click: _vm.pickGender,
+                change: function($event) {
+                  var $$a = _vm.pickedGender,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = gender.option,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.pickedGender = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.pickedGender = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.pickedGender = $$c
+                  }
+                }
+              }
+            }),
             _vm._v(" "),
             _c("span", { staticClass: "option" }, [
               _vm._v(_vm._s(gender.option))
@@ -38586,7 +38651,45 @@ var render = function() {
         _vm._v(" "),
         _vm._l(_vm.categories, function(category) {
           return _c("span", [
-            _c("input", { attrs: { type: "checkbox" } }),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pickedCategory,
+                  expression: "pickedCategory"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                value: category.name,
+                checked: Array.isArray(_vm.pickedCategory)
+                  ? _vm._i(_vm.pickedCategory, category.name) > -1
+                  : _vm.pickedCategory
+              },
+              on: {
+                click: _vm.pickCategory,
+                change: function($event) {
+                  var $$a = _vm.pickedCategory,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = category.name,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.pickedCategory = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.pickedCategory = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.pickedCategory = $$c
+                  }
+                }
+              }
+            }),
             _vm._v(" "),
             _c("span", { staticClass: "option" }, [
               _vm._v(_vm._s(category.name))
@@ -38605,7 +38708,45 @@ var render = function() {
         _vm._v(" "),
         _vm._l(_vm.brands, function(brand) {
           return _c("span", [
-            _c("input", { attrs: { type: "checkbox" } }),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pickedBrand,
+                  expression: "pickedBrand"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                value: brand.name,
+                checked: Array.isArray(_vm.pickedBrand)
+                  ? _vm._i(_vm.pickedBrand, brand.name) > -1
+                  : _vm.pickedBrand
+              },
+              on: {
+                click: _vm.pickBrand,
+                change: function($event) {
+                  var $$a = _vm.pickedBrand,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = brand.name,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.pickedBrand = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.pickedBrand = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.pickedBrand = $$c
+                  }
+                }
+              }
+            }),
             _vm._v(" "),
             _c("span", { staticClass: "option" }, [_vm._v(_vm._s(brand.name))])
           ])
@@ -38622,7 +38763,45 @@ var render = function() {
         _vm._v(" "),
         _vm._l(_vm.prices, function(price) {
           return _c("span", [
-            _c("input", { attrs: { type: "checkbox" } }),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pickedPrice,
+                  expression: "pickedPrice"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                value: price.value,
+                checked: Array.isArray(_vm.pickedPrice)
+                  ? _vm._i(_vm.pickedPrice, price.value) > -1
+                  : _vm.pickedPrice
+              },
+              on: {
+                click: _vm.pickPrice,
+                change: function($event) {
+                  var $$a = _vm.pickedPrice,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = price.value,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.pickedPrice = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.pickedPrice = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.pickedPrice = $$c
+                  }
+                }
+              }
+            }),
             _vm._v(" "),
             _c("span", { staticClass: "option" }, [_vm._v(_vm._s(price.value))])
           ])

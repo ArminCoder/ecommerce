@@ -14,21 +14,39 @@
 	export default {
 		data() {
 			return {
-				products: []
+				products: [],
+				pickedGender: ['women'],
+				pickedCategory: [],
+				pickedBrand: [],
+				pickedPrice: []
 			}
 		},
 		mounted() {
-			axios.get('/api/products').then((res) => {
-				console.log(res);
-				this.products = res.data.data;
-			})
+			this.getProducts();	
 		},
 		methods: {
+			getProducts() {
+				axios.get('/api/products', {  
+			  	params: {
+			    	// type: this.pickedCategory
+			    	type: 'Lifestyle'
+
+			 	}
+			 	}).then((res) => {
+					console.log(res);
+					this.products = res.data.data;
+				})
+			},
 			changeImg(product , event) {
 				event.target.src = product.image2;
 			},
 			originalImg(product , event) {
 				event.target.src = product.image1;
+			}
+		},
+		computed: {
+			filteredProducts() {
+				
 			}
 		}
 	};

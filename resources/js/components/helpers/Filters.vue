@@ -3,28 +3,28 @@
 		<div class="filters mt-2">
 			<span class="label">Gender</span>
 			<span v-for='gender in genderOptions'>
-				<input type='checkbox'>
+				<input @click='pickGender' v-model='pickedGender' type='checkbox' :value='gender.option'>
 				<span class="option">{{ gender.option }}</span>
 			</span>
 		</div>
 		<div class="filters mt-2">
 			<span class="label">Category</span>
 			<span v-for='category in categories'>
-				<input type='checkbox'>
+				<input @click='pickCategory'  v-model='pickedCategory' type='checkbox' :value='category.name'>
 				<span class="option">{{ category.name }}</span>
 			</span>
 		</div>	
 		<div class="filters mt-2">
 			<span class="label">Brand</span>
 			<span v-for='brand in brands'>
-				<input type='checkbox'>
+				<input @click='pickBrand' v-model='pickedBrand' type='checkbox' :value='brand.name'>
 				<span class="option">{{ brand.name }}</span>
 			</span>
 		</div>	
 		<div class="filters mt-2">
 			<span class="label">Price</span>
 			<span v-for='price in prices'>
-				<input type='checkbox'>
+				<input @click='pickPrice' v-model='pickedPrice' type='checkbox' :value='price.value'>
 				<span class="option">{{ price.value }}</span>
 			</span>
 		</div>	
@@ -35,6 +35,10 @@
 	export default {
 		data() {
 			return {
+				pickedGender: [],
+				pickedCategory: [],
+				pickedBrand: [],
+				pickedPrice: [],
 				genderOptions: [
 					{ option : 'men'},
 					{ option : 'women'},
@@ -64,6 +68,7 @@
 					{ name: 'Running'},
 					{ name: 'Athletic'},
 					{ name: 'Gym'},
+					{ name: 'Formal'},
 					{ name: 'Slip-on'},
 					{ name: 'High-Top'},
 					{ name: 'Lace-up'},
@@ -76,7 +81,17 @@
 					{ value: '200$ and Over'}
 				]						
 			}
-		}
+		},
+		methods: {
+			pickGender() {
+			},
+			pickCategory() {
+			},
+			pickBrand() {
+			},
+			pickPrice() {
+			},
+		},
 	};
 </script>
 
