@@ -26,7 +26,11 @@
 		mounted() {
 			this.getProducts();	
 			eventBus.$on('event', (data) => {
-				this.pickedCategory = data;
+				console.table('data Received', data);
+				this.pickedGender = data.pickedGender;
+				this.pickedCategory = data.pickedCategory;
+				this.pickedBrand = data.pickedBrand;
+				this.pickedPrice = data.pickedPrice;	
 				this.getProducts();
 			})
 		},
@@ -34,7 +38,8 @@
 			getProducts() {
 				axios.get('/api/products', {  
 			  	params: {
-			    	type: this.pickedCategory
+			    	type: this.pickedCategory,
+			    	gender: this.pickedGender
 			 	}
 			 	}).then((res) => {
 					console.log(res);
@@ -78,6 +83,7 @@
     }
 	img {
 		width: 100%;
+		transition-delay: 1s;
 		transition: all 2s ease-in;
     	cursor: pointer;
 	}

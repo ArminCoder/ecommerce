@@ -3,28 +3,28 @@
 		<div class="filters mt-2">
 			<span class="label">Gender</span>
 			<span v-for='gender in genderOptions'>
-				<input @click='pickGender' v-model='pickedGender' type='checkbox' :value='gender.option'>
+				<input @change='sendData' v-model='pickedGender' type='checkbox' :value='gender.option'>
 				<span class="option">{{ gender.option }}</span>
 			</span>
 		</div>
 		<div class="filters mt-2">
 			<span class="label">Category</span>
 			<span v-for='category in categories'>
-				<input @change='pickCategory'  v-model='pickedCategory' type='checkbox' :value='category.name'>
+				<input @change='sendData'  v-model='pickedCategory' type='checkbox' :value='category.name'>
 				<span class="option">{{ category.name }}</span>
 			</span>
 		</div>	
 		<div class="filters mt-2">
 			<span class="label">Brand</span>
 			<span v-for='brand in brands'>
-				<input @click='pickBrand' v-model='pickedBrand' type='checkbox' :value='brand.name'>
+				<input @change='sendData' v-model='pickedBrand' type='checkbox' :value='brand.name'>
 				<span class="option">{{ brand.name }}</span>
 			</span>
 		</div>	
 		<div class="filters mt-2">
 			<span class="label">Price</span>
 			<span v-for='price in prices'>
-				<input @click='pickPrice' v-model='pickedPrice' type='checkbox' :value='price.value'>
+				<input @change='sendData' v-model='pickedPrice' type='checkbox' :value='price.value'>
 				<span class="option">{{ price.value }}</span>
 			</span>
 		</div>	
@@ -43,8 +43,7 @@
 				pickedPrice: [],
 				genderOptions: [
 					{ option : 'men'},
-					{ option : 'women'},
-					{ option : 'kids'},
+					{ option : 'women'}
 				],
 				brands: [
 					{ name: 'Nike'},
@@ -85,7 +84,14 @@
 			}
 		},
 		methods: {
-			pickGender() {
+			sendData() {
+				let data = { 
+					pickedGender: this.pickedGender,
+					pickedCategory: this.pickedCategory,
+					pickedBrand: this.pickedBrand,
+					pickedPrice: this.pickedPrice
+				}
+				eventBus.$emit('event', data);
 			},
 			pickCategory() {
 				eventBus.$emit('event', this.pickedCategory);

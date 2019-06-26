@@ -9,22 +9,57 @@ class ProductsController extends Controller
 {
 	public function index(Request $request)
 	{
-	   if($request->type)
-	   {
-	   		$products = collect([]);
+			$products = Product::all();
 
-	   		$productData = Product::whereIn('type', $request->type)->get();
+		    if ($request->type) {
+		        $products = $products->whereIn('type', $request->type);
+		    }
+		    
+		    if ($request->gender) {
+		        $products = $products->whereIn('gender', $request->gender);
+		    }
 
-	   		foreach ($request->type as $key) {
-	   			$products = $products->merge($productData->where('type', $key));
-	   		}
-			return response()->json($products);
-	   }
-	   else
-	   {
-	   		$products = Product::all();
-			return response()->json($products);
-	   }	
+		    return $products;
+
+		// Product::filter()->paginate(20);
+
+    //  	$products = Product::all();
+
+	   // if($request->type)
+	   // {
+	   // 		$products = collect([]);
+
+	   // 		$productData = Product::whereIn('type', $request->type)->paginate(5);
+
+	   // 		foreach ($request->type as $key) {
+	   // 			$products = $products->merge($productData->where('type', $key));
+	   // 		}
+	   // }
+
+	   // if($request->gender)
+	   // {
+	   // 		$products = collect([]);
+
+	   // 		$productData = Product::whereIn('gender', $request->gender)->paginate(5);
+
+	   // 		foreach ($request->gender as $key) {
+	   // 			$products = $products->merge($productData->where('gender', $key));
+	   // 		}
+	   // }	
+
+// 	   if ($request->has('name')) {
+//     $user->where('name', $request->input('name'));
+// }
+
+// // Search for a user based on their company.
+// if ($request->has('company')) {
+//     $user->where('company', $request->input('company'));
+// }
+	   
+
+	   	// $products = Product::all();
+
+		return response()->json($products);
 	   
 
 	}

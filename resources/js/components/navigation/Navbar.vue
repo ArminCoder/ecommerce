@@ -18,15 +18,18 @@
 
 		    <!-- Links -->
 		    <ul class="navbar-nav m-auto">
+	    	  <li class="nav-item">
+		        <a class="nav-link" href="#">All Products</a>
+		      </li>
 		      <li class="nav-item">
 		        <a class="nav-link" href="#">Men</a>
 		      </li>
 		      <li class="nav-item">
 		        <a class="nav-link" href="#">Women</a>
 		      </li>
-		       <li class="nav-item">
+		      <!-- <li class="nav-item">
 		        <a class="nav-link" href="#">Kids</a>
-		      </li>
+		      </li> -->
 		    </ul>
 		    <form class="form-inline">
 		      <div class="md-form my-0">

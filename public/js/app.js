@@ -1931,8 +1931,6 @@ __webpack_require__.r(__webpack_exports__);
         option: 'men'
       }, {
         option: 'women'
-      }, {
-        option: 'kids'
       }],
       brands: [{
         name: 'Nike'
@@ -2000,7 +1998,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    pickGender: function pickGender() {},
+    sendData: function sendData() {
+      var data = {
+        pickedGender: this.pickedGender,
+        pickedCategory: this.pickedCategory,
+        pickedBrand: this.pickedBrand,
+        pickedPrice: this.pickedPrice
+      };
+      _app_js__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$emit('event', data);
+    },
     pickCategory: function pickCategory() {
       _app_js__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$emit('event', this.pickedCategory);
     },
@@ -2116,7 +2122,11 @@ __webpack_require__.r(__webpack_exports__);
 
     this.getProducts();
     _app_js__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$on('event', function (data) {
-      _this.pickedCategory = data;
+      console.table('data Received', data);
+      _this.pickedGender = data.pickedGender;
+      _this.pickedCategory = data.pickedCategory;
+      _this.pickedBrand = data.pickedBrand;
+      _this.pickedPrice = data.pickedPrice;
 
       _this.getProducts();
     });
@@ -2127,7 +2137,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/products', {
         params: {
-          type: this.pickedCategory
+          type: this.pickedCategory,
+          gender: this.pickedGender
         }
       }).then(function (res) {
         console.log(res);
@@ -2156,6 +2167,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+//
+//
+//
 //
 //
 //
@@ -6735,7 +6749,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\ndiv.products[data-v-5fb0a042] {\n    \tdisplay: grid;\n    \tgrid-template-columns: repeat(4,1fr);\n}\n.columnDisplay[data-v-5fb0a042] {\n    \tdisplay: -webkit-box;\n    \tdisplay: flex;\n    \t-webkit-box-orient: vertical;\n    \t-webkit-box-direction: normal;\n    \t        flex-direction: column;\n    \t-webkit-box-pack: justify;\n    \t        justify-content: space-between;\n}\ndiv.columnDisplay[data-v-5fb0a042] {\n    \tborder: 1px solid #dcdcdc;\n    \tborder-radius: 8px;\n    \tmargin: 6px;\n    \tbackground: #f8fafc;\n}\n.p-2[data-v-5fb0a042] {\n    \tpadding: 5px;\n}\nimg[data-v-5fb0a042] {\n\t\twidth: 100%;\n\t\t-webkit-transition: all 2s ease-in;\n\t\ttransition: all 2s ease-in;\n    \tcursor: pointer;\n}\n.productInfo span.productHeader[data-v-5fb0a042] {\n\t\tfont-size: 17px;\n\t\tfont-weight: bold;\n}\n.productPrice[data-v-5fb0a042] {\n\t\tfont-size: 21px;\n}\n@media(max-width: 1400px) {\ndiv.products[data-v-5fb0a042] {\n    \tgrid-template-columns: repeat(3,1fr);\n}\n}\n@media(max-width: 768px) {\ndiv.products[data-v-5fb0a042] {\n    \tgrid-template-columns: repeat(2,1fr);\n}\n}\n", ""]);
+exports.push([module.i, "\ndiv.products[data-v-5fb0a042] {\n    \tdisplay: grid;\n    \tgrid-template-columns: repeat(4,1fr);\n}\n.columnDisplay[data-v-5fb0a042] {\n    \tdisplay: -webkit-box;\n    \tdisplay: flex;\n    \t-webkit-box-orient: vertical;\n    \t-webkit-box-direction: normal;\n    \t        flex-direction: column;\n    \t-webkit-box-pack: justify;\n    \t        justify-content: space-between;\n}\ndiv.columnDisplay[data-v-5fb0a042] {\n    \tborder: 1px solid #dcdcdc;\n    \tborder-radius: 8px;\n    \tmargin: 6px;\n    \tbackground: #f8fafc;\n}\n.p-2[data-v-5fb0a042] {\n    \tpadding: 5px;\n}\nimg[data-v-5fb0a042] {\n\t\twidth: 100%;\n\t\t-webkit-transition-delay: 1s;\n\t\t        transition-delay: 1s;\n\t\t-webkit-transition: all 2s ease-in;\n\t\ttransition: all 2s ease-in;\n    \tcursor: pointer;\n}\n.productInfo span.productHeader[data-v-5fb0a042] {\n\t\tfont-size: 17px;\n\t\tfont-weight: bold;\n}\n.productPrice[data-v-5fb0a042] {\n\t\tfont-size: 21px;\n}\n@media(max-width: 1400px) {\ndiv.products[data-v-5fb0a042] {\n    \tgrid-template-columns: repeat(3,1fr);\n}\n}\n@media(max-width: 768px) {\ndiv.products[data-v-5fb0a042] {\n    \tgrid-template-columns: repeat(2,1fr);\n}\n}\n", ""]);
 
 // exports
 
@@ -38624,26 +38638,28 @@ var render = function() {
                   : _vm.pickedGender
               },
               on: {
-                click: _vm.pickGender,
-                change: function($event) {
-                  var $$a = _vm.pickedGender,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = gender.option,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.pickedGender = $$a.concat([$$v]))
+                change: [
+                  function($event) {
+                    var $$a = _vm.pickedGender,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = gender.option,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.pickedGender = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.pickedGender = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.pickedGender = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.pickedGender = $$c
                     }
-                  } else {
-                    _vm.pickedGender = $$c
-                  }
-                }
+                  },
+                  _vm.sendData
+                ]
               }
             }),
             _vm._v(" "),
@@ -38701,7 +38717,7 @@ var render = function() {
                       _vm.pickedCategory = $$c
                     }
                   },
-                  _vm.pickCategory
+                  _vm.sendData
                 ]
               }
             }),
@@ -38740,26 +38756,28 @@ var render = function() {
                   : _vm.pickedBrand
               },
               on: {
-                click: _vm.pickBrand,
-                change: function($event) {
-                  var $$a = _vm.pickedBrand,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = brand.name,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.pickedBrand = $$a.concat([$$v]))
+                change: [
+                  function($event) {
+                    var $$a = _vm.pickedBrand,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = brand.name,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.pickedBrand = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.pickedBrand = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.pickedBrand = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.pickedBrand = $$c
                     }
-                  } else {
-                    _vm.pickedBrand = $$c
-                  }
-                }
+                  },
+                  _vm.sendData
+                ]
               }
             }),
             _vm._v(" "),
@@ -38795,26 +38813,28 @@ var render = function() {
                   : _vm.pickedPrice
               },
               on: {
-                click: _vm.pickPrice,
-                change: function($event) {
-                  var $$a = _vm.pickedPrice,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = price.value,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.pickedPrice = $$a.concat([$$v]))
+                change: [
+                  function($event) {
+                    var $$a = _vm.pickedPrice,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = price.value,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.pickedPrice = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.pickedPrice = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.pickedPrice = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.pickedPrice = $$c
                     }
-                  } else {
-                    _vm.pickedPrice = $$c
-                  }
-                }
+                  },
+                  _vm.sendData
+                ]
               }
             }),
             _vm._v(" "),
@@ -38999,6 +39019,12 @@ var staticRenderFns = [
               _c("ul", { staticClass: "navbar-nav m-auto" }, [
                 _c("li", { staticClass: "nav-item" }, [
                   _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                    _vm._v("All Products")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "nav-item" }, [
+                  _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
                     _vm._v("Men")
                   ])
                 ]),
@@ -39006,12 +39032,6 @@ var staticRenderFns = [
                 _c("li", { staticClass: "nav-item" }, [
                   _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
                     _vm._v("Women")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                    _vm._v("Kids")
                   ])
                 ])
               ]),
