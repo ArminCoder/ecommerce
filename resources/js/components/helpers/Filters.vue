@@ -23,10 +23,14 @@
 		</div>	
 		<div class="filters mt-2">
 			<span class="label">Price</span>
-			<span v-for='price in prices'>
+			<select @change='sendData' v-model='pickedPrice'>
+				<option selected value="all">All</option>
+				<option v-for='price in prices' :value="price.value">{{ price.name }}</option>
+			</select>
+			<!-- <span v-for='price in prices'>
 				<input @change='sendData' v-model='pickedPrice' type='checkbox' :value='price.value'>
-				<span class="option">{{ price.value }}</span>
-			</span>
+				<span class="option">{{ price.name }}</span>
+			</span> -->
 		</div>	
 	</div>
 </template>
@@ -40,7 +44,7 @@
 				pickedGender: [],
 				pickedCategory: [],
 				pickedBrand: [],
-				pickedPrice: [],
+				pickedPrice: 'all',
 				genderOptions: [
 					{ option : 'men'},
 					{ option : 'women'}
@@ -75,11 +79,11 @@
 					{ name: 'Lace-up'},
 				],
 				prices: [ 
-					{ value: '50$ and Under'},
-					{ value: '100$ and Under'},
-					{ value: '150$ and Under'},
-					{ value: '200$ and Under'},
-					{ value: '200$ and Over'}
+					{ name: '50$ and Under', value: '50'},
+					{ name: '100$ and Under', value: '100'},
+					{ name: '150$ and Under', value: '150'},
+					{ name: '200$ and Under', value: '200'},
+					{ name: '200$ and Over', value: '201'}
 				]						
 			}
 		},

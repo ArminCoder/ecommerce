@@ -20,7 +20,7 @@
 				pickedGender: [],
 				pickedCategory: [],
 				pickedBrand: [],
-				pickedPrice: []
+				pickedPrice: ''
 			}
 		},
 		mounted() {
@@ -39,7 +39,9 @@
 				axios.get('/api/products', {  
 			  	params: {
 			    	type: this.pickedCategory,
-			    	gender: this.pickedGender
+			    	gender: this.pickedGender,
+			    	brand: this.pickedBrand,
+			    	price: this.pickedPrice
 			 	}
 			 	}).then((res) => {
 					console.log(res);

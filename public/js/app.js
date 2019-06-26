@@ -1919,6 +1919,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1926,7 +1930,7 @@ __webpack_require__.r(__webpack_exports__);
       pickedGender: [],
       pickedCategory: [],
       pickedBrand: [],
-      pickedPrice: [],
+      pickedPrice: 'all',
       genderOptions: [{
         option: 'men'
       }, {
@@ -1985,15 +1989,20 @@ __webpack_require__.r(__webpack_exports__);
         name: 'Lace-up'
       }],
       prices: [{
-        value: '50$ and Under'
+        name: '50$ and Under',
+        value: '50'
       }, {
-        value: '100$ and Under'
+        name: '100$ and Under',
+        value: '100'
       }, {
-        value: '150$ and Under'
+        name: '150$ and Under',
+        value: '150'
       }, {
-        value: '200$ and Under'
+        name: '200$ and Under',
+        value: '200'
       }, {
-        value: '200$ and Over'
+        name: '200$ and Over',
+        value: '201'
       }]
     };
   },
@@ -2114,7 +2123,7 @@ __webpack_require__.r(__webpack_exports__);
       pickedGender: [],
       pickedCategory: [],
       pickedBrand: [],
-      pickedPrice: []
+      pickedPrice: ''
     };
   },
   mounted: function mounted() {
@@ -2138,7 +2147,9 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/products', {
         params: {
           type: this.pickedCategory,
-          gender: this.pickedGender
+          gender: this.pickedGender,
+          brand: this.pickedBrand,
+          price: this.pickedPrice
         }
       }).then(function (res) {
         console.log(res);
@@ -38788,62 +38799,53 @@ var render = function() {
       2
     ),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "filters mt-2" },
-      [
-        _c("span", { staticClass: "label" }, [_vm._v("Price")]),
-        _vm._v(" "),
-        _vm._l(_vm.prices, function(price) {
-          return _c("span", [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.pickedPrice,
-                  expression: "pickedPrice"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                value: price.value,
-                checked: Array.isArray(_vm.pickedPrice)
-                  ? _vm._i(_vm.pickedPrice, price.value) > -1
-                  : _vm.pickedPrice
+    _c("div", { staticClass: "filters mt-2" }, [
+      _c("span", { staticClass: "label" }, [_vm._v("Price")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.pickedPrice,
+              expression: "pickedPrice"
+            }
+          ],
+          on: {
+            change: [
+              function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.pickedPrice = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
               },
-              on: {
-                change: [
-                  function($event) {
-                    var $$a = _vm.pickedPrice,
-                      $$el = $event.target,
-                      $$c = $$el.checked ? true : false
-                    if (Array.isArray($$a)) {
-                      var $$v = price.value,
-                        $$i = _vm._i($$a, $$v)
-                      if ($$el.checked) {
-                        $$i < 0 && (_vm.pickedPrice = $$a.concat([$$v]))
-                      } else {
-                        $$i > -1 &&
-                          (_vm.pickedPrice = $$a
-                            .slice(0, $$i)
-                            .concat($$a.slice($$i + 1)))
-                      }
-                    } else {
-                      _vm.pickedPrice = $$c
-                    }
-                  },
-                  _vm.sendData
-                ]
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "option" }, [_vm._v(_vm._s(price.value))])
-          ])
-        })
-      ],
-      2
-    )
+              _vm.sendData
+            ]
+          }
+        },
+        [
+          _c("option", { attrs: { selected: "", value: "all" } }, [
+            _vm._v("All")
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.prices, function(price) {
+            return _c("option", { domProps: { value: price.value } }, [
+              _vm._v(_vm._s(price.name))
+            ])
+          })
+        ],
+        2
+      )
+    ])
   ])
 }
 var staticRenderFns = []
