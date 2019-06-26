@@ -26,6 +26,7 @@ Vue.component('app', require('./components/App.vue').default);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+export const eventBus = new Vue();
 
 const app = new Vue({
     el: '#app',

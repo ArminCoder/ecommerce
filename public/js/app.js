@@ -1885,6 +1885,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../app.js */ "./resources/js/app.js");
 //
 //
 //
@@ -1918,6 +1919,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1999,7 +2001,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     pickGender: function pickGender() {},
-    pickCategory: function pickCategory() {},
+    pickCategory: function pickCategory() {
+      _app_js__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$emit('event', this.pickedCategory);
+    },
     pickBrand: function pickBrand() {},
     pickPrice: function pickPrice() {}
   }
@@ -2083,6 +2087,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../app.js */ "./resources/js/app.js");
 //
 //
 //
@@ -2095,31 +2100,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       products: [],
-      pickedGender: ['women'],
+      pickedGender: [],
       pickedCategory: [],
       pickedBrand: [],
       pickedPrice: []
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     this.getProducts();
+    _app_js__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$on('event', function (data) {
+      _this.pickedCategory = data;
+
+      _this.getProducts();
+    });
   },
   methods: {
     getProducts: function getProducts() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get('/api/products', {
         params: {
-          // type: this.pickedCategory
-          type: 'Lifestyle'
+          type: this.pickedCategory
         }
       }).then(function (res) {
         console.log(res);
-        _this.products = res.data.data;
+        console.log('products', res.data);
+        _this2.products = res.data;
       });
     },
     changeImg: function changeImg(product, event) {
@@ -38668,26 +38681,28 @@ var render = function() {
                   : _vm.pickedCategory
               },
               on: {
-                click: _vm.pickCategory,
-                change: function($event) {
-                  var $$a = _vm.pickedCategory,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = category.name,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.pickedCategory = $$a.concat([$$v]))
+                change: [
+                  function($event) {
+                    var $$a = _vm.pickedCategory,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = category.name,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.pickedCategory = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.pickedCategory = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.pickedCategory = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.pickedCategory = $$c
                     }
-                  } else {
-                    _vm.pickedCategory = $$c
-                  }
-                }
+                  },
+                  _vm.pickCategory
+                ]
               }
             }),
             _vm._v(" "),
@@ -51168,9 +51183,12 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: eventBus */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eventBus", function() { return eventBus; });
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -51196,6 +51214,7 @@ Vue.component('app', __webpack_require__(/*! ./components/App.vue */ "./resource
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+var eventBus = new Vue();
 var app = new Vue({
   el: '#app'
 });

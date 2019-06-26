@@ -10,7 +10,7 @@
 		<div class="filters mt-2">
 			<span class="label">Category</span>
 			<span v-for='category in categories'>
-				<input @click='pickCategory'  v-model='pickedCategory' type='checkbox' :value='category.name'>
+				<input @change='pickCategory'  v-model='pickedCategory' type='checkbox' :value='category.name'>
 				<span class="option">{{ category.name }}</span>
 			</span>
 		</div>	
@@ -32,6 +32,8 @@
 </template>
 
 <script>
+	import { eventBus } from '../../app.js';
+
 	export default {
 		data() {
 			return {
@@ -86,6 +88,7 @@
 			pickGender() {
 			},
 			pickCategory() {
+				eventBus.$emit('event', this.pickedCategory);
 			},
 			pickBrand() {
 			},

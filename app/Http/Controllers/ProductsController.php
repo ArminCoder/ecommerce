@@ -9,11 +9,24 @@ class ProductsController extends Controller
 {
 	public function index(Request $request)
 	{
-		// dd(Product::first()->type , $request->type );
-		// dd($request->type);
-	    $products = Product::filter($request)->where('type', $request->type)->paginate(5);
-	    // Procut::where('type', $request->type)->where('brand', $request->brand)->get()->paginate(5);
-	    return response()->json($products);
+	   if($request->type)
+	   {
+	   		$products = collect([]);
+
+	   		$productData = Product::whereIn('type', $request->type)->get();
+
+	   		foreach ($request->type as $key) {
+	   			$products = $products->merge($productData->where('type', $key));
+	   		}
+			return response()->json($products);
+	   }
+	   else
+	   {
+	   		$products = Product::all();
+			return response()->json($products);
+	   }	
+	   
+
 	}
 	
 	public function show(Product $product)

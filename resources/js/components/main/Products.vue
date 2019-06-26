@@ -11,11 +11,13 @@
 	</div>
 </template>
 <script>
+	import { eventBus } from '../../app.js';
+
 	export default {
 		data() {
 			return {
 				products: [],
-				pickedGender: ['women'],
+				pickedGender: [],
 				pickedCategory: [],
 				pickedBrand: [],
 				pickedPrice: []
@@ -23,18 +25,21 @@
 		},
 		mounted() {
 			this.getProducts();	
+			eventBus.$on('event', (data) => {
+				this.pickedCategory = data;
+				this.getProducts();
+			})
 		},
 		methods: {
 			getProducts() {
 				axios.get('/api/products', {  
 			  	params: {
-			    	// type: this.pickedCategory
-			    	type: 'Lifestyle'
-
+			    	type: this.pickedCategory
 			 	}
 			 	}).then((res) => {
 					console.log(res);
-					this.products = res.data.data;
+					console.log('products', res.data)
+					this.products = res.data;
 				})
 			},
 			changeImg(product , event) {
