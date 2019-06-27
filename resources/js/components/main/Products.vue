@@ -26,7 +26,6 @@
 		mounted() {
 			this.getProducts();	
 			eventBus.$on('event', (data) => {
-				console.table('data Received', data);
 				this.pickedGender = data.pickedGender;
 				this.pickedCategory = data.pickedCategory;
 				this.pickedBrand = data.pickedBrand;
@@ -44,8 +43,6 @@
 			    	price: this.pickedPrice
 			 	}
 			 	}).then((res) => {
-					console.log(res);
-					console.log('products', res.data)
 					this.products = res.data;
 				})
 			},

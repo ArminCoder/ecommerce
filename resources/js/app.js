@@ -27,7 +27,10 @@ Vue.component('app', require('./components/App.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 export const eventBus = new Vue();
+import { store } from './store/store.js';
 
 const app = new Vue({
+	store: store,
     el: '#app',
 });
+
