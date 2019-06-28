@@ -3,6 +3,6 @@ import product from './components/main/Product.vue';
 
 export default [
 	{path: '/' , component: app},
-	{path: '/product' , component: product},
+	{path: '/products/:id' , name: 'product',  component: product},
 ]
 

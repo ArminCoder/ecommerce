@@ -46,6 +46,9 @@
 		methods: {
 			checkProduct(product) {
 				console.log(product);
+				let data = product;
+				// eventBus.$emit('productId', data);
+				this.$router.push({ name: 'product', params: { id: product.id } })
 			},
 			changeImgSrc(event, product) {
 				// TODO: change main img src with the hovered one
