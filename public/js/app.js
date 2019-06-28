@@ -2202,9 +2202,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     checkProduct: function checkProduct(product) {
-      console.log(product);
-      var data = product; // eventBus.$emit('productId', data);
-
       this.$router.push({
         name: 'product',
         params: {

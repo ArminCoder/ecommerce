@@ -24,8 +24,6 @@
 
 <script>
 	import { eventBus } from '../../app.js';
-	
-
 	import navbar from '../navigation/Navbar';
 	import productsFooter from '../footer/Footer';
 
