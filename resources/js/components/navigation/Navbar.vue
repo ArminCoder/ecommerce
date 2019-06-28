@@ -18,26 +18,25 @@
 
 		    <!-- Links -->
 		    <ul class="navbar-nav m-auto">
-		      <li class="nav-item">
+	    	  <li class="nav-item">
+		        <a class="nav-link" href="/">All Products</a>
+		      </li>
+		      <li @click='showMenProducts' class="nav-item">
 		        <a class="nav-link" href="#">Men</a>
 		      </li>
-		      <li class="nav-item">
+		      <li @click='showWomenProducts' class="nav-item">
 		        <a class="nav-link" href="#">Women</a>
 		      </li>
-		       <li class="nav-item">
+		      <!-- <li class="nav-item">
 		        <a class="nav-link" href="#">Kids</a>
-		      </li>
+		      </li> -->
 		    </ul>
 		    <form class="form-inline">
 		      <div class="md-form my-0">
 		        <input class="form-control mr-sm-4" type="text" placeholder="Search" aria-label="Search">
 		      </div>
 		    </form>
-		    <a class="fas fa-shopping-cart fa-2x"></a>
-		    <div id="auth">
-                <a href="/login">Login</a>
-                <a href="register">Register</a>
-            </div>  
+		    <a class="fas fa-shopping-cart fa-2x"></a> 
 		  </div>
 		  <!-- Collapsible content -->
 		</nav>
@@ -46,7 +45,16 @@
 </template>
 
 <script>
-	
+	export default {
+		methods: {
+			showMenProducts() {
+				console.log('TODO SHOW MEN SHOES');
+			},
+			showWomenProducts() {
+				console.log('TODO SHOW WOMEN SHOES');
+			}
+		}
+	};
 </script>
 
 <style scoped>
