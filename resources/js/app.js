@@ -26,11 +26,23 @@ Vue.component('app', require('./components/App.vue').default);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+
+
 export const eventBus = new Vue();
 import { store } from './store/store.js';
+import VueRouter from 'vue-router';
+import Routes from './routes.js';
+
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+	routes: Routes
+});
 
 const app = new Vue({
 	store: store,
     el: '#app',
+    router: router
 });
 

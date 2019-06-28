@@ -1,7 +1,7 @@
 @extends('welcome')
 
 @section('content')
-	    <app></app>
+		<router-view></router-view>
 @endsection
 
 @section('scripts')

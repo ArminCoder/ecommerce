@@ -1,8 +1,14 @@
 <template>
 	<div class="products">
-		<div class="columnDisplay p-4 p-relative" v-for='product in products'>
-				<img @mouseover='changeImg(product, $event)' @mouseleave='originalImg(product, $event)' :src="product.image1" :alt="product.name">
-				<span class="productInfo w-100 text-center columnDisplay absBottom mt-1">
+		<div @click='checkProduct(product)' class="columnDisplay p-4 p-relative" v-for='product in products'>
+				<img ref='mainProductImg' @mouseover='changeImg(product, $event)' :src="product.image1" :alt="product.name">
+				<div v-if='hoveredProduct.id == product.id' class="colorDetails">
+					<img @mouseover='changeImgSrc($event, product)' v-if='product.image2' :src="product.image2" :alt="product.name">
+					<img @mouseover='changeImgSrc($event, product)' v-if='product.image3' :src="product.image3" :alt="product.name">
+					<img @mouseover='changeImgSrc($event, product)' v-if='product.image4' :src="product.image4" :alt="product.name">
+					<img @mouseover='changeImgSrc($event, product)' v-if='product.image5' :src="product.image5" :alt="product.name">
+				</div>
+				<span class="productInfo w-100 text-center columnDisplay absBottom" :class='{ mt1 : hoveredProduct.id  }'>
 					<span class="productHeader">{{ product.name }}</span>
 					<small class="productSubheader">{{ product.type }}</small>
 					<span class="productPrice font-weight-bold">${{ product.price }}</span>
@@ -20,7 +26,11 @@
 				pickedGender: [],
 				pickedCategory: [],
 				pickedBrand: [],
-				pickedPrice: ''
+				pickedPrice: '',
+				hoveredProduct: {
+					id: ''
+				},
+				productImage: ''
 			}
 		},
 		mounted() {
@@ -34,6 +44,12 @@
 			})
 		},
 		methods: {
+			checkProduct(product) {
+				console.log(product);
+			},
+			changeImgSrc(event, product) {
+				// TODO: change main img src with the hovered one
+			},
 			getProducts() {
 				axios.get('/api/products', {  
 			  	params: {
@@ -47,10 +63,11 @@
 				})
 			},
 			changeImg(product , event) {
-				event.target.src = product.image2;
+				this.colorDetails = true;
+				this.hoveredProduct.id = product.id;
 			},
 			originalImg(product , event) {
-				event.target.src = product.image1;
+
 			}
 		},
 		computed: {
@@ -64,18 +81,18 @@
 <style scoped>
     div.products {
     	display: grid;
-    	grid-template-columns: repeat(4,1fr);
+    	grid-template-columns: repeat(5,1fr);
     }
     .columnDisplay {
     	display: flex;
     	flex-direction: column;
-    	justify-content: space-between;
     }
     div.columnDisplay {
     	border: 1px solid #dcdcdc;
     	border-radius: 8px;
     	margin: 6px;
     	background: #f8fafc;
+    	position: relative;
     }
     .p-2 {
     	padding: 5px;
@@ -94,6 +111,14 @@
 	.productPrice {
 		font-size: 21px;
 	}
+	div.colorDetails {
+		display: flex;
+		justify-content: center;
+	}
+	div.colorDetails img {
+		width: 50px;
+	}
+	
 
 @media(max-width: 1400px) {
 	div.products {
