@@ -14162,3 +14162,40 @@ body {
   background: #fff;
 }
 
+div#dashboard {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+div#dashboard .row {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+div#dashboard .navigation {
+  width: 100%;
+  height: 50px;
+}
+
+div#dashboard .navigation .logo {
+  float: left;
+}
+
+div#dashboard .navigation ul {
+  display: -webkit-box;
+  display: flex;
+  float: right;
+  list-style: none;
+  height: 100%;
+  margin: 0;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+div#dashboard .navigation ul li {
+  color: #fff;
+  margin: 0 10px;
+}
+

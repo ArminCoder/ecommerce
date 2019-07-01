@@ -1915,39 +1915,8 @@ __webpack_require__.r(__webpack_exports__);
         option: 'women'
       }],
       brands: [],
-      categories: [{
-        name: 'Lifestyle'
-      }, {
-        name: 'Running'
-      }, {
-        name: 'Athletic'
-      }, {
-        name: 'Gym'
-      }, {
-        name: 'Formal'
-      }, {
-        name: 'Slip-on'
-      }, {
-        name: 'High-Top'
-      }, {
-        name: 'Lace-up'
-      }],
-      prices: [{
-        name: '50$ and Under',
-        value: '50'
-      }, {
-        name: '100$ and Under',
-        value: '100'
-      }, {
-        name: '150$ and Under',
-        value: '150'
-      }, {
-        name: '200$ and Under',
-        value: '200'
-      }, {
-        name: '200$ and Over',
-        value: '201'
-      }]
+      categories: [],
+      prices: []
     };
   },
   mounted: function mounted() {
@@ -1957,9 +1926,12 @@ __webpack_require__.r(__webpack_exports__);
     getBrands: function getBrands() {
       var _this = this;
 
-      axios.get('api/brands').then(function (res) {
-        _this.brands = res.data;
-      });
+      axios.all([axios.get('/api/brands'), axios.get('/api/types'), axios.get('/api/prices')]).then(axios.spread(function (brandsRes, typesRes, pricesRes) {
+        console.log('RESPONSES:::,', brandsRes, typesRes, pricesRes);
+        _this.brands = brandsRes.data;
+        _this.categories = typesRes.data;
+        _this.prices = pricesRes.data;
+      }));
     },
     sendData: function sendData() {
       var data = {
