@@ -1,6 +1,3 @@
 @extends('welcome')
 
-@section('content')
-	<h2>dashboard</h2>
-	<app></app>
-@endsection
+<h1>Welcome Admin</h1>
