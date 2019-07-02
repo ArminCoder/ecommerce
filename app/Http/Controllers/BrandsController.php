@@ -10,6 +10,6 @@ class BrandsController extends Controller
     public function index()
     {
     	$brands = Brand::all();
-    	return $brands;
+     	return $brands;
     }
 }

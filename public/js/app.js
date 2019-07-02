@@ -1796,7 +1796,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      products: [],
+      brands: [],
+      prices: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.all([axios.get('/api/brands'), axios.get('/api/types'), axios.get('/api/products')]).then(axios.spread(function (brandsRes, typesRes, productsRes) {
+      console.log('RESPONSES:::,', brandsRes, typesRes, productsRes);
+      _this.products = productsRes.data;
+      _this.brands = brandsRes.data;
+      _this.categories = typesRes.data;
+    }));
+  }
+});
 
 /***/ }),
 
@@ -38691,15 +38733,57 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("heading", [_vm._v("SOME PRODUCTS")]),
+      _c("heading", [_vm._v("PRODUCTS")]),
       _vm._v(" "),
-      _c("h1", [_vm._v("PRODUCTS")]),
-      _vm._v(" "),
-      _c("span", [
-        _vm._v(
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, corporis temporibus. Corrupti temporibus impedit, vero ratione nesciunt velit fugit modi enim quas ea! Officia eveniet ad pariatur est vero eaque expedita minus odit odio, veniam tempora, repudiandae deserunt culpa earum deleniti sed. Cum dolore cumque nemo, eum provident ipsam nihil!"
-        )
-      ])
+      _c(
+        "div",
+        _vm._l(_vm.products, function(product) {
+          return _c("div", { staticClass: "d-flex" }, [
+            _c("img", { attrs: { src: product.image1, alt: product.nameS } }),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.name))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.category))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.gender))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.price))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.brand))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.size_35 ? "true" : "false"))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.size_36 ? "true" : "false"))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.size_37 ? "true" : "false"))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.size_38 ? "true" : "false"))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.size_39 ? "true" : "false"))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.size_40 ? "true" : "false"))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.size_41 ? "true" : "false"))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.size_42 ? "true" : "false"))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.size_43 ? "true" : "false"))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.size_44 ? "true" : "false"))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.size_45 ? "true" : "false"))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.size_46 ? "true" : "false"))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.size_47 ? "true" : "false"))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.size_48 ? "true" : "false"))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(product.size_49 ? "true" : "false"))])
+          ])
+        }),
+        0
+      )
     ],
     1
   )
