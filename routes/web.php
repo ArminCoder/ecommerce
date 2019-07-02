@@ -29,7 +29,9 @@ Route::get('/dashboard/users', function() {
 Route::get('/dashboard/products', function() {
 	return view('/admin/products');
 });
-
+Route::get('/dashboard/products/create', function() {
+	return view('/admin/create_product');
+});
 
 Auth::routes();
 

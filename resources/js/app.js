@@ -8,6 +8,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+require('./components');
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -33,10 +36,6 @@ import { store } from './store/store.js';
 import VueRouter from 'vue-router';
 import Routes from './routes.js';
 
-// components
-Vue.component('dashboard', require('./components/dashboard/Dashboard.vue').default);
-Vue.component('dashboard-products', require('./components/dashboard/Products.vue').default);
-Vue.component('heading', require('./components/helpers/Heading.vue').default);
 
 
  

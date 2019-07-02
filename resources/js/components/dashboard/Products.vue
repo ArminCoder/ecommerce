@@ -26,7 +26,6 @@
 				<span>{{ product.size_49 ? 'true' : 'false' }}</span>
 			</div>
 		</div>
-		
 	</div>
 </template>
 
