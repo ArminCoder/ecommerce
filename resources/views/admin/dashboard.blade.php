@@ -1,30 +1,21 @@
 @extends('welcome')
 
-<div id="dashboard" class="container-fluid">
-	<div class="row">
-		<div class="navigation col-12 bg-dark">
-				<div class="logo">
-					LOGO
+@section('content')
+	<div id='app'>
+		<div id="dashboard">
+			@include('admin/navbar')
+			<div class="row">
+				<div class="col-2 p-0">
+					@include('./admin/sidebar')
 				</div>
-				<div>
-					<ul>
-						<li>TAB</li>
-						<li>TAB</li>
-						<li>TAB</li>
-						<li>TAB</li>
-					</ul>
-
+				<div class="col-10">
+					@yield('component')
 				</div>
-		</div>
-		<div class="col-3 bg-dark">
-			<ul>
-				<li></li>	
-			</ul>
-
-
-		</div>
-		<div class="col-9">
-			<router-view></router-view>
+			</div>	
 		</div>	
 	</div>
-</div>
+@endsection	
+
+@section('scripts')
+        <script src="{{ asset('js/app.js') }}"></script>
+@endsection

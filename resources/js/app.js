@@ -20,7 +20,6 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('app', require('./components/App.vue').default);
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -34,6 +33,12 @@ import { store } from './store/store.js';
 import VueRouter from 'vue-router';
 import Routes from './routes.js';
 
+// components
+Vue.component('dashboard', require('./components/dashboard/Dashboard.vue').default);
+Vue.component('dashboard-products', require('./components/dashboard/Products.vue').default);
+
+ 
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -45,4 +50,6 @@ const app = new Vue({
     el: '#app',
     router: router
 });
+
+
 

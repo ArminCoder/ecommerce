@@ -20,6 +20,16 @@ Route::get('/dashboard', function() {
 });
 
 Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard/main', function() {
+	return view('/admin/main');
+});
+Route::get('/dashboard/users', function() {
+	return view('/admin/user');
+});
+Route::get('/dashboard/products', function() {
+	return view('/admin/products');
+});
+
 
 Auth::routes();
 

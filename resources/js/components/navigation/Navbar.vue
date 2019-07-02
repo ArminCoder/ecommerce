@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="navHolder">
 		<!--Navbar-->
 		<nav class="navbar navbar-expand-lg navbar-dark primary-color">
 		  <!-- Navbar brand -->
@@ -58,6 +58,10 @@
 </script>
 
 <style scoped>
+	#navHolder {
+		position: fixed;
+		width: 100%;
+	}
 	#logoImg {
 		width: 140px;
 	}
