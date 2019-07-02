@@ -1860,9 +1860,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      productBrand: '',
+      productType: '',
+      size_35: false,
+      size_36: false,
+      size_37: false,
+      size_38: false,
+      size_39: false,
+      size_40: false,
+      size_41: false,
+      size_42: false,
+      size_43: false,
+      size_44: false,
+      size_45: false,
+      size_46: false,
+      size_47: false,
+      size_48: false,
+      size_49: false,
       name: '',
       price: '',
       gender: 'all',
@@ -1878,6 +1898,11 @@ __webpack_require__.r(__webpack_exports__);
       _this.brands = resBrands.data;
       _this.categories = resTypes.data;
     }));
+  },
+  methods: {
+    createProduct: function createProduct() {
+      console.log('create');
+    }
   }
 });
 
@@ -1927,6 +1952,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -6979,7 +7007,26 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.checkboxes {\n\tdisplay: grid;\n\tgrid-template-columns: repeat(8,1fr);\n}\ninput[type=file] {\n\twidth: 50%;\n}\n/*input[type=file]:last-child {\n\twidth: 50%;\n}\ninput[type=file]:nth-last-child(2) {\n\twidth: 50%;\n}*/\n", ""]);
+exports.push([module.i, "\n.checkboxes {\n\t\tdisplay: grid;\n\t\tgrid-template-columns: repeat(8,1fr);\n}\ninput[type=checkbox] {\n    \t-webkit-transform: scale(1.5);\n    \t        transform: scale(1.5);\n    \tmargin-left: 5px;\n}\n\t\n\t\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/Products.vue?vue&type=style&index=0&id=4e6b28aa&scoped=true&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/Products.vue?vue&type=style&index=0&id=4e6b28aa&scoped=true&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n#createNewProduct[data-v-4e6b28aa] {\n\t\tposition: absolute;\n    \tright: 1vw;\n}\t\n", ""]);
 
 // exports
 
@@ -38020,6 +38067,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/Products.vue?vue&type=style&index=0&id=4e6b28aa&scoped=true&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/Products.vue?vue&type=style&index=0&id=4e6b28aa&scoped=true&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Products.vue?vue&type=style&index=0&id=4e6b28aa&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/Products.vue?vue&type=style&index=0&id=4e6b28aa&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/footer/Footer.vue?vue&type=style&index=0&id=22837618&scoped=true&lang=css&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/footer/Footer.vue?vue&type=style&index=0&id=22837618&scoped=true&lang=css& ***!
@@ -38903,7 +38980,32 @@ var render = function() {
       _c("div", { staticClass: "col-12 mt-3" }, [
         _c(
           "select",
-          { staticClass: "form-control" },
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.productBrand,
+                expression: "productBrand"
+              }
+            ],
+            staticClass: "form-control",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.productBrand = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
+            }
+          },
           _vm._l(_vm.brands, function(brand) {
             return _c("option", { domProps: { value: brand.name } }, [
               _vm._v(_vm._s(brand.name))
@@ -38916,7 +39018,32 @@ var render = function() {
       _c("div", { staticClass: "col-12 mt-3" }, [
         _c(
           "select",
-          { staticClass: "form-control" },
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.productType,
+                expression: "productType"
+              }
+            ],
+            staticClass: "form-control",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.productType = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
+            }
+          },
           _vm._l(_vm.categories, function(category) {
             return _c("option", { domProps: { value: category.name } }, [
               _vm._v(_vm._s(category.name))
@@ -38995,12 +39122,661 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "col-12 mt-3" }, [
+        _c(
+          "h5",
+          {
+            staticClass:
+              "d-flex justify-content-center mb-4 text-bold font-weight-bold"
+          },
+          [_vm._v("Available Sizes:")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "row checkboxes" }, [
+          _c("label", [
+            _vm._v("\n\t\t\t\t\t\t35\n\t\t\t\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.size_35,
+                  expression: "size_35"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.size_35)
+                  ? _vm._i(_vm.size_35, null) > -1
+                  : _vm.size_35
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.size_35,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.size_35 = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.size_35 = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.size_35 = $$c
+                  }
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _vm._v("\n\t\t\t\t\t\t36\n\t\t\t\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.size_36,
+                  expression: "size_36"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.size_36)
+                  ? _vm._i(_vm.size_36, null) > -1
+                  : _vm.size_36
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.size_36,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.size_36 = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.size_36 = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.size_36 = $$c
+                  }
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _vm._v("\n\t\t\t\t\t\t37\n\t\t\t\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.size_37,
+                  expression: "size_37"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.size_37)
+                  ? _vm._i(_vm.size_37, null) > -1
+                  : _vm.size_37
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.size_37,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.size_37 = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.size_37 = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.size_37 = $$c
+                  }
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _vm._v("\n\t\t\t\t\t\t38\n\t\t\t\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.size_38,
+                  expression: "size_38"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.size_38)
+                  ? _vm._i(_vm.size_38, null) > -1
+                  : _vm.size_38
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.size_38,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.size_38 = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.size_38 = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.size_38 = $$c
+                  }
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _vm._v("\n\t\t\t\t\t\t39\n\t\t\t\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.size_39,
+                  expression: "size_39"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.size_39)
+                  ? _vm._i(_vm.size_39, null) > -1
+                  : _vm.size_39
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.size_39,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.size_39 = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.size_39 = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.size_39 = $$c
+                  }
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _vm._v("\n\t\t\t\t\t\t40\n\t\t\t\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.size_40,
+                  expression: "size_40"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.size_40)
+                  ? _vm._i(_vm.size_40, null) > -1
+                  : _vm.size_40
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.size_40,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.size_40 = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.size_40 = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.size_40 = $$c
+                  }
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _vm._v("\n\t\t\t\t\t\t41\n\t\t\t\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.size_41,
+                  expression: "size_41"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.size_41)
+                  ? _vm._i(_vm.size_41, null) > -1
+                  : _vm.size_41
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.size_41,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.size_41 = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.size_41 = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.size_41 = $$c
+                  }
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _vm._v("\n\t\t\t\t\t\t42\n\t\t\t\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.size_42,
+                  expression: "size_42"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.size_42)
+                  ? _vm._i(_vm.size_42, null) > -1
+                  : _vm.size_42
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.size_42,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.size_42 = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.size_42 = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.size_42 = $$c
+                  }
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _vm._v("\n\t\t\t\t\t\t43\n\t\t\t\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.size_43,
+                  expression: "size_43"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.size_43)
+                  ? _vm._i(_vm.size_43, null) > -1
+                  : _vm.size_43
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.size_43,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.size_43 = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.size_43 = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.size_43 = $$c
+                  }
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _vm._v("\n\t\t\t\t\t\t44\n\t\t\t\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.size_44,
+                  expression: "size_44"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.size_44)
+                  ? _vm._i(_vm.size_44, null) > -1
+                  : _vm.size_44
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.size_44,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.size_44 = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.size_44 = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.size_44 = $$c
+                  }
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _vm._v("\n\t\t\t\t\t\t45\n\t\t\t\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.size_45,
+                  expression: "size_45"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.size_45)
+                  ? _vm._i(_vm.size_45, null) > -1
+                  : _vm.size_45
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.size_45,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.size_45 = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.size_45 = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.size_45 = $$c
+                  }
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _vm._v("\n\t\t\t\t\t\t46\n\t\t\t\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.size_46,
+                  expression: "size_46"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.size_46)
+                  ? _vm._i(_vm.size_46, null) > -1
+                  : _vm.size_46
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.size_46,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.size_46 = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.size_46 = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.size_46 = $$c
+                  }
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _vm._v("\n\t\t\t\t\t\t47\n\t\t\t\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.size_47,
+                  expression: "size_47"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.size_47)
+                  ? _vm._i(_vm.size_47, null) > -1
+                  : _vm.size_47
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.size_47,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.size_47 = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.size_47 = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.size_47 = $$c
+                  }
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _vm._v("\n\t\t\t\t\t\t48\n\t\t\t\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.size_48,
+                  expression: "size_48"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.size_48)
+                  ? _vm._i(_vm.size_48, null) > -1
+                  : _vm.size_48
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.size_48,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.size_48 = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.size_48 = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.size_48 = $$c
+                  }
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _vm._v("\n\t\t\t\t\t\t49\n\t\t\t\t\t\t"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.size_49,
+                  expression: "size_49"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.size_49)
+                  ? _vm._i(_vm.size_49, null) > -1
+                  : _vm.size_49
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.size_49,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.size_49 = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.size_49 = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.size_49 = $$c
+                  }
+                }
+              }
+            })
+          ])
+        ])
+      ])
     ]),
     _vm._v(" "),
-    _vm._m(1),
+    _c(
+      "h5",
+      {
+        staticClass:
+          "d-flex justify-content-center my1-4 text-bold font-weight-bold"
+      },
+      [_vm._v("Upload Images:")]
+    ),
     _vm._v(" "),
-    _vm._m(2)
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "text-center" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary mt-4 px-4 py-2 w-50",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.createProduct($event)
+            }
+          }
+        },
+        [_vm._v("Submit")]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -39008,136 +39784,34 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-3" }, [
-      _c(
-        "h5",
-        {
-          staticClass:
-            "d-flex justify-content-center mb-4 text-bold font-weight-bold"
-        },
-        [_vm._v("Available Sizes:")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "row checkboxes" }, [
-        _c("label", [
-          _vm._v("\n\t\t\t\t\t\t35\n\t\t\t\t\t\t"),
-          _c("input", { attrs: { type: "checkbox" } })
-        ]),
-        _vm._v(" "),
-        _c("label", [
-          _vm._v("\n\t\t\t\t\t\t36\n\t\t\t\t\t\t"),
-          _c("input", { attrs: { type: "checkbox" } })
-        ]),
-        _vm._v(" "),
-        _c("label", [
-          _vm._v("\n\t\t\t\t\t\t37\n\t\t\t\t\t\t"),
-          _c("input", { attrs: { type: "checkbox" } })
-        ]),
-        _vm._v(" "),
-        _c("label", [
-          _vm._v("\n\t\t\t\t\t\t38\n\t\t\t\t\t\t"),
-          _c("input", { attrs: { type: "checkbox" } })
-        ]),
-        _vm._v(" "),
-        _c("label", [
-          _vm._v("\n\t\t\t\t\t\t39\n\t\t\t\t\t\t"),
-          _c("input", { attrs: { type: "checkbox" } })
-        ]),
-        _vm._v(" "),
-        _c("label", [
-          _vm._v("\n\t\t\t\t\t\t40\n\t\t\t\t\t\t"),
-          _c("input", { attrs: { type: "checkbox" } })
-        ]),
-        _vm._v(" "),
-        _c("label", [
-          _vm._v("\n\t\t\t\t\t\t41\n\t\t\t\t\t\t"),
-          _c("input", { attrs: { type: "checkbox" } })
-        ]),
-        _vm._v(" "),
-        _c("label", [
-          _vm._v("\n\t\t\t\t\t\t42\n\t\t\t\t\t\t"),
-          _c("input", { attrs: { type: "checkbox" } })
-        ]),
-        _vm._v(" "),
-        _c("label", [
-          _vm._v("\n\t\t\t\t\t\t43\n\t\t\t\t\t\t"),
-          _c("input", { attrs: { type: "checkbox" } })
-        ]),
-        _vm._v(" "),
-        _c("label", [
-          _vm._v("\n\t\t\t\t\t\t44\n\t\t\t\t\t\t"),
-          _c("input", { attrs: { type: "checkbox" } })
-        ]),
-        _vm._v(" "),
-        _c("label", [
-          _vm._v("\n\t\t\t\t\t\t45\n\t\t\t\t\t\t"),
-          _c("input", { attrs: { type: "checkbox" } })
-        ]),
-        _vm._v(" "),
-        _c("label", [
-          _vm._v("\n\t\t\t\t\t\t46\n\t\t\t\t\t\t"),
-          _c("input", { attrs: { type: "checkbox" } })
-        ]),
-        _vm._v(" "),
-        _c("label", [
-          _vm._v("\n\t\t\t\t\t\t47\n\t\t\t\t\t\t"),
-          _c("input", { attrs: { type: "checkbox" } })
-        ]),
-        _vm._v(" "),
-        _c("label", [
-          _vm._v("\n\t\t\t\t\t\t48\n\t\t\t\t\t\t"),
-          _c("input", { attrs: { type: "checkbox" } })
-        ]),
-        _vm._v(" "),
-        _c("label", [
-          _vm._v("\n\t\t\t\t\t\t49\n\t\t\t\t\t\t"),
-          _c("input", { attrs: { type: "checkbox" } })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row mt-3" }, [
-      _c("div", { staticClass: "text-center w50" }, [
+      _c("div", { staticClass: "text-center w-50" }, [
         _c("input", { attrs: { type: "file", name: "image1" } })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "text-center w50" }, [
+      _c("div", { staticClass: "text-center w-50" }, [
         _c("input", { attrs: { type: "file", name: "image2" } })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "text-center w50" }, [
+      _c("div", { staticClass: "text-center w-50" }, [
         _c("input", {
           staticClass: "mt-3",
           attrs: { type: "file", name: "image3" }
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "text-center w50" }, [
+      _c("div", { staticClass: "text-center w-50" }, [
         _c("input", {
           staticClass: "mt-3",
           attrs: { type: "file", name: "image4" }
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "text-center w50" }, [
+      _c("div", { staticClass: "text-center w-50" }, [
         _c("input", {
           staticClass: "mt-3",
           attrs: { type: "file", name: "image5" }
         })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c("button", { staticClass: "btn btn-primary mt-4 px-4 py-2 w-50" }, [
-        _vm._v("Submit")
       ])
     ])
   }
@@ -39191,10 +39865,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/Products.vue?vue&type=template&id=4e6b28aa&":
-/*!*********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/Products.vue?vue&type=template&id=4e6b28aa& ***!
-  \*********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/Products.vue?vue&type=template&id=4e6b28aa&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/Products.vue?vue&type=template&id=4e6b28aa&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -39210,6 +39884,8 @@ var render = function() {
     "div",
     [
       _c("heading", [_vm._v("PRODUCTS")]),
+      _vm._v(" "),
+      _vm._m(0),
       _vm._v(" "),
       _c(
         "div",
@@ -39264,7 +39940,23 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-dark text-white font-weight-bold",
+          attrs: { id: "createNewProduct", href: "/dashboard/products/create" }
+        },
+        [_vm._v("+ New product")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -56287,9 +56979,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Products_vue_vue_type_template_id_4e6b28aa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Products.vue?vue&type=template&id=4e6b28aa& */ "./resources/js/components/dashboard/Products.vue?vue&type=template&id=4e6b28aa&");
+/* harmony import */ var _Products_vue_vue_type_template_id_4e6b28aa_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Products.vue?vue&type=template&id=4e6b28aa&scoped=true& */ "./resources/js/components/dashboard/Products.vue?vue&type=template&id=4e6b28aa&scoped=true&");
 /* harmony import */ var _Products_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Products.vue?vue&type=script&lang=js& */ "./resources/js/components/dashboard/Products.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _Products_vue_vue_type_style_index_0_id_4e6b28aa_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Products.vue?vue&type=style&index=0&id=4e6b28aa&scoped=true&lang=css& */ "./resources/js/components/dashboard/Products.vue?vue&type=style&index=0&id=4e6b28aa&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -56297,13 +56991,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _Products_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Products_vue_vue_type_template_id_4e6b28aa___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Products_vue_vue_type_template_id_4e6b28aa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Products_vue_vue_type_template_id_4e6b28aa_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Products_vue_vue_type_template_id_4e6b28aa_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  null,
+  "4e6b28aa",
   null
   
 )
@@ -56329,19 +57023,35 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/dashboard/Products.vue?vue&type=template&id=4e6b28aa&":
-/*!***************************************************************************************!*\
-  !*** ./resources/js/components/dashboard/Products.vue?vue&type=template&id=4e6b28aa& ***!
-  \***************************************************************************************/
+/***/ "./resources/js/components/dashboard/Products.vue?vue&type=style&index=0&id=4e6b28aa&scoped=true&lang=css&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/Products.vue?vue&type=style&index=0&id=4e6b28aa&scoped=true&lang=css& ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_style_index_0_id_4e6b28aa_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Products.vue?vue&type=style&index=0&id=4e6b28aa&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/Products.vue?vue&type=style&index=0&id=4e6b28aa&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_style_index_0_id_4e6b28aa_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_style_index_0_id_4e6b28aa_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_style_index_0_id_4e6b28aa_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_style_index_0_id_4e6b28aa_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_style_index_0_id_4e6b28aa_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/Products.vue?vue&type=template&id=4e6b28aa&scoped=true&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/Products.vue?vue&type=template&id=4e6b28aa&scoped=true& ***!
+  \***************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_template_id_4e6b28aa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Products.vue?vue&type=template&id=4e6b28aa& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/Products.vue?vue&type=template&id=4e6b28aa&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_template_id_4e6b28aa___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_template_id_4e6b28aa_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Products.vue?vue&type=template&id=4e6b28aa&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/Products.vue?vue&type=template&id=4e6b28aa&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_template_id_4e6b28aa_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_template_id_4e6b28aa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Products_vue_vue_type_template_id_4e6b28aa_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

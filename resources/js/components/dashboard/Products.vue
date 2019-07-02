@@ -1,6 +1,9 @@
 <template>
 	<div>
 		<heading>PRODUCTS</heading>
+		<span>
+			<a id="createNewProduct" class="btn btn-dark text-white font-weight-bold" href="/dashboard/products/create">+ New product</a>
+		</span>
 		<div>
 			<div v-for='product in products' class="d-flex"> 
 				<img :src="product.image1" :alt="product.nameS">
@@ -53,3 +56,10 @@
 		}
 	};
 </script>
+
+<style scoped> 
+	#createNewProduct {
+		position: absolute;
+    	right: 1vw; 
+    }	
+</style>
