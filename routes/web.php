@@ -33,6 +33,8 @@ Route::get('/dashboard/products/create', function() {
 	return view('/admin/create_product');
 });
 
+Route::resource('products', 'ProductsController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

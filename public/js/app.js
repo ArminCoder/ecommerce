@@ -1863,11 +1863,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      productBrand: '',
-      productType: '',
+      productBrand: 'chooseBrand',
+      productType: 'chooseType',
       size_35: false,
       size_36: false,
       size_37: false,
@@ -1887,21 +1890,77 @@ __webpack_require__.r(__webpack_exports__);
       price: '',
       gender: 'all',
       brands: [],
-      categories: []
+      categories: [],
+      message: '',
+      success: false,
+      error: false
     };
   },
   created: function created() {
-    var _this = this;
-
-    axios.all([axios.get('/api/brands'), axios.get('/api/types')]).then(axios.spread(function (resBrands, resTypes) {
-      console.log(resBrands, resTypes);
-      _this.brands = resBrands.data;
-      _this.categories = resTypes.data;
-    }));
+    this.getResources();
   },
   methods: {
+    getResources: function getResources() {
+      var _this = this;
+
+      axios.all([axios.get('/api/brands'), axios.get('/api/types')]).then(axios.spread(function (resBrands, resTypes) {
+        _this.brands = resBrands.data;
+        _this.categories = resTypes.data;
+      }));
+    },
     createProduct: function createProduct() {
-      console.log('create');
+      var _this2 = this;
+
+      var product = [{
+        name: this.name
+      }, {
+        price: this.price
+      }, {
+        brand: this.productBrand
+      }, {
+        type: this.productType
+      }, {
+        gender: this.gender
+      }, {
+        size_35: this.size_35
+      }, {
+        size_36: this.size_36
+      }, {
+        size_37: this.size_37
+      }, {
+        size_38: this.size_38
+      }, {
+        size_39: this.size_39
+      }, {
+        size_40: this.size_40
+      }, {
+        size_41: this.size_41
+      }, {
+        size_42: this.size_42
+      }, {
+        size_43: this.size_43
+      }, {
+        size_44: this.size_44
+      }, {
+        size_45: this.size_45
+      }, {
+        size_46: this.size_46
+      }, {
+        size_47: this.size_47
+      }, {
+        size_48: this.size_48
+      }, {
+        size_49: this.size_49
+      }]; // if (this.productBrand == 'chooseBrand' || this.productType == 'chooseType' || this.gender == 'all' || !this.name || !this.price) {
+      // 	this.message = 'All Fields are required';
+      // 	this.error = true;
+      // 	return;
+      // } 
+
+      axios.post('/products', product).then(function (res) {
+        _this2.message = res.headers.message;
+        console.log(res);
+      });
     }
   }
 });
@@ -1997,7 +2056,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.all([axios.get('/api/brands'), axios.get('/api/types'), axios.get('/api/products')]).then(axios.spread(function (brandsRes, typesRes, productsRes) {
+    axios.all([axios.get('/api/brands'), axios.get('/api/types'), axios.get('/products')]).then(axios.spread(function (brandsRes, typesRes, productsRes) {
       console.log('RESPONSES:::,', brandsRes, typesRes, productsRes);
       _this.products = productsRes.data;
       _this.brands = brandsRes.data;
@@ -2227,6 +2286,51 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/helpers/Notify.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/helpers/Notify.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    message: {
+      type: String,
+      required: true
+    },
+    error: {
+      type: Boolean,
+      "default": false
+    }
+  },
+  data: function data() {
+    return {
+      show: false
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    setTimeout(function () {
+      _this.$parent.message = '';
+    }, 3000);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/helpers/Slider.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/helpers/Slider.vue?vue&type=script&lang=js& ***!
@@ -2439,7 +2543,7 @@ __webpack_require__.r(__webpack_exports__);
     getProducts: function getProducts() {
       var _this2 = this;
 
-      axios.get('/api/products', {
+      axios.get('/products', {
         params: {
           type: this.pickedCategory,
           gender: this.pickedGender,
@@ -7084,6 +7188,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "\ndiv[data-v-44f53cdd] {\n\twidth: 100%;\n\tbackground: #ccc;\n\ttext-align: center;\n\tpadding: 20px 10px;\n\tmargin: 20px auto;\n\tborder-radius: 3px;\n}\n.heading[data-v-44f53cdd] {\n\tfont-size: 1.6rem;\n\tfont-weight: bold;\n\tcolor: #424242;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/helpers/Notify.vue?vue&type=style&index=0&id=2fb36bbe&scoped=true&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/helpers/Notify.vue?vue&type=style&index=0&id=2fb36bbe&scoped=true&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n#notification[data-v-2fb36bbe] {\n\tposition: fixed;\n\ttop: 2vh;\n\tright: 3vw;\n\tpadding: 35px 25px;\n\tmax-width: 300px;\n\tfont-size: 1rem;\n\tfont-weight: 400;\n\tborder-radius: 5px;\n\tbackground: #6ed66e;\n\tcolor: #fff;\n}\n.error[data-v-2fb36bbe] {\n\tbackground: #ff3c09 !important;\n\tcolor: #fff;\n}\n", ""]);
 
 // exports
 
@@ -38187,6 +38310,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/helpers/Notify.vue?vue&type=style&index=0&id=2fb36bbe&scoped=true&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/helpers/Notify.vue?vue&type=style&index=0&id=2fb36bbe&scoped=true&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Notify.vue?vue&type=style&index=0&id=2fb36bbe&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/helpers/Notify.vue?vue&type=style&index=0&id=2fb36bbe&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/helpers/Slider.vue?vue&type=style&index=0&id=91dc7d54&scoped=true&lang=css&":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/helpers/Slider.vue?vue&type=style&index=0&id=91dc7d54&scoped=true&lang=css& ***!
@@ -38951,833 +39104,860 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("form", { staticClass: "form-group mt-4" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12 mt-3" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.name,
-              expression: "name"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", placeholder: "Product name..." },
-          domProps: { value: _vm.name },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.name = $event.target.value
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-12 mt-3" }, [
-        _c(
-          "select",
-          {
+  return _c(
+    "form",
+    { staticClass: "form-group mt-4" },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12 mt-3" }, [
+          _c("input", {
             directives: [
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.productBrand,
-                expression: "productBrand"
+                value: _vm.name,
+                expression: "name"
               }
             ],
             staticClass: "form-control",
+            attrs: { type: "text", placeholder: "Product name..." },
+            domProps: { value: _vm.name },
             on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.productBrand = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.name = $event.target.value
               }
             }
-          },
-          _vm._l(_vm.brands, function(brand) {
-            return _c("option", { domProps: { value: brand.name } }, [
-              _vm._v(_vm._s(brand.name))
-            ])
-          }),
-          0
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-12 mt-3" }, [
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.productType,
-                expression: "productType"
-              }
-            ],
-            staticClass: "form-control",
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.productType = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
-              }
-            }
-          },
-          _vm._l(_vm.categories, function(category) {
-            return _c("option", { domProps: { value: category.name } }, [
-              _vm._v(_vm._s(category.name))
-            ])
-          }),
-          0
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-12 mt-3" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.price,
-              expression: "price"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "number", placeholder: "Product price..." },
-          domProps: { value: _vm.price },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.price = $event.target.value
-            }
-          }
-        })
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row mt-3" }, [
-      _c("div", { staticClass: "col-12 mt-3" }, [
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.gender,
-                expression: "gender"
-              }
-            ],
-            staticClass: "form-control",
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.gender = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
-              }
-            }
-          },
-          [
-            _c(
-              "option",
-              { attrs: { value: "all", selected: "", disabled: "" } },
-              [_vm._v("Choose Gender...")]
-            ),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "male" } }, [_vm._v("Male")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "male" } }, [_vm._v("Female")])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-12 mt-3" }, [
-        _c(
-          "h5",
-          {
-            staticClass:
-              "d-flex justify-content-center mb-4 text-bold font-weight-bold"
-          },
-          [_vm._v("Available Sizes:")]
-        ),
+          })
+        ]),
         _vm._v(" "),
-        _c("div", { staticClass: "row checkboxes" }, [
-          _c("label", [
-            _vm._v("\n\t\t\t\t\t\t35\n\t\t\t\t\t\t"),
-            _c("input", {
+        _c("div", { staticClass: "col-12 mt-3" }, [
+          _c(
+            "select",
+            {
               directives: [
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.size_35,
-                  expression: "size_35"
+                  value: _vm.productBrand,
+                  expression: "productBrand"
                 }
               ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.size_35)
-                  ? _vm._i(_vm.size_35, null) > -1
-                  : _vm.size_35
-              },
+              staticClass: "form-control",
               on: {
                 change: function($event) {
-                  var $$a = _vm.size_35,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.size_35 = $$a.concat([$$v]))
-                    } else {
-                      $$i > -1 &&
-                        (_vm.size_35 = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
-                    }
-                  } else {
-                    _vm.size_35 = $$c
-                  }
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.productBrand = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
                 }
               }
-            })
-          ]),
+            },
+            [
+              _c("option", { attrs: { value: "chooseBrand", disabled: "" } }, [
+                _vm._v("Choose Brand...")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.brands, function(brand) {
+                return _c("option", { domProps: { value: brand.name } }, [
+                  _vm._v(_vm._s(brand.name))
+                ])
+              })
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 mt-3" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.productType,
+                  expression: "productType"
+                }
+              ],
+              staticClass: "form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.productType = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "chooseType", disabled: "" } }, [
+                _vm._v("Choose Category...")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.categories, function(category) {
+                return _c("option", { domProps: { value: category.name } }, [
+                  _vm._v(_vm._s(category.name))
+                ])
+              })
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 mt-3" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.price,
+                expression: "price"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "number", placeholder: "Product price in USD..." },
+            domProps: { value: _vm.price },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.price = $event.target.value
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "col-12 mt-3" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.gender,
+                  expression: "gender"
+                }
+              ],
+              staticClass: "form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.gender = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c(
+                "option",
+                { attrs: { value: "all", selected: "", disabled: "" } },
+                [_vm._v("Choose Gender...")]
+              ),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "male" } }, [_vm._v("Male")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "male" } }, [_vm._v("Female")])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 mt-3" }, [
+          _c(
+            "h5",
+            {
+              staticClass:
+                "d-flex justify-content-center mb-4 text-bold font-weight-bold"
+            },
+            [_vm._v("Available Sizes:")]
+          ),
           _vm._v(" "),
-          _c("label", [
-            _vm._v("\n\t\t\t\t\t\t36\n\t\t\t\t\t\t"),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.size_36,
-                  expression: "size_36"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.size_36)
-                  ? _vm._i(_vm.size_36, null) > -1
-                  : _vm.size_36
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.size_36,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.size_36 = $$a.concat([$$v]))
+          _c("div", { staticClass: "row checkboxes" }, [
+            _c("label", [
+              _vm._v("\n\t\t\t\t\t\t35\n\t\t\t\t\t\t"),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.size_35,
+                    expression: "size_35"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.size_35)
+                    ? _vm._i(_vm.size_35, null) > -1
+                    : _vm.size_35
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.size_35,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.size_35 = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.size_35 = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.size_36 = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.size_35 = $$c
                     }
-                  } else {
-                    _vm.size_36 = $$c
                   }
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("label", [
-            _vm._v("\n\t\t\t\t\t\t37\n\t\t\t\t\t\t"),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.size_37,
-                  expression: "size_37"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.size_37)
-                  ? _vm._i(_vm.size_37, null) > -1
-                  : _vm.size_37
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.size_37,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.size_37 = $$a.concat([$$v]))
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", [
+              _vm._v("\n\t\t\t\t\t\t36\n\t\t\t\t\t\t"),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.size_36,
+                    expression: "size_36"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.size_36)
+                    ? _vm._i(_vm.size_36, null) > -1
+                    : _vm.size_36
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.size_36,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.size_36 = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.size_36 = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.size_37 = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.size_36 = $$c
                     }
-                  } else {
-                    _vm.size_37 = $$c
                   }
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("label", [
-            _vm._v("\n\t\t\t\t\t\t38\n\t\t\t\t\t\t"),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.size_38,
-                  expression: "size_38"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.size_38)
-                  ? _vm._i(_vm.size_38, null) > -1
-                  : _vm.size_38
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.size_38,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.size_38 = $$a.concat([$$v]))
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", [
+              _vm._v("\n\t\t\t\t\t\t37\n\t\t\t\t\t\t"),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.size_37,
+                    expression: "size_37"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.size_37)
+                    ? _vm._i(_vm.size_37, null) > -1
+                    : _vm.size_37
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.size_37,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.size_37 = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.size_37 = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.size_38 = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.size_37 = $$c
                     }
-                  } else {
-                    _vm.size_38 = $$c
                   }
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("label", [
-            _vm._v("\n\t\t\t\t\t\t39\n\t\t\t\t\t\t"),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.size_39,
-                  expression: "size_39"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.size_39)
-                  ? _vm._i(_vm.size_39, null) > -1
-                  : _vm.size_39
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.size_39,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.size_39 = $$a.concat([$$v]))
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", [
+              _vm._v("\n\t\t\t\t\t\t38\n\t\t\t\t\t\t"),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.size_38,
+                    expression: "size_38"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.size_38)
+                    ? _vm._i(_vm.size_38, null) > -1
+                    : _vm.size_38
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.size_38,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.size_38 = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.size_38 = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.size_39 = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.size_38 = $$c
                     }
-                  } else {
-                    _vm.size_39 = $$c
                   }
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("label", [
-            _vm._v("\n\t\t\t\t\t\t40\n\t\t\t\t\t\t"),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.size_40,
-                  expression: "size_40"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.size_40)
-                  ? _vm._i(_vm.size_40, null) > -1
-                  : _vm.size_40
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.size_40,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.size_40 = $$a.concat([$$v]))
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", [
+              _vm._v("\n\t\t\t\t\t\t39\n\t\t\t\t\t\t"),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.size_39,
+                    expression: "size_39"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.size_39)
+                    ? _vm._i(_vm.size_39, null) > -1
+                    : _vm.size_39
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.size_39,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.size_39 = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.size_39 = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.size_40 = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.size_39 = $$c
                     }
-                  } else {
-                    _vm.size_40 = $$c
                   }
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("label", [
-            _vm._v("\n\t\t\t\t\t\t41\n\t\t\t\t\t\t"),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.size_41,
-                  expression: "size_41"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.size_41)
-                  ? _vm._i(_vm.size_41, null) > -1
-                  : _vm.size_41
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.size_41,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.size_41 = $$a.concat([$$v]))
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", [
+              _vm._v("\n\t\t\t\t\t\t40\n\t\t\t\t\t\t"),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.size_40,
+                    expression: "size_40"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.size_40)
+                    ? _vm._i(_vm.size_40, null) > -1
+                    : _vm.size_40
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.size_40,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.size_40 = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.size_40 = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.size_41 = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.size_40 = $$c
                     }
-                  } else {
-                    _vm.size_41 = $$c
                   }
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("label", [
-            _vm._v("\n\t\t\t\t\t\t42\n\t\t\t\t\t\t"),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.size_42,
-                  expression: "size_42"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.size_42)
-                  ? _vm._i(_vm.size_42, null) > -1
-                  : _vm.size_42
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.size_42,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.size_42 = $$a.concat([$$v]))
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", [
+              _vm._v("\n\t\t\t\t\t\t41\n\t\t\t\t\t\t"),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.size_41,
+                    expression: "size_41"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.size_41)
+                    ? _vm._i(_vm.size_41, null) > -1
+                    : _vm.size_41
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.size_41,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.size_41 = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.size_41 = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.size_42 = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.size_41 = $$c
                     }
-                  } else {
-                    _vm.size_42 = $$c
                   }
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("label", [
-            _vm._v("\n\t\t\t\t\t\t43\n\t\t\t\t\t\t"),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.size_43,
-                  expression: "size_43"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.size_43)
-                  ? _vm._i(_vm.size_43, null) > -1
-                  : _vm.size_43
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.size_43,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.size_43 = $$a.concat([$$v]))
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", [
+              _vm._v("\n\t\t\t\t\t\t42\n\t\t\t\t\t\t"),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.size_42,
+                    expression: "size_42"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.size_42)
+                    ? _vm._i(_vm.size_42, null) > -1
+                    : _vm.size_42
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.size_42,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.size_42 = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.size_42 = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.size_43 = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.size_42 = $$c
                     }
-                  } else {
-                    _vm.size_43 = $$c
                   }
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("label", [
-            _vm._v("\n\t\t\t\t\t\t44\n\t\t\t\t\t\t"),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.size_44,
-                  expression: "size_44"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.size_44)
-                  ? _vm._i(_vm.size_44, null) > -1
-                  : _vm.size_44
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.size_44,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.size_44 = $$a.concat([$$v]))
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", [
+              _vm._v("\n\t\t\t\t\t\t43\n\t\t\t\t\t\t"),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.size_43,
+                    expression: "size_43"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.size_43)
+                    ? _vm._i(_vm.size_43, null) > -1
+                    : _vm.size_43
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.size_43,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.size_43 = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.size_43 = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.size_44 = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.size_43 = $$c
                     }
-                  } else {
-                    _vm.size_44 = $$c
                   }
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("label", [
-            _vm._v("\n\t\t\t\t\t\t45\n\t\t\t\t\t\t"),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.size_45,
-                  expression: "size_45"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.size_45)
-                  ? _vm._i(_vm.size_45, null) > -1
-                  : _vm.size_45
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.size_45,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.size_45 = $$a.concat([$$v]))
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", [
+              _vm._v("\n\t\t\t\t\t\t44\n\t\t\t\t\t\t"),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.size_44,
+                    expression: "size_44"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.size_44)
+                    ? _vm._i(_vm.size_44, null) > -1
+                    : _vm.size_44
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.size_44,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.size_44 = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.size_44 = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.size_45 = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.size_44 = $$c
                     }
-                  } else {
-                    _vm.size_45 = $$c
                   }
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("label", [
-            _vm._v("\n\t\t\t\t\t\t46\n\t\t\t\t\t\t"),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.size_46,
-                  expression: "size_46"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.size_46)
-                  ? _vm._i(_vm.size_46, null) > -1
-                  : _vm.size_46
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.size_46,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.size_46 = $$a.concat([$$v]))
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", [
+              _vm._v("\n\t\t\t\t\t\t45\n\t\t\t\t\t\t"),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.size_45,
+                    expression: "size_45"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.size_45)
+                    ? _vm._i(_vm.size_45, null) > -1
+                    : _vm.size_45
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.size_45,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.size_45 = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.size_45 = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.size_46 = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.size_45 = $$c
                     }
-                  } else {
-                    _vm.size_46 = $$c
                   }
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("label", [
-            _vm._v("\n\t\t\t\t\t\t47\n\t\t\t\t\t\t"),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.size_47,
-                  expression: "size_47"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.size_47)
-                  ? _vm._i(_vm.size_47, null) > -1
-                  : _vm.size_47
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.size_47,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.size_47 = $$a.concat([$$v]))
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", [
+              _vm._v("\n\t\t\t\t\t\t46\n\t\t\t\t\t\t"),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.size_46,
+                    expression: "size_46"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.size_46)
+                    ? _vm._i(_vm.size_46, null) > -1
+                    : _vm.size_46
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.size_46,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.size_46 = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.size_46 = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.size_47 = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.size_46 = $$c
                     }
-                  } else {
-                    _vm.size_47 = $$c
                   }
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("label", [
-            _vm._v("\n\t\t\t\t\t\t48\n\t\t\t\t\t\t"),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.size_48,
-                  expression: "size_48"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.size_48)
-                  ? _vm._i(_vm.size_48, null) > -1
-                  : _vm.size_48
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.size_48,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.size_48 = $$a.concat([$$v]))
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", [
+              _vm._v("\n\t\t\t\t\t\t47\n\t\t\t\t\t\t"),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.size_47,
+                    expression: "size_47"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.size_47)
+                    ? _vm._i(_vm.size_47, null) > -1
+                    : _vm.size_47
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.size_47,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.size_47 = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.size_47 = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.size_48 = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.size_47 = $$c
                     }
-                  } else {
-                    _vm.size_48 = $$c
                   }
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("label", [
-            _vm._v("\n\t\t\t\t\t\t49\n\t\t\t\t\t\t"),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.size_49,
-                  expression: "size_49"
-                }
-              ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.size_49)
-                  ? _vm._i(_vm.size_49, null) > -1
-                  : _vm.size_49
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.size_49,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.size_49 = $$a.concat([$$v]))
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", [
+              _vm._v("\n\t\t\t\t\t\t48\n\t\t\t\t\t\t"),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.size_48,
+                    expression: "size_48"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.size_48)
+                    ? _vm._i(_vm.size_48, null) > -1
+                    : _vm.size_48
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.size_48,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.size_48 = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.size_48 = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.size_49 = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.size_48 = $$c
                     }
-                  } else {
-                    _vm.size_49 = $$c
                   }
                 }
-              }
-            })
+              })
+            ]),
+            _vm._v(" "),
+            _c("label", [
+              _vm._v("\n\t\t\t\t\t\t49\n\t\t\t\t\t\t"),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.size_49,
+                    expression: "size_49"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.size_49)
+                    ? _vm._i(_vm.size_49, null) > -1
+                    : _vm.size_49
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.size_49,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.size_49 = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.size_49 = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.size_49 = $$c
+                    }
+                  }
+                }
+              })
+            ])
           ])
         ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "h5",
-      {
-        staticClass:
-          "d-flex justify-content-center my1-4 text-bold font-weight-bold"
-      },
-      [_vm._v("Upload Images:")]
-    ),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "text-center" }, [
+      ]),
+      _vm._v(" "),
       _c(
-        "button",
+        "h5",
         {
-          staticClass: "btn btn-primary mt-4 px-4 py-2 w-50",
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.createProduct($event)
-            }
-          }
+          staticClass:
+            "d-flex justify-content-center my1-4 text-bold font-weight-bold"
         },
-        [_vm._v("Submit")]
-      )
-    ])
-  ])
+        [_vm._v("Upload Images:")]
+      ),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-center" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary mt-4 px-4 py-2 w-50",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.createProduct($event)
+              }
+            }
+          },
+          [_vm._v("Submit")]
+        )
+      ]),
+      _vm._v(" "),
+      _vm.message
+        ? _c("notify", {
+            attrs: {
+              message: _vm.message,
+              error: _vm.error,
+              success: _vm.success
+            }
+          })
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -40390,6 +40570,38 @@ var render = function() {
   return _c("div", [
     _c("span", { staticClass: "heading" }, [_vm._t("default")], 2)
   ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/helpers/Notify.vue?vue&type=template&id=2fb36bbe&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/helpers/Notify.vue?vue&type=template&id=2fb36bbe&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.message
+    ? _c("div", [
+        _c(
+          "div",
+          { class: { error: _vm.error }, attrs: { id: "notification" } },
+          [_vm._v("\n\t\t" + _vm._s(_vm.message) + "\n\t")]
+        )
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -56724,6 +56936,7 @@ Vue.component('dashboard', __webpack_require__(/*! ./components/dashboard/Dashbo
 Vue.component('dashboard-products', __webpack_require__(/*! ./components/dashboard/Products.vue */ "./resources/js/components/dashboard/Products.vue")["default"]);
 Vue.component('heading', __webpack_require__(/*! ./components/helpers/Heading.vue */ "./resources/js/components/helpers/Heading.vue")["default"]);
 Vue.component('create-product', __webpack_require__(/*! ./components/dashboard/CreateProduct.vue */ "./resources/js/components/dashboard/CreateProduct.vue")["default"]);
+Vue.component('notify', __webpack_require__(/*! ./components/helpers/Notify.vue */ "./resources/js/components/helpers/Notify.vue")["default"]);
 
 /***/ }),
 
@@ -57313,6 +57526,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Heading_vue_vue_type_template_id_44f53cdd_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Heading_vue_vue_type_template_id_44f53cdd_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/helpers/Notify.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/helpers/Notify.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Notify_vue_vue_type_template_id_2fb36bbe_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Notify.vue?vue&type=template&id=2fb36bbe&scoped=true& */ "./resources/js/components/helpers/Notify.vue?vue&type=template&id=2fb36bbe&scoped=true&");
+/* harmony import */ var _Notify_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Notify.vue?vue&type=script&lang=js& */ "./resources/js/components/helpers/Notify.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Notify_vue_vue_type_style_index_0_id_2fb36bbe_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Notify.vue?vue&type=style&index=0&id=2fb36bbe&scoped=true&lang=css& */ "./resources/js/components/helpers/Notify.vue?vue&type=style&index=0&id=2fb36bbe&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Notify_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Notify_vue_vue_type_template_id_2fb36bbe_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Notify_vue_vue_type_template_id_2fb36bbe_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "2fb36bbe",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/helpers/Notify.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/helpers/Notify.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/helpers/Notify.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Notify_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Notify.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/helpers/Notify.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Notify_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/helpers/Notify.vue?vue&type=style&index=0&id=2fb36bbe&scoped=true&lang=css&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/components/helpers/Notify.vue?vue&type=style&index=0&id=2fb36bbe&scoped=true&lang=css& ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Notify_vue_vue_type_style_index_0_id_2fb36bbe_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Notify.vue?vue&type=style&index=0&id=2fb36bbe&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/helpers/Notify.vue?vue&type=style&index=0&id=2fb36bbe&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Notify_vue_vue_type_style_index_0_id_2fb36bbe_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Notify_vue_vue_type_style_index_0_id_2fb36bbe_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Notify_vue_vue_type_style_index_0_id_2fb36bbe_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Notify_vue_vue_type_style_index_0_id_2fb36bbe_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Notify_vue_vue_type_style_index_0_id_2fb36bbe_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/helpers/Notify.vue?vue&type=template&id=2fb36bbe&scoped=true&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/helpers/Notify.vue?vue&type=template&id=2fb36bbe&scoped=true& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Notify_vue_vue_type_template_id_2fb36bbe_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Notify.vue?vue&type=template&id=2fb36bbe&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/helpers/Notify.vue?vue&type=template&id=2fb36bbe&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Notify_vue_vue_type_template_id_2fb36bbe_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Notify_vue_vue_type_template_id_2fb36bbe_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

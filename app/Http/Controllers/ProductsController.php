@@ -46,5 +46,67 @@ class ProductsController extends Controller
 	public function show(Product $product)
     {
         return $product;
-    }   
+    } 
+
+    public function create(Request $request)
+    {
+
+
+    }        
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+    	dd($request);
+    	$request->validate([
+    		'name' => 'required',
+    		'price' => 'required',
+    		'type' => 'required',
+    		'brand' => 'required',
+    		'gender' => 'required',
+    		// 'image1'=> 'required'
+    	]);
+        $message = 'Success! You have imported a new product!';
+
+        return response(Product::all(), 200)->header('message', $message);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }

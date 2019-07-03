@@ -6,16 +6,18 @@
 				</div>
 				<div class="col-12 mt-3">
 					<select v-model='productBrand' class="form-control">
+						<option value="chooseBrand" disabled>Choose Brand...</option>
 						<option v-for='brand in brands' :value="brand.name">{{ brand.name }}</option>
 					</select>
 				</div>
 				<div class="col-12 mt-3">
 					<select v-model='productType' class="form-control">
+						<option value="chooseType" disabled="">Choose Category...</option>	
 						<option v-for='category in categories' :value="category.name">{{ category.name }}</option>
 					</select>
 				</div>
 				<div class="col-12 mt-3">
-					<input class="form-control" type="number" v-model='price' placeholder="Product price...">
+					<input class="form-control" type="number" v-model='price' placeholder="Product price in USD...">
 				</div>
 			</div>
 			<div class="row mt-3">
@@ -105,6 +107,7 @@
 			<div class="text-center">
 				<button @click.prevent='createProduct' class="btn btn-primary mt-4 px-4 py-2 w-50">Submit</button>
 			</div>
+			<notify v-if='message' :message='message' :error='error' :success='success'></notify>
 		</form>
 </template>
 
@@ -112,8 +115,8 @@
 	export default {
 		data() {
 			return {
-				productBrand: '',
-				productType: '',
+				productBrand: 'chooseBrand',
+				productType: 'chooseType',
 				size_35: false,
 				size_36: false,
 				size_37: false,
@@ -133,23 +136,58 @@
 				price: '',
 				gender: 'all',
 				brands: [],
-				categories: []
+				categories: [],
+				message: '',
+				success: false,
+				error: false
 			}
 		}, 
 		created() {
-			axios.all([
-				axios.get('/api/brands'),
-				axios.get('/api/types')
-				])
-			.then(axios.spread((resBrands, resTypes) => {
-				console.log(resBrands, resTypes);
-				this.brands = resBrands.data;
-				this.categories = resTypes.data;
-			}));
+			this.getResources();
 		}, 
 		methods: {
+			getResources() {
+				axios.all([
+					axios.get('/api/brands'),
+					axios.get('/api/types')
+					])
+				.then(axios.spread((resBrands, resTypes) => {
+					this.brands = resBrands.data;
+					this.categories = resTypes.data;
+				}));
+			},
 			createProduct() {
-				console.log('create')
+				let product = [
+					{ name: this.name },
+					{ price: this.price },
+					{ brand: this.productBrand },
+					{ type: this.productType },
+					{ gender: this.gender },
+					{ size_35: this.size_35 },
+					{ size_36: this.size_36 },
+					{ size_37: this.size_37 },
+					{ size_38: this.size_38 },
+					{ size_39: this.size_39 },
+					{ size_40: this.size_40 },
+					{ size_41: this.size_41 },
+					{ size_42: this.size_42 },
+					{ size_43: this.size_43 },
+					{ size_44: this.size_44 },
+					{ size_45: this.size_45 },
+					{ size_46: this.size_46 },
+					{ size_47: this.size_47 },
+					{ size_48: this.size_48 },
+					{ size_49: this.size_49 },
+				 ]
+				// if (this.productBrand == 'chooseBrand' || this.productType == 'chooseType' || this.gender == 'all' || !this.name || !this.price) {
+				// 	this.message = 'All Fields are required';
+				// 	this.error = true;
+				// 	return;
+				// } 
+				axios.post('/products', product).then((res) => {
+					this.message = res.headers.message;
+					console.log(res);
+				})
 			}
 		}
 	};

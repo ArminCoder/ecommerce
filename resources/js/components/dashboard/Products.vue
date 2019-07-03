@@ -45,7 +45,7 @@
 			axios.all([
 			    axios.get('/api/brands'),
 			    axios.get('/api/types'),
-			    axios.get('/api/products'),
+			    axios.get('/products'),
 		    ])
 			.then(axios.spread((brandsRes, typesRes, productsRes) => {
 			  	console.log('RESPONSES:::,', brandsRes, typesRes, productsRes);
