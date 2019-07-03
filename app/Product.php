@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Product extends Model
 {
+	protected $guarded = [];
+
     public function scopeFilter(Builder $builder, $request)
     {
         return (new ProductFilter($request))->filter($builder);

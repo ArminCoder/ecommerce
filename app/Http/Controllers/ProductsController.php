@@ -62,18 +62,51 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-    	dd($request);
-    	$request->validate([
+    	$validator = $request->validate([
     		'name' => 'required',
     		'price' => 'required',
-    		'type' => 'required',
+    		'category' => 'required',
     		'brand' => 'required',
     		'gender' => 'required',
     		// 'image1'=> 'required'
     	]);
+
         $message = 'Success! You have imported a new product!';
 
-        return response(Product::all(), 200)->header('message', $message);
+        $product = new Product([
+        	'name' => $request->name,
+        	'price' => $request->price,
+        	'category' => $request->category,
+        	'brand' => $request->brand,
+        	'gender' => $request->gender,
+            'size_35' => $request->size_35,
+	        'size_36' => $request->size_36,
+	        'size_37' => $request->size_37,
+	        'size_38' => $request->size_38,
+	        'size_39' => $request->size_39,
+	        'size_40' => $request->size_40,
+	        'size_41' => $request->size_41,
+	        'size_42' => $request->size_42,
+	        'size_43' => $request->size_43,
+	        'size_44' => $request->size_44,
+	        'size_45' => $request->size_45,
+	        'size_46' => $request->size_46,
+	        'size_47' => $request->size_47,
+	        'size_48' => $request->size_48,
+            "size_49" => $request->size_49,
+            "image1" => 'test',
+            "image2" => 'test',
+            "image3" => 'test',
+            "image4" => 'test',
+            "image5" => 'test',
+        ]);
+
+
+        $product->save();
+
+        return redirect('/dashboard/products/create')->header('success', $message);
+
+        // return response(Product::all(), 200)->header('message', $message);
     }
 
     /**

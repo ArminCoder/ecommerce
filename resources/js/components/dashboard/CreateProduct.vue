@@ -139,12 +139,16 @@
 				categories: [],
 				message: '',
 				success: false,
-				error: false
+				error: false,
+				sizesObject: {}
 			}
 		}, 
 		created() {
 			this.getResources();
 		}, 
+		mounted() {
+			this.checkSizeValue();
+		},
 		methods: {
 			getResources() {
 				axios.all([
@@ -157,37 +161,77 @@
 				}));
 			},
 			createProduct() {
-				let product = [
-					{ name: this.name },
-					{ price: this.price },
-					{ brand: this.productBrand },
-					{ type: this.productType },
-					{ gender: this.gender },
-					{ size_35: this.size_35 },
-					{ size_36: this.size_36 },
-					{ size_37: this.size_37 },
-					{ size_38: this.size_38 },
-					{ size_39: this.size_39 },
-					{ size_40: this.size_40 },
-					{ size_41: this.size_41 },
-					{ size_42: this.size_42 },
-					{ size_43: this.size_43 },
-					{ size_44: this.size_44 },
-					{ size_45: this.size_45 },
-					{ size_46: this.size_46 },
-					{ size_47: this.size_47 },
-					{ size_48: this.size_48 },
-					{ size_49: this.size_49 },
-				 ]
+				this.checkSizeValue();
+				console.log(this.size_35, this.size_41);
+				let product = { 
+					 name: this.name, 
+					 price: this.price,
+					 brand: this.productBrand ,
+					 category: this.productType ,
+					 gender: this.gender ,
+					 size_35: this.size_35,
+					 size_36: this.size_36,
+					 size_37: this.size_37,
+					 size_38: this.size_38,
+					 size_39: this.size_39,
+					 size_40: this.size_40,
+					 size_41: this.size_41,
+					 size_42: this.size_42,
+					 size_43: this.size_43,
+					 size_44: this.size_44,
+					 size_45: this.size_45,
+					 size_46: this.size_46,
+					 size_47: this.size_47,
+					 size_48: this.size_48,
+					 size_49: this.size_49,
+					 image1: 'test',
+					 image2: 'test',
+					 image3: 'test',
+					 image4: 'test',
+					 image5: 'test',
+				}
 				// if (this.productBrand == 'chooseBrand' || this.productType == 'chooseType' || this.gender == 'all' || !this.name || !this.price) {
 				// 	this.message = 'All Fields are required';
 				// 	this.error = true;
 				// 	return;
 				// } 
-				axios.post('/products', product).then((res) => {
-					this.message = res.headers.message;
+				axios.post('/products', product)
+				.then((res) => {
 					console.log(res);
+					this.error = false;
+					this.message = res.headers.message;
 				})
+				.catch((error) => {
+					console.log(error.response);
+					let errorObject = error.response.data.errors;
+					errorObject = errorObject[Object.keys(errorObject)[0]];
+					if(errorObject[0])
+					{  	
+					    this.message = errorObject[0];
+					}
+					else 
+					{
+						this.message = error.response.statusText;
+					}	
+					this.error = true;
+				})
+			},
+			checkSizeValue() {
+				this.size_35 ? this.size_35 = 1 : this.size_35 = 0;
+				this.size_36 ? this.size_36 = 1 : this.size_36 = 0;
+				this.size_37 ? this.size_37 = 1 : this.size_37 = 0;
+				this.size_38 ? this.size_38 = 1 : this.size_38 = 0;
+				this.size_39 ? this.size_39 = 1 : this.size_39 = 0;
+				this.size_40 ? this.size_40 = 1 : this.size_40 = 0;
+				this.size_41 ? this.size_41 = 1 : this.size_41 = 0;
+				this.size_42 ? this.size_42 = 1 : this.size_42 = 0;
+				this.size_43 ? this.size_43 = 1 : this.size_43 = 0;
+				this.size_44 ? this.size_44 = 1 : this.size_44 = 0;
+				this.size_45 ? this.size_45 = 1 : this.size_45 = 0;
+				this.size_46 ? this.size_46 = 1 : this.size_46 = 0;
+				this.size_47 ? this.size_47 = 1 : this.size_47 = 0;
+				this.size_48 ? this.size_48 = 1 : this.size_48 = 0;
+				this.size_49 ? this.size_49 = 1 : this.size_49 = 0;
 			}
 		}
 	};

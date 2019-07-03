@@ -17,19 +17,16 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('name');
-            $table->enum('category', ['Lifestyle', 'Running', 'Athletic', 'Gym', 'Slip-on', 'High-Top', 'Lace-up']);
+            $table->string('category')->default('Running');
             $table->integer('price');
-            $table->enum('gender', ['men', 'women', 'kids'])->default('men');                        
-            $table->enum('brand', ['Nike', 'Adidas', 'Puma', 'Jordan', 'Reebok', 
-               'Vans', 'Converse', 'Under Armour', 'New Balance','Skechers', 
-               'Johnston and Murphy', 'Bostonian', 'Fila', 'LeBron', 'Testoni',
-               'Berluti', 'ASICS', 'Tommy Hilfiger', 'Other'])->default('Nike');                                             
-                });
-            $table->string('image1');
+            $table->string('gender')->default('male');                        
+            $table->string('brand')->default('Other');                                             
+            $table->string('image1')->default(null);;
             $table->string('image2')->default(null);
             $table->string('image3')->default(null);
             $table->string('image4')->default(null);
             $table->string('image5')->default(null);
+            $table->boolean('size_35')->default(false);
             $table->boolean('size_36')->default(false);
             $table->boolean('size_37')->default(false);
             $table->boolean('size_38')->default(false);
@@ -46,7 +43,7 @@ class CreateProductsTable extends Migration
             $table->boolean('size_49')->default(false);
 
             $table->timestamps();
-        });
+        });    
     }
 
     /**
