@@ -42,22 +42,6 @@
 				}	
 				this.message = this.texts[this.i].text;
 			},
-			// textBack() {
-			// 	if(this.i == 0)
-			// 	{
-			// 		this.i = 3;
-			// 		this.message = this.texts[this.i].text;
-			// 		return; 
-			// 	}	
-			// 	this.i = this.i - 1; 
-			// 	clearInterval(this.i);
-
-			// 	this.message = this.texts[this.i].text;
-			// 	this.change = false;
-			// 	setTimeout (() => {
-			// 		this.change = true;
-			// 	}, 1000)
-			// }
 		}
 	};
 </script>
@@ -65,8 +49,11 @@
 <style scoped>
 	.center {
 		text-align: center;
-		background: #f8fafc;
-		padding: 15px 0;
+		padding: 75px 0 15px;
+	} 
+	.center div {
+		background: #f1f1f1;
+		padding: 20px 0;
 	}
 	.fa-chevron-left {
 		position: absolute;

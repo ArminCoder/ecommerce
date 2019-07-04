@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Brand;
 
-class BrandsController extends Controller
+class DashboardController extends Controller
 {
     public function index()
     {
-    	$brands = Brand::all();
-     	return $brands;
+        return view('/admin/dashboard');
     }
 }

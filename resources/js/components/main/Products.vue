@@ -45,13 +45,14 @@
 		},
 		methods: {
 			checkProduct(product) {
+				
 				this.$router.push({ name: 'product', params: { id: product.id } })
 			},
 			changeImgSrc(event, product) {
 				// TODO: change main img src with the hovered one
 			},
 			getProducts() {
-				axios.get('/api/products', {  
+				axios.get('/products', {  
 			  	params: {
 			    	type: this.pickedCategory,
 			    	gender: this.pickedGender,

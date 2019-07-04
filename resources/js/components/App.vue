@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div>
         <navbar></navbar>
         <slider></slider>
         <div class="row">
@@ -23,6 +23,12 @@
     import dashboard from './dashboard/Dashboard.vue'
 
     export default {
+        props: {
+           isDashboard: {
+            type: Boolean,
+            default: false
+           }  
+        },
         components: {
             navbar,
             slider,

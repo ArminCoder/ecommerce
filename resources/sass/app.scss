@@ -15,4 +15,7 @@
 
 // important styles
 body { background: #fff }
+[v-cloak] { display: none; }
 
+// dashboard
+@import './dashboard';

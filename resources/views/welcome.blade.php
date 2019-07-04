@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <script>window.Laravel = { csrfToken: '{{ csrf_token() }}' }</script>
         {{-- favicon --}}
-        <link rel="icon" type="image/png" href='img/favicon.png' style="margin-top: -30px">
+        <link rel="icon" type="image/png" href='/img/favicon.png' style="margin-top: -30px">
 
         <title>Fair Shoes</title>
 
@@ -17,10 +17,7 @@
         <!-- Styles -->
     </head>
     <body>
-    <div id="app">
         @yield('content')
-    </div>
         @yield('scripts')
-            <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

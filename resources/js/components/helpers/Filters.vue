@@ -50,23 +50,8 @@
 					{ option : 'women'}
 				],
 				brands: [],
-				categories: [ 
-					{ name: 'Lifestyle'},
-					{ name: 'Running'},
-					{ name: 'Athletic'},
-					{ name: 'Gym'},
-					{ name: 'Formal'},
-					{ name: 'Slip-on'},
-					{ name: 'High-Top'},
-					{ name: 'Lace-up'},
-				],
-				prices: [ 
-					{ name: '50$ and Under', value: '50'},
-					{ name: '100$ and Under', value: '100'},
-					{ name: '150$ and Under', value: '150'},
-					{ name: '200$ and Under', value: '200'},
-					{ name: '200$ and Over', value: '201'}
-				]						
+				categories: [],
+				prices: []						
 			}
 		},
 		mounted() {
@@ -74,9 +59,17 @@
 		},
 		methods: {
 			getBrands() {
-				axios.get('api/brands').then((res) => {
-					this.brands = res.data;
-				})
+				axios.all([
+				    axios.get('/api/brands'),
+				    axios.get('/api/types'),
+				    axios.get('/api/prices'),
+				  ])
+				  .then(axios.spread((brandsRes, typesRes, pricesRes) => {
+				  	  console.log('RESPONSES:::,', brandsRes, typesRes, pricesRes);
+				      this.brands = brandsRes.data;
+				      this.categories = typesRes.data;
+				      this.prices = pricesRes.data;
+				  }));
 			},
 			sendData() {
 				let data = { 
