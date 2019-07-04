@@ -8,11 +8,11 @@
 				</div>
 				<div class="col-3">
 					<div class="d-flex">
-						<span>{{product.gender | capitalize}} 's Shoe</span>
-						<span>${{ product.price }}</span>
+						<span class="info">{{product.gender | capitalize}}'s Shoe</span>
+						<span class="info">${{ product.price }}</span>
 					</div>
 					<div>
-						<span>{{ product.name }}</span>
+						<span id="productName">{{ product.name }}</span>
 					</div>
 				</div>
 			</div>
@@ -62,5 +62,12 @@
 <style scoped>
 	.d-flex {
 		justify-content: space-between;
+	}
+	.row {
+		padding-top: 10vh;
+	}
+	.info {
+		font-size: 1rem;
+		font-weight: bold;
 	}
 </style>

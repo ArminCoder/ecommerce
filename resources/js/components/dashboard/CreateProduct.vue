@@ -24,8 +24,8 @@
 				<div class="col-12 mt-3">
 					<select class="form-control" v-model='gender'>
 							<option value="all" selected disabled>Choose Gender...</option>
-							<option value="male">Male</option>
-							<option value="male">Female</option>
+							<option value="men">Male</option>
+							<option value="women">Female</option>
 					</select>
 				</div>	
 				<div class="col-12 mt-3">

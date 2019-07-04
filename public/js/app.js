@@ -7308,7 +7308,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.d-flex[data-v-48a929c4] {\n\t-webkit-box-pack: justify;\n\t        justify-content: space-between;\n}\n", ""]);
+exports.push([module.i, "\n.d-flex[data-v-48a929c4] {\n\t-webkit-box-pack: justify;\n\t        justify-content: space-between;\n}\n.row[data-v-48a929c4] {\n\tpadding-top: 10vh;\n}\n.info[data-v-48a929c4] {\n\tfont-size: 1rem;\n\tfont-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -39347,9 +39347,9 @@ var render = function() {
                 [_vm._v("Choose Gender...")]
               ),
               _vm._v(" "),
-              _c("option", { attrs: { value: "male" } }, [_vm._v("Male")]),
+              _c("option", { attrs: { value: "men" } }, [_vm._v("Male")]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "male" } }, [_vm._v("Female")])
+              _c("option", { attrs: { value: "women" } }, [_vm._v("Female")])
             ]
           )
         ]),
@@ -40754,16 +40754,22 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "col-3" }, [
             _c("div", { staticClass: "d-flex" }, [
-              _c("span", [
+              _c("span", { staticClass: "info" }, [
                 _vm._v(
-                  _vm._s(_vm._f("capitalize")(_vm.product.gender)) + " 's Shoe"
+                  _vm._s(_vm._f("capitalize")(_vm.product.gender)) + "'s Shoe"
                 )
               ]),
               _vm._v(" "),
-              _c("span", [_vm._v("$" + _vm._s(_vm.product.price))])
+              _c("span", { staticClass: "info" }, [
+                _vm._v("$" + _vm._s(_vm.product.price))
+              ])
             ]),
             _vm._v(" "),
-            _c("div", [_c("span", [_vm._v(_vm._s(_vm.product.name))])])
+            _c("div", [
+              _c("span", { attrs: { id: "productName" } }, [
+                _vm._v(_vm._s(_vm.product.name))
+              ])
+            ])
           ])
         ])
       ]),
