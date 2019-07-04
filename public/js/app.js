@@ -7409,7 +7409,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.d-flex[data-v-48a929c4] {\n\t-webkit-box-pack: justify;\n\t        justify-content: space-between;\n}\n#productName[data-v-48a929c4] {\n\tmargin-top: 15px;\n}\n#productName span[data-v-48a929c4] {\n\tfont-size: 1.3rem;\n\tfont-weight: 900;\n}\n#selectProductColor[data-v-48a929c4] {\n\tdisplay: -webkit-box;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t        flex-direction: column;\n}\n#selectProductColor img[data-v-48a929c4] {\n\twidth: 50px;\n\tcursor: pointer;\n}\n.borderImg[data-v-48a929c4] {\n\tborder: 1px solid black;\n}\n#selectProductSize select[data-v-48a929c4] {\n\tfloat: right;\n    background: none;\n    border: none;\n    font-size: 0.9rem;\n    color: inherit;\n    cursor: pointer;\n}\ndiv.productSizes[data-v-48a929c4] {\n\tdisplay: grid;\n\tgrid-template-columns: repeat(4,1fr);\n}\ndiv.productSizes span[data-v-48a929c4] {\n\tpadding: 5px 10px;\n    margin-left: 4px;\n    border: 1px solid #e2dede;\n    margin: 2px;\n    text-align: center;\n    color: #585353;\n    cursor: pointer;\n    border-radius: 2px;\n}\ndiv.productSizes span[data-v-48a929c4]:hover {\n\tborder: 1px solid black;\n\tborder-radius: 4px;\n}\n.disabled[data-v-48a929c4] {\n\tcolor: #c6c6c6 !important;\n\tbackground: #fff !important;\n\tcursor: not-allowed !important;\n}\ndiv.addToCart button.btn-block[data-v-48a929c4] {\n\tbackground-color: black;\n\tcolor: #fff;\n}\ndiv.addToCart button.btn-block[data-v-48a929c4]:hover {\n\tbackground: #343940;;\n\tcolor: #fff;\n}\n.selectedImageBorder[data-v-48a929c4] {\n\tborder-bottom: 2px solid red;\n}\n.selectedSizeBorder[data-v-48a929c4] {\n\tborder: 1px solid red !important;\n}\n", ""]);
+exports.push([module.i, "\n.d-flex[data-v-48a929c4] {\n\t-webkit-box-pack: justify;\n\t        justify-content: space-between;\n}\n#productName span[data-v-48a929c4] {\n\tfont-size: 2rem;\n\tfont-weight: 900;\n}\n.container[data-v-48a929c4] {\n\tpadding-top: 10vh;\n}\n#selectProductColor[data-v-48a929c4] {\n\tdisplay: -webkit-box;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t        flex-direction: column;\n}\n#selectProductColor img[data-v-48a929c4] {\n\twidth: 50px;\n\tcursor: pointer;\n}\n.borderImg[data-v-48a929c4] {\n\tborder: 1px solid black;\n}\n#selectProductSize select[data-v-48a929c4] {\n\tfloat: right;\n    background: none;\n    border: none;\n    font-size: 0.9rem;\n    color: inherit;\n    cursor: pointer;\n}\ndiv.productSizes[data-v-48a929c4] {\n\tdisplay: grid;\n\tgrid-template-columns: repeat(4,1fr);\n}\ndiv.productSizes span[data-v-48a929c4] {\n\tpadding: 5px 10px;\n    margin-left: 4px;\n    border: 1px solid #e2dede;\n    margin: 2px;\n    text-align: center;\n    color: #585353;\n    cursor: pointer;\n    border-radius: 2px;\n}\ndiv.productSizes span[data-v-48a929c4]:hover {\n\tborder: 1px solid black;\n\tborder-radius: 4px;\n}\n.disabled[data-v-48a929c4] {\n\tcolor: #c6c6c6 !important;\n\tbackground: #fff !important;\n\tcursor: not-allowed !important;\n}\ndiv.addToCart button.btn-block[data-v-48a929c4] {\n\tbackground-color: black;\n\tcolor: #fff;\n}\ndiv.addToCart button.btn-block[data-v-48a929c4]:hover {\n\tbackground: #343940;;\n\tcolor: #fff;\n}\n.selectedImageBorder[data-v-48a929c4] {\n\tborder-bottom: 2px solid red;\n}\n.selectedSizeBorder[data-v-48a929c4] {\n\tborder: 1px solid red !important;\n}\n", ""]);
 
 // exports
 
@@ -7447,7 +7447,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#navHolder[data-v-5b3d3f60] {\n\tposition: fixed;\n\twidth: 100%;\n}\n#logoImg[data-v-5b3d3f60] {\n\twidth: 140px;\n}\n.navbar-toggler[data-v-5b3d3f60] {\n\tbackground: black;\n}\na.nav-link[data-v-5b3d3f60] {\n\tfont-weight: 600;\n\ttext-transform: uppercase;\n\tfont-size: 1rem;\n\tmargin: 0 10px;\n\tcolor: #0a0a0a !important;\n}\n#auth[data-v-5b3d3f60] {\n\tmargin: 0 10px 0 20px;\n\tdisplay: -webkit-box;\n\tdisplay: flex;\n}\n#auth a[data-v-5b3d3f60] {\n\tmargin: 0 5px;\n\tcolor: #0a0a0a;\n}\n", ""]);
+exports.push([module.i, "\n#navHolder[data-v-5b3d3f60] {\n\t\tposition: fixed;\n\t\twidth: 100%;\n\t\tbackground: #fff;\n    \tz-index: 2;\n}\n#logoImg[data-v-5b3d3f60] {\n\t\twidth: 140px;\n}\n.navbar-toggler[data-v-5b3d3f60] {\n\t\tbackground: black;\n}\na.nav-link[data-v-5b3d3f60] {\n\t\tfont-weight: 600;\n\t\ttext-transform: uppercase;\n\t\tfont-size: 1rem;\n\t\tmargin: 0 10px;\n\t\tcolor: #0a0a0a !important;\n}\n#auth[data-v-5b3d3f60] {\n\t\tmargin: 0 10px 0 20px;\n\t\tdisplay: -webkit-box;\n\t\tdisplay: flex;\n}\n#auth a[data-v-5b3d3f60] {\n\t\tmargin: 0 5px;\n\t\tcolor: #0a0a0a;\n}\n", ""]);
 
 // exports
 
@@ -40861,7 +40861,10 @@ var render = function() {
             _c("div", { staticClass: "d-flex" }, [
               _c("span", [
                 _vm._v(
-                  _vm._s(_vm._f("capitalize")(_vm.product.gender)) + " 's Shoe"
+                  _vm._s(_vm._f("capitalize")(_vm.product.gender)) +
+                    " 's " +
+                    _vm._s(_vm._f("capitalize")(_vm.product.category)) +
+                    "  Shoe"
                 )
               ]),
               _vm._v(" "),

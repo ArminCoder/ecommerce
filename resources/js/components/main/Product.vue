@@ -8,7 +8,7 @@
 				</div>
 				<div class="col-3">
 					<div class="d-flex">
-						<span>{{product.gender | capitalize}} 's Shoe</span>
+						<span>{{product.gender | capitalize}} 's {{ product.category |capitalize }}  Shoe</span>
 						<span><strong>${{ product.price }}</strong></span>
 					</div>
 					<div id="productName">
@@ -160,12 +160,12 @@
 	.d-flex {
 		justify-content: space-between;
 	}
-	#productName {
-		margin-top: 15px;
-	}
 	#productName span {
-		font-size: 1.3rem;
+		font-size: 2rem;
 		font-weight: 900;
+	}
+	.container {
+		padding-top: 10vh;
 	}
 	#selectProductColor {
 		display: flex;

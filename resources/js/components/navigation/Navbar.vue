@@ -61,6 +61,8 @@
 	#navHolder {
 		position: fixed;
 		width: 100%;
+		background: #fff;
+    	z-index: 2;
 	}
 	#logoImg {
 		width: 140px;
