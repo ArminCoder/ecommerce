@@ -2498,6 +2498,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2509,7 +2563,13 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       product: [],
-      requestedId: ''
+      requestedId: '',
+      usSize: true,
+      sizeOption: 'us',
+      choosenProduct: {
+        image: '',
+        size: ''
+      }
     };
   },
   created: function created() {
@@ -2525,6 +2585,47 @@ __webpack_require__.r(__webpack_exports__);
       console.log('RES', res.data);
       _this.product = res.data;
     });
+  },
+  methods: {
+    chooseSize: function chooseSize(e) {
+      console.log(e.target.textContent);
+      this.choosenProduct.size = e.target.textContent;
+      e.target.classList.add('selectedSizeBorder');
+      var productSizes = document.getElementsByClassName('pickedProductSizes');
+      console.log(productSizes);
+
+      for (var i = 0; i < productSizes.length; i++) {
+        productSizes[i].classList.remove('selectedSizeBorder');
+      }
+
+      console.log(e.target.classList);
+      e.target.classList.add('selectedSizeBorder');
+    },
+    changeSizeOptions: function changeSizeOptions() {
+      if (this.sizeOption == 'us') {
+        this.usSize = true;
+      }
+
+      if (this.sizeOption == 'eu') {
+        this.usSize = false;
+      }
+    },
+    changeMainImg: function changeMainImg(event) {
+      var mainImg = document.getElementById('mainImage');
+      var productImages = document.getElementsByClassName('productImages');
+      mainImg.src = event.target.src;
+
+      if (mainImg.src == event.target.src) {
+        for (var i = 0; i < productImages.length; i++) {
+          productImages[i].classList.remove('selectedImageBorder');
+        }
+
+        event.target.classList.add('selectedImageBorder');
+      }
+
+      this.choosenProduct.image = event.target.src;
+      console.log('chosen product image::::', this.choosenProduct.image);
+    }
   },
   filters: {
     capitalize: function capitalize(value) {
@@ -7308,7 +7409,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.d-flex[data-v-48a929c4] {\n\t-webkit-box-pack: justify;\n\t        justify-content: space-between;\n}\n.row[data-v-48a929c4] {\n\tpadding-top: 10vh;\n}\n.info[data-v-48a929c4] {\n\tfont-size: 1rem;\n\tfont-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.d-flex[data-v-48a929c4] {\n\t-webkit-box-pack: justify;\n\t        justify-content: space-between;\n}\n#productName[data-v-48a929c4] {\n\tmargin-top: 15px;\n}\n#productName span[data-v-48a929c4] {\n\tfont-size: 1.3rem;\n\tfont-weight: 900;\n}\n#selectProductColor[data-v-48a929c4] {\n\tdisplay: -webkit-box;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t        flex-direction: column;\n}\n#selectProductColor img[data-v-48a929c4] {\n\twidth: 50px;\n\tcursor: pointer;\n}\n.borderImg[data-v-48a929c4] {\n\tborder: 1px solid black;\n}\n#selectProductSize select[data-v-48a929c4] {\n\tfloat: right;\n    background: none;\n    border: none;\n    font-size: 0.9rem;\n    color: inherit;\n    cursor: pointer;\n}\ndiv.productSizes[data-v-48a929c4] {\n\tdisplay: grid;\n\tgrid-template-columns: repeat(4,1fr);\n}\ndiv.productSizes span[data-v-48a929c4] {\n\tpadding: 5px 10px;\n    margin-left: 4px;\n    border: 1px solid #e2dede;\n    margin: 2px;\n    text-align: center;\n    color: #585353;\n    cursor: pointer;\n    border-radius: 2px;\n}\ndiv.productSizes span[data-v-48a929c4]:hover {\n\tborder: 1px solid black;\n\tborder-radius: 4px;\n}\n.disabled[data-v-48a929c4] {\n\tcolor: #c6c6c6 !important;\n\tbackground: #fff !important;\n\tcursor: not-allowed !important;\n}\ndiv.addToCart button.btn-block[data-v-48a929c4] {\n\tbackground-color: black;\n\tcolor: #fff;\n}\ndiv.addToCart button.btn-block[data-v-48a929c4]:hover {\n\tbackground: #343940;;\n\tcolor: #fff;\n}\n.selectedImageBorder[data-v-48a929c4] {\n\tborder-bottom: 2px solid red;\n}\n.selectedSizeBorder[data-v-48a929c4] {\n\tborder: 1px solid red !important;\n}\n", ""]);
 
 // exports
 
@@ -40245,7 +40346,7 @@ var staticRenderFns = [
             "div",
             { staticClass: "container text-center text-md-left mt-5 pt-1" },
             [
-              _c("div", { staticClass: "row mt-3" }, [
+              _c("div", { staticClass: "row mt-4 pt-2" }, [
                 _c(
                   "div",
                   { staticClass: "col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" },
@@ -40748,28 +40849,399 @@ var render = function() {
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-9" }, [
             _c("img", {
-              attrs: { src: _vm.product.image1, alt: "product.name" }
+              attrs: {
+                id: "mainImage",
+                src: _vm.product.image1,
+                alt: "product.name"
+              }
             })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-3" }, [
             _c("div", { staticClass: "d-flex" }, [
-              _c("span", { staticClass: "info" }, [
+              _c("span", [
                 _vm._v(
-                  _vm._s(_vm._f("capitalize")(_vm.product.gender)) + "'s Shoe"
+                  _vm._s(_vm._f("capitalize")(_vm.product.gender)) + " 's Shoe"
                 )
               ]),
               _vm._v(" "),
-              _c("span", { staticClass: "info" }, [
-                _vm._v("$" + _vm._s(_vm.product.price))
+              _c("span", [
+                _c("strong", [_vm._v("$" + _vm._s(_vm.product.price))])
               ])
             ]),
             _vm._v(" "),
-            _c("div", [
-              _c("span", { attrs: { id: "productName" } }, [
-                _vm._v(_vm._s(_vm.product.name))
-              ])
-            ])
+            _c("div", { attrs: { id: "productName" } }, [
+              _c("span", [_vm._v(_vm._s(_vm.product.name))])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "mt-4", attrs: { id: "selectProductColor" } },
+              [
+                _c("span", [_vm._v("Select Color")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mt-2" }, [
+                  _vm.product.image1
+                    ? _c("img", {
+                        staticClass: "ml-2 productImages",
+                        attrs: { src: _vm.product.image1, alt: "product.name" },
+                        on: { click: _vm.changeMainImg }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.product.image2
+                    ? _c("img", {
+                        staticClass: "ml-2 productImages",
+                        attrs: { src: _vm.product.image2, alt: "product.name" },
+                        on: { click: _vm.changeMainImg }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.product.image3
+                    ? _c("img", {
+                        staticClass: "ml-2 productImages",
+                        attrs: { src: _vm.product.image3, alt: "product.name" },
+                        on: { click: _vm.changeMainImg }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.product.image4
+                    ? _c("img", {
+                        staticClass: "ml-2 productImages",
+                        attrs: { src: _vm.product.image4, alt: "product.name" },
+                        on: { click: _vm.changeMainImg }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.product.image5
+                    ? _c("img", {
+                        staticClass: "ml-2 productImages",
+                        attrs: { src: _vm.product.image5, alt: "product.name" },
+                        on: { click: _vm.changeMainImg }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.product.image6
+                    ? _c("img", {
+                        staticClass: "ml-2 productImages",
+                        attrs: { src: _vm.product.image6, alt: "product.name" },
+                        on: { click: _vm.changeMainImg }
+                      })
+                    : _vm._e()
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "mt-4", attrs: { id: "selectProductSize" } },
+              [
+                _c("span", [
+                  _c("span", [_vm._v("Select Size")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.sizeOption,
+                          expression: "sizeOption"
+                        }
+                      ],
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.sizeOption = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          },
+                          _vm.changeSizeOptions
+                        ]
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "us", selected: "" } }, [
+                        _vm._v("US")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "eu", selected: "" } }, [
+                        _vm._v("EU")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm.product.gender == "men"
+                  ? _c("div", { staticClass: "mt-2 productSizes" }, [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_36 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 4 : 36))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_37 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 5 : 37))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_38 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 5.5 : 38))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_39 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 6.5 : 39))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_40 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 7 : 40))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_41 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 8 : 41))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_42 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 8.5 : 42))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_43 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 9.5 : 43))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_44 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 10 : 44))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_45 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 11 : 45))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_46 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 12 : 46))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_47 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 12.5 : 47))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_48 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 13.5 : 48))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_49 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 15 : 49))]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.product.gender == "women"
+                  ? _c("div", { staticClass: "mt-2 productSizes" }, [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_35 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 5 : 35))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_36 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 5.5 : 36))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_37 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 6.5 : 37))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_38 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 7 : 38))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_39 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 8 : 39))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_40 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 8.5 : 40))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_41 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 9.5 : 41))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_42 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 10 : 42))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_43 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 11 : 43))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_44 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 11.5 : 44))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "pickedProductSizes",
+                          class: { disabled: !_vm.product.size_45 },
+                          on: { click: _vm.chooseSize }
+                        },
+                        [_vm._v(_vm._s(_vm.usSize ? 9.5 : 45))]
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _vm._m(0)
           ])
         ])
       ]),
@@ -40779,7 +41251,18 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "addToCart mt-4 text-center" }, [
+      _c("button", { staticClass: "btn btn-block px-4 py-2" }, [
+        _vm._v("Add To Cart")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -57195,14 +57678,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************************!*\
   !*** ./resources/js/components/dashboard/Dashboard.vue ***!
   \*********************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Dashboard_vue_vue_type_template_id_376ddb84___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=template&id=376ddb84& */ "./resources/js/components/dashboard/Dashboard.vue?vue&type=template&id=376ddb84&");
 /* harmony import */ var _Dashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=script&lang=js& */ "./resources/js/components/dashboard/Dashboard.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Dashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Dashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -57232,7 +57716,7 @@ component.options.__file = "resources/js/components/dashboard/Dashboard.vue"
 /*!**********************************************************************************!*\
   !*** ./resources/js/components/dashboard/Dashboard.vue?vue&type=script&lang=js& ***!
   \**********************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
