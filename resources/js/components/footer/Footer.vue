@@ -6,7 +6,7 @@
 		  <div class="container text-center text-md-left mt-5 pt-1">
 
 		    <!-- Grid row -->
-		    <div class="row mt-3">
+		    <div class="row mt-4 pt-2">
 
 		      <!-- Grid column -->
 		      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
