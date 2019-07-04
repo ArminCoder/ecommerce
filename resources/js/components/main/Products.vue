@@ -45,6 +45,7 @@
 		},
 		methods: {
 			checkProduct(product) {
+				
 				this.$router.push({ name: 'product', params: { id: product.id } })
 			},
 			changeImgSrc(event, product) {

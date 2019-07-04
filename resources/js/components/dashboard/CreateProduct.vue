@@ -98,11 +98,21 @@
 			<h5 class="d-flex justify-content-center my1-4 text-bold font-weight-bold">Upload Images:</h5>
 
 			<div class="row mt-3">
-				<div class="text-center w-50"><input type="file" name="image1"></div>
-				<div class="text-center w-50"><input type="file" name="image2"></div>
-				<div class="text-center w-50"><input class='mt-3' type="file" name="image3"></div>
-				<div class="text-center w-50"><input class='mt-3' type="file" name="image4"></div>
-				<div class="text-center w-50"><input class='mt-3' type="file" name="image5"></div>
+				<div class="text-center w-50">
+					<input @change='uploadImage' type="file" name="image1" ref='image1' id="image1">
+				</div>
+				<div class="text-center w-50">
+					<input @change='uploadImage' type="file" ref='image2' id='image2' name="image2">
+				</div>
+				<div class="text-center w-50">
+					<input @change='uploadImage' class='mt-3' type="file" ref='image3' id='image3' name="image3">
+				</div>
+				<div class="text-center w-50">
+					<input @change='uploadImage' class='mt-3' type="file" ref='image4' id='image4' name="image4">
+				</div>
+				<div class="text-center w-50">
+					<input @change='uploadImage' class='mt-3' type="file" ref='image5' id='image5' name="image5">
+				</div>
 			</div>
 			<div class="text-center">
 				<button @click.prevent='createProduct' class="btn btn-primary mt-4 px-4 py-2 w-50">Submit</button>
@@ -140,7 +150,12 @@
 				message: '',
 				success: false,
 				error: false,
-				sizesObject: {}
+				sizesObject: {},
+				image1: '',
+				image2: '',
+				image3: '',
+				image4: '',
+				image5: '',
 			}
 		}, 
 		created() {
@@ -150,6 +165,23 @@
 			this.checkSizeValue();
 		},
 		methods: {
+			uploadImage(event) {
+				if(event.target.name == 'image1') {
+					this.image1 = this.$refs.image1.files[0];
+				}
+				if(event.target.name == 'image2') {
+					this.image2 = this.$refs.image2.files[0];
+				}
+				if(event.target.name == 'image3') {
+					this.image3 = this.$refs.image3.files[0];
+				}
+				if(event.target.name == 'image4') {
+					this.image4 = this.$refs.image4.files[0];
+				}
+				if(event.target.name == 'image5') {
+					this.image5 = this.$refs.image5.files[0];
+				}
+			},
 			getResources() {
 				axios.all([
 					axios.get('/api/brands'),
@@ -158,48 +190,65 @@
 				.then(axios.spread((resBrands, resTypes) => {
 					this.brands = resBrands.data;
 					this.categories = resTypes.data;
+					console.log('brands and categories', resBrands, resTypes )
 				}));
 			},
 			createProduct() {
 				this.checkSizeValue();
-				console.log(this.size_35, this.size_41);
-				let product = { 
-					 name: this.name, 
-					 price: this.price,
-					 brand: this.productBrand ,
-					 category: this.productType ,
-					 gender: this.gender ,
-					 size_35: this.size_35,
-					 size_36: this.size_36,
-					 size_37: this.size_37,
-					 size_38: this.size_38,
-					 size_39: this.size_39,
-					 size_40: this.size_40,
-					 size_41: this.size_41,
-					 size_42: this.size_42,
-					 size_43: this.size_43,
-					 size_44: this.size_44,
-					 size_45: this.size_45,
-					 size_46: this.size_46,
-					 size_47: this.size_47,
-					 size_48: this.size_48,
-					 size_49: this.size_49,
-					 image1: 'test',
-					 image2: 'test',
-					 image3: 'test',
-					 image4: 'test',
-					 image5: 'test',
-				}
+				console.log('FILE:::', this.image1);
+
 				// if (this.productBrand == 'chooseBrand' || this.productType == 'chooseType' || this.gender == 'all' || !this.name || !this.price) {
 				// 	this.message = 'All Fields are required';
 				// 	this.error = true;
 				// 	return;
 				// } 
-				axios.post('/products', product)
+
+				let formData = new FormData();
+
+				formData.append('name', this.name);
+				formData.append('price', this.price);
+				formData.append('brand', this.productBrand);
+				formData.append('gender', this.gender);
+				formData.append('category', this.productType);
+			    formData.append('size_35', this.size_35);
+			    formData.append('size_36', this.size_36);
+				formData.append('size_37', this.size_37);
+				formData.append('size_38', this.size_38);
+				formData.append('size_39', this.size_39);
+				formData.append('size_40', this.size_40);
+				formData.append('size_41', this.size_41);
+				formData.append('size_42', this.size_42);
+				formData.append('size_43', this.size_43);
+				formData.append('size_44', this.size_44);
+				formData.append('size_45', this.size_45);
+				formData.append('size_46', this.size_46);
+				formData.append('size_47', this.size_47);
+				formData.append('size_48', this.size_48);
+				formData.append('size_49', this.size_49);
+				
+
+				// Attach file type='image2' id='image2'a
+				formData.append('image1',  this.image1); 
+				formData.append('image2' , this.image2);
+				formData.append('image3' , this.image3);
+				formData.append('image4' , this.image4);
+				formData.append('image5' , this.image5);
+
+
+				let axiosConfig = {
+				     headers: {
+				         'Content-Type': 'application/json;multipart/form-data'
+				     }
+				}     	
+
+				axios.post( '/products',
+				 			formData,
+				 			axiosConfig
+				)
 				.then((res) => {
 					console.log(res);
 					this.error = false;
-					this.message = res.headers.message;
+					this.message = res.data.message;
 				})
 				.catch((error) => {
 					console.log(error.response);

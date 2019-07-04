@@ -21,11 +21,11 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->string('gender')->default('male');                        
             $table->string('brand')->default('Other');                                             
-            $table->string('image1')->default(null);;
-            $table->string('image2')->default(null);
-            $table->string('image3')->default(null);
-            $table->string('image4')->default(null);
-            $table->string('image5')->default(null);
+            $table->string('image1');
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
+            $table->string('image4')->nullable();
+            $table->string('image5')->nullable();
             $table->boolean('size_35')->default(false);
             $table->boolean('size_36')->default(false);
             $table->boolean('size_37')->default(false);

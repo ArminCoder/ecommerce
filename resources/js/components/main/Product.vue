@@ -40,7 +40,7 @@
 			this.requestedId = this.$route.params.id;
 		},
 		mounted() {
-			axios.get('/api/products/' + this.requestedId, {  
+			axios.get('/products/' + this.requestedId, {  
 			  	params: {
 			    	
 			 	}

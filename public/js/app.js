@@ -1866,6 +1866,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1894,7 +1904,12 @@ __webpack_require__.r(__webpack_exports__);
       message: '',
       success: false,
       error: false,
-      sizesObject: {}
+      sizesObject: {},
+      image1: '',
+      image2: '',
+      image3: '',
+      image4: '',
+      image5: ''
     };
   },
   created: function created() {
@@ -1904,55 +1919,93 @@ __webpack_require__.r(__webpack_exports__);
     this.checkSizeValue();
   },
   methods: {
+    uploadImage: function uploadImage(event) {
+      if (event.target.name == 'image1') {
+        this.image1 = this.$refs.image1.files[0];
+      }
+
+      if (event.target.name == 'image2') {
+        this.image2 = this.$refs.image2.files[0];
+      }
+
+      if (event.target.name == 'image3') {
+        this.image3 = this.$refs.image3.files[0];
+      }
+
+      if (event.target.name == 'image4') {
+        this.image4 = this.$refs.image4.files[0];
+      }
+
+      if (event.target.name == 'image5') {
+        this.image5 = this.$refs.image5.files[0];
+      }
+    },
     getResources: function getResources() {
       var _this = this;
 
       axios.all([axios.get('/api/brands'), axios.get('/api/types')]).then(axios.spread(function (resBrands, resTypes) {
         _this.brands = resBrands.data;
         _this.categories = resTypes.data;
+        console.log('brands and categories', resBrands, resTypes);
       }));
     },
     createProduct: function createProduct() {
       var _this2 = this;
 
       this.checkSizeValue();
-      console.log(this.size_35, this.size_41);
-      var product = {
-        name: this.name,
-        price: this.price,
-        brand: this.productBrand,
-        category: this.productType,
-        gender: this.gender,
-        size_35: this.size_35,
-        size_36: this.size_36,
-        size_37: this.size_37,
-        size_38: this.size_38,
-        size_39: this.size_39,
-        size_40: this.size_40,
-        size_41: this.size_41,
-        size_42: this.size_42,
-        size_43: this.size_43,
-        size_44: this.size_44,
-        size_45: this.size_45,
-        size_46: this.size_46,
-        size_47: this.size_47,
-        size_48: this.size_48,
-        size_49: this.size_49 // if (this.productBrand == 'chooseBrand' || this.productType == 'chooseType' || this.gender == 'all' || !this.name || !this.price) {
-        // 	this.message = 'All Fields are required';
-        // 	this.error = true;
-        // 	return;
-        // } 
+      console.log('FILE:::', this.image1); // if (this.productBrand == 'chooseBrand' || this.productType == 'chooseType' || this.gender == 'all' || !this.name || !this.price) {
+      // 	this.message = 'All Fields are required';
+      // 	this.error = true;
+      // 	return;
+      // } 
 
+      var formData = new FormData();
+      formData.append('name', this.name);
+      formData.append('price', this.price);
+      formData.append('brand', this.productBrand);
+      formData.append('gender', this.gender);
+      formData.append('category', this.productType);
+      formData.append('size_35', this.size_35);
+      formData.append('size_36', this.size_36);
+      formData.append('size_37', this.size_37);
+      formData.append('size_38', this.size_38);
+      formData.append('size_39', this.size_39);
+      formData.append('size_40', this.size_40);
+      formData.append('size_41', this.size_41);
+      formData.append('size_42', this.size_42);
+      formData.append('size_43', this.size_43);
+      formData.append('size_44', this.size_44);
+      formData.append('size_45', this.size_45);
+      formData.append('size_46', this.size_46);
+      formData.append('size_47', this.size_47);
+      formData.append('size_48', this.size_48);
+      formData.append('size_49', this.size_49); // Attach file type='image2' id='image2'a
+
+      formData.append('image1', this.image1);
+      formData.append('image2', this.image2);
+      formData.append('image3', this.image3);
+      formData.append('image4', this.image4);
+      formData.append('image5', this.image5);
+      var axiosConfig = {
+        headers: {
+          'Content-Type': 'application/json;multipart/form-data'
+        }
       };
-      axios.post('/products', product).then(function (res) {
+      axios.post('/products', formData, axiosConfig).then(function (res) {
         console.log(res);
         _this2.error = false;
-        _this2.message = res.headers.message;
+        _this2.message = res.data.message;
       })["catch"](function (error) {
         console.log(error.response);
         var errorObject = error.response.data.errors;
         errorObject = errorObject[Object.keys(errorObject)[0]];
-        _this2.message = errorObject[0];
+
+        if (errorObject[0]) {
+          _this2.message = errorObject[0];
+        } else {
+          _this2.message = error.response.statusText;
+        }
+
         _this2.error = true;
       });
     },
@@ -2466,7 +2519,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/api/products/' + this.requestedId, {
+    axios.get('/products/' + this.requestedId, {
       params: {}
     }).then(function (res) {
       console.log('RES', res.data);
@@ -39939,7 +39992,50 @@ var render = function() {
         [_vm._v("Upload Images:")]
       ),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "text-center w-50" }, [
+          _c("input", {
+            ref: "image1",
+            attrs: { type: "file", name: "image1", id: "image1" },
+            on: { change: _vm.uploadImage }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-center w-50" }, [
+          _c("input", {
+            ref: "image2",
+            attrs: { type: "file", id: "image2", name: "image2" },
+            on: { change: _vm.uploadImage }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-center w-50" }, [
+          _c("input", {
+            ref: "image3",
+            staticClass: "mt-3",
+            attrs: { type: "file", id: "image3", name: "image3" },
+            on: { change: _vm.uploadImage }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-center w-50" }, [
+          _c("input", {
+            ref: "image4",
+            staticClass: "mt-3",
+            attrs: { type: "file", id: "image4", name: "image4" },
+            on: { change: _vm.uploadImage }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-center w-50" }, [
+          _c("input", {
+            ref: "image5",
+            staticClass: "mt-3",
+            attrs: { type: "file", id: "image5", name: "image5" },
+            on: { change: _vm.uploadImage }
+          })
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "text-center" }, [
         _c(
@@ -39970,43 +40066,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mt-3" }, [
-      _c("div", { staticClass: "text-center w-50" }, [
-        _c("input", { attrs: { type: "file", name: "image1" } })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "text-center w-50" }, [
-        _c("input", { attrs: { type: "file", name: "image2" } })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "text-center w-50" }, [
-        _c("input", {
-          staticClass: "mt-3",
-          attrs: { type: "file", name: "image3" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "text-center w-50" }, [
-        _c("input", {
-          staticClass: "mt-3",
-          attrs: { type: "file", name: "image4" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "text-center w-50" }, [
-        _c("input", {
-          staticClass: "mt-3",
-          attrs: { type: "file", name: "image5" }
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
