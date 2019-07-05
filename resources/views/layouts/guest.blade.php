@@ -11,7 +11,7 @@
         @endif
     @else
         <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="text-dark nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            <a id="navbarDropdown" class="text-dark nav-link dropdown-toggle pb-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 @if (Auth::user()->profileImage)
                     <img id="userImage" src="{{ Auth::user()->profileImage }}" alt="User Avatar"> 
                 @else    

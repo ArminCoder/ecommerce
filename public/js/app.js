@@ -2111,12 +2111,79 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       products: [],
       brands: [],
-      prices: []
+      prices: [],
+      table: [{
+        cell: 'Image'
+      }, {
+        cell: 'Name'
+      }, {
+        cell: 'Price'
+      }, {
+        cell: 'Brand'
+      }, {
+        cell: 'Category'
+      }, {
+        cell: 'Gender'
+      }, {
+        cell: 'Available Sizes'
+      }]
     };
   },
   mounted: function mounted() {
@@ -7296,7 +7363,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#createNewProduct[data-v-4e6b28aa] {\n\t\tposition: absolute;\n    \tright: 1vw;\n}\t\n", ""]);
+exports.push([module.i, "\n#createNewProduct[data-v-4e6b28aa] {\n\t\tposition: absolute;\n    \tright: 1vw;\n}\nimg[data-v-4e6b28aa] {\n    \twidth: 40px;\n}\ntable[data-v-4e6b28aa] {\n    \tmargin-top: 80px;\n    \twidth: 100%;\n\t\tborder: 1px solid #ccc;\n}\n.tableHead[data-v-4e6b28aa] {\n    \tfont-size: 15px;\n    \ttext-transform: capitalize;\n    \tbackground: #ccc;\n    \tcolor: #fff;\n    \tfont-weight: bold;\n    \ttext-shadow: 1px 1px 1px black;\n}\n.tableRow[data-v-4e6b28aa] {\n    \tbackground: #f2f2f2;\n    \tfont-size: 14px;\n    \tpadding: 5px;\n}\n    \n", ""]);
 
 // exports
 
@@ -40242,55 +40309,42 @@ var render = function() {
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
-      _c(
-        "div",
-        _vm._l(_vm.products, function(product) {
-          return _c("div", { staticClass: "d-flex" }, [
-            _c("img", { attrs: { src: product.image1, alt: product.nameS } }),
+      _c("div", [
+        _c(
+          "table",
+          [
+            _c(
+              "tr",
+              { staticClass: "tableHead" },
+              _vm._l(_vm.table, function(row) {
+                return _c("th", [_vm._v(_vm._s(row.cell))])
+              }),
+              0
+            ),
             _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.name))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.category))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.gender))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.price))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.brand))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.size_35 ? "true" : "false"))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.size_36 ? "true" : "false"))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.size_37 ? "true" : "false"))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.size_38 ? "true" : "false"))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.size_39 ? "true" : "false"))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.size_40 ? "true" : "false"))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.size_41 ? "true" : "false"))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.size_42 ? "true" : "false"))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.size_43 ? "true" : "false"))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.size_44 ? "true" : "false"))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.size_45 ? "true" : "false"))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.size_46 ? "true" : "false"))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.size_47 ? "true" : "false"))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.size_48 ? "true" : "false"))]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(product.size_49 ? "true" : "false"))])
-          ])
-        }),
-        0
-      )
+            _vm._l(_vm.products, function(product) {
+              return _c("tr", { staticClass: "tableRow" }, [
+                _c("td", [
+                  _c("img", {
+                    attrs: { src: product.image1, alt: product.nameS }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(product.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$" + _vm._s(product.price))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(product.brand))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(product.category))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(product.gender))])
+              ])
+            })
+          ],
+          2
+        )
+      ])
     ],
     1
   )
