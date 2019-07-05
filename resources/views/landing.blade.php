@@ -2,6 +2,7 @@
 
 @section('content')
     <div id="app">
+		@include('layouts.guest')
 		<router-view></router-view>
     </div>
 @endsection

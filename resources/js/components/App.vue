@@ -2,14 +2,16 @@
     <div>
         <navbar></navbar>
         <slider></slider>
-        <div class="row">
-            <div class="col-2 filterHolder mt-2">
-                <filters></filters>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2 filterHolder mt-2">
+                    <filters></filters>
+                </div>
+                <div class="col-10 mt-2">
+                    <products></products>
+                </div>
             </div>
-            <div class="col-10 mt-2">
-                <products></products>
-            </div>
-        </div>
+        </div>    
         <productsFooter></productsFooter> 
     </div>
 </template>

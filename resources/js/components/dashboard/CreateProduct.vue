@@ -286,7 +286,7 @@
 	};
 </script>
 
-<style scope>
+<style scoped>
 	.checkboxes {
 		display: grid;
 		grid-template-columns: repeat(8,1fr);
