@@ -7391,7 +7391,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.center[data-v-91dc7d54] {\n\ttext-align: center;\n\tpadding: 75px 0 15px;\n}\n.center div[data-v-91dc7d54] {\n\tbackground: #f1f1f1;\n\tpadding: 20px 0;\n}\n.fa-chevron-left[data-v-91dc7d54] {\n\tposition: absolute;\n\tleft: 10vw;\n}\n.fa-chevron-right[data-v-91dc7d54] {\n\tposition: absolute;\n\tright: 10vw;\n}\n.sliderMessage[data-v-91dc7d54] {\n\tfont-size: 16px;\n\tfont-size: 17px;\n\tfont-weight: 600;\n}\n#free-shipping[data-v-91dc7d54] {\n\twidth: 22px;\n\tposition: relative;\n\tbottom: 5px;\n\tright: 5px;\n}\n", ""]);
+exports.push([module.i, "\n.center[data-v-91dc7d54] {\n\ttext-align: center;\n\tpadding: 87px 0 15px;\n}\n.center div[data-v-91dc7d54] {\n\tbackground: #f1f1f1;\n\tpadding: 20px 0;\n}\n.fa-chevron-left[data-v-91dc7d54] {\n\tposition: absolute;\n\tleft: 10vw;\n}\n.fa-chevron-right[data-v-91dc7d54] {\n\tposition: absolute;\n\tright: 10vw;\n}\n.sliderMessage[data-v-91dc7d54] {\n\tfont-size: 16px;\n\tfont-size: 17px;\n\tfont-weight: 600;\n}\n#free-shipping[data-v-91dc7d54] {\n\twidth: 22px;\n\tposition: relative;\n\tbottom: 5px;\n\tright: 5px;\n}\n", ""]);
 
 // exports
 
@@ -7448,7 +7448,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#navHolder[data-v-5b3d3f60] {\n\t\tposition: fixed;\n\t\twidth: 100%;\n\t\tbackground: #fff;\n    \tz-index: 2;\n}\n#logoImg[data-v-5b3d3f60] {\n\t\twidth: 140px;\n}\n.navbar-toggler[data-v-5b3d3f60] {\n\t\tbackground: black;\n}\na.nav-link[data-v-5b3d3f60] {\n\t\tfont-weight: 600;\n\t\ttext-transform: uppercase;\n\t\tfont-size: 1rem;\n\t\tmargin: 0 10px;\n\t\tcolor: #0a0a0a !important;\n}\n#auth[data-v-5b3d3f60] {\n\t\tmargin: 0 10px 0 20px;\n\t\tdisplay: -webkit-box;\n\t\tdisplay: flex;\n}\n#auth a[data-v-5b3d3f60] {\n\t\tmargin: 0 5px;\n\t\tcolor: #0a0a0a;\n}\n", ""]);
+exports.push([module.i, "\n#navHolder[data-v-5b3d3f60] {\n\t\tposition: fixed;\n\t\twidth: 100%;\n\t\tbackground: #fff;\n    \tz-index: 2;\n    \tmargin-top: 29px;\n}\n#logoImg[data-v-5b3d3f60] {\n\t\twidth: 140px;\n}\n.navbar-toggler[data-v-5b3d3f60] {\n\t\tbackground: black;\n}\nnav[data-v-5b3d3f60] {\n\t\tpadding-top: 0;\n}\nform[data-v-5b3d3f60] {\n\t\tmargin-top: 5px;\n}\na.nav-link[data-v-5b3d3f60] {\n\t\tfont-weight: 600;\n\t\ttext-transform: uppercase;\n\t\tfont-size: 1rem;\n\t\tmargin: 0 10px;\n\t\tcolor: #0a0a0a !important;\n}\n#auth[data-v-5b3d3f60] {\n\t\tmargin: 0 10px 0 20px;\n\t\tdisplay: -webkit-box;\n\t\tdisplay: flex;\n}\n#auth a[data-v-5b3d3f60] {\n\t\tmargin: 0 5px;\n\t\tcolor: #0a0a0a;\n}\n", ""]);
 
 // exports
 
@@ -57426,6 +57426,16 @@ var app = new Vue({
   store: _store_store_js__WEBPACK_IMPORTED_MODULE_0__["store"],
   el: '#app',
   router: router
+}); // Help Tab Dropdown
+
+var dropdownOpener = document.getElementById('dropdownMenuOpener');
+var primaryDropdownMenu = document.getElementById('primaryDropdownMenu');
+var helpTab = document.getElementById('helpTab');
+dropdownOpener.addEventListener('mouseover', function () {
+  primaryDropdownMenu.style.display = 'block';
+});
+dropdownOpener.addEventListener('mouseleave', function () {
+  primaryDropdownMenu.style.display = 'none';
 });
 
 /***/ }),

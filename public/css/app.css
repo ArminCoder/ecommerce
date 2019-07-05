@@ -14216,3 +14216,34 @@ div#dashboard #sidebar ul li {
   font-size: 1rem !important;
 }
 
+div #primaryDropdownMenu {
+  display: none;
+  position: absolute;
+  margin-right: -45px;
+  padding: 5px;
+}
+
+div #primaryDropdownMenu a {
+  padding-left: 10px;
+  text-align: center;
+}
+
+#secondaryNavbar {
+  background: #fff;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+}
+
+.secondaryNavLink {
+  padding: 7px 0 0;
+}
+
+.secondaryNavLink:hover {
+  border-bottom: 2px solid #000;
+}
+
+#userImage {
+  width: 20px;
+}
+

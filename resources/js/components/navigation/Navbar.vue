@@ -62,12 +62,19 @@
 		width: 100%;
 		background: #fff;
     	z-index: 2;
+    	margin-top: 29px;
 	}
 	#logoImg {
 		width: 140px;
 	}
 	.navbar-toggler {
 		background: black;
+	}
+	nav {
+		padding-top: 0;
+	}
+	form {
+		margin-top: 5px;
 	}
 	a.nav-link {
 		font-weight: 600;

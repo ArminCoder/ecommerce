@@ -49,7 +49,7 @@
 <style scoped>
 	.center {
 		text-align: center;
-		padding: 75px 0 15px;
+		padding: 87px 0 15px;
 	} 
 	.center div {
 		background: #f1f1f1;

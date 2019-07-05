@@ -53,4 +53,17 @@ const app = new Vue({
 });
 
 
+// Help Tab Dropdown
+let dropdownOpener = document.getElementById('dropdownMenuOpener');
+let primaryDropdownMenu = document.getElementById('primaryDropdownMenu');
+let helpTab = document.getElementById('helpTab');
+
+dropdownOpener.addEventListener('mouseover', () => {
+    primaryDropdownMenu.style.display = 'block';
+});
+
+dropdownOpener.addEventListener('mouseleave', () => {
+    primaryDropdownMenu.style.display = 'none'; 
+});
+
 
