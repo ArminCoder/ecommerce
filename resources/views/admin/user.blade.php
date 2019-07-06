@@ -1,6 +1,6 @@
 @extends('/admin/dashboard')
 
 @section('component')
-	<span>USER</span>
+	<users></users>
 @endsection
 

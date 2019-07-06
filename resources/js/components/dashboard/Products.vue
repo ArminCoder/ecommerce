@@ -16,70 +16,28 @@
 				    	<td>{{ product.brand }}</td>
 				    	<td>{{ product.category }}</td>
 				    	<td>{{ product.gender }}</td>
+				    	<td class="sizeTableCell">
+							<span v-if='product.size_35'>{{ 35 }}</span>
+							<span v-if='product.size_36'>{{ 36 }}</span>
+							<span v-if='product.size_37'>{{ 37 }}</span>
+							<span v-if='product.size_38'>{{ 38 }}</span>
+							<span v-if='product.size_39'>{{ 39 }}</span>
+							<span v-if='product.size_40'>{{ 40 }}</span>
+							<span v-if='product.size_41'>{{ 41 }}</span>
+							<span v-if='product.size_42'>{{ 42 }}</span>
+							<span v-if='product.size_43'>{{ 43 }}</span>
+							<span v-if='product.size_44'>{{ 44 }}</span>
+							<span v-if='product.size_45'>{{ 45 }}</span>
+							<span v-if='product.size_46'>{{ 46 }}</span>
+							<span v-if='product.size_47'>{{ 47 }}</span>
+							<span v-if='product.size_48'>{{ 48 }}</span>
+							<span v-if='product.size_49'>{{ 49 }}</span>
+				        </td>
+				        <td>
+				        	
+				        </td>
 				  </tr>
 			</table>
-
-
-			<!-- <table>
-				<thead>
-					<tr v-for='row in table'>
-						<th>{{ row.cell }}</th>
-					</tr>
-				</thead>\
-				<tbody>
-					<tr v-for='product in products'>
-						<td :src="product.image1" :alt="product.nameS">
-						<td>{{ product.name }}</td>
-						<td>{{ product.price }}</td>
-						<td>{{ product.category }}</td>
-						<td>{{ product.gender }}</td>
-						<td>{{ product.brand }}</td>
-						<td>
-							<td>{{ product.size_35 ? 'true' : 'false' }}</td>
-							<td>{{ product.size_36 ? 'true' : 'false' }}</td>
-							<td>{{ product.size_37 ? 'true' : 'false' }}</td>
-							<td>{{ product.size_38 ? 'true' : 'false' }}</td>
-							<td>{{ product.size_39 ? 'true' : 'false' }}</td>
-							<td>{{ product.size_40 ? 'true' : 'false' }}</td>
-							<td>{{ product.size_41 ? 'true' : 'false' }}</td>
-							<td>{{ product.size_42 ? 'true' : 'false' }}</td>
-							<td>{{ product.size_43 ? 'true' : 'false' }}</td>
-							<td>{{ product.size_44 ? 'true' : 'false' }}</td>
-							<td>{{ product.size_45 ? 'true' : 'false' }}</td>
-							<td>{{ product.size_46 ? 'true' : 'false' }}</td>
-							<td>{{ product.size_47 ? 'true' : 'false' }}</td>
-							<td>{{ product.size_48 ? 'true' : 'false' }}</td>
-							<td>{{ product.size_49 ? 'true' : 'false' }}</td>
-						</td>
-					</tr>
-				</tbody>
-			</table> -->
-			
-		<!-- 	<div v-for='product in products' class="d-flex productRow"> 
-				<img :src="product.image1" :alt="product.nameS">
-				<span>{{ product.name }}</span>
-				<span>{{ product.price }}</span>
-				<span>{{ product.category }}</span>
-				<span>{{ product.gender }}</span>
-				<span>{{ product.brand }}</span>
-				<div>
-					<span>{{ product.size_35 ? 'true' : 'false' }}</span>
-					<span>{{ product.size_36 ? 'true' : 'false' }}</span>
-					<span>{{ product.size_37 ? 'true' : 'false' }}</span>
-					<span>{{ product.size_38 ? 'true' : 'false' }}</span>
-					<span>{{ product.size_39 ? 'true' : 'false' }}</span>
-					<span>{{ product.size_40 ? 'true' : 'false' }}</span>
-					<span>{{ product.size_41 ? 'true' : 'false' }}</span>
-					<span>{{ product.size_42 ? 'true' : 'false' }}</span>
-					<span>{{ product.size_43 ? 'true' : 'false' }}</span>
-					<span>{{ product.size_44 ? 'true' : 'false' }}</span>
-					<span>{{ product.size_45 ? 'true' : 'false' }}</span>
-					<span>{{ product.size_46 ? 'true' : 'false' }}</span>
-					<span>{{ product.size_47 ? 'true' : 'false' }}</span>
-					<span>{{ product.size_48 ? 'true' : 'false' }}</span>
-					<span>{{ product.size_49 ? 'true' : 'false' }}</span>
-				</div>
-			</div> -->
 		</div>
 	</div>
 </template>
@@ -138,11 +96,15 @@
     	color: #fff;
     	font-weight: bold;
     	text-shadow: 1px 1px 1px black;
-}
+	}
     .tableRow {
     	background: #f2f2f2;
     	font-size: 14px;
     	padding: 5px;
+    }
+    .sizeTableCell {
+    	display: grid;
+    	grid-template-columns: repeat(5,1fr);
     }
     
 </style>

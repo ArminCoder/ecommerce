@@ -19,7 +19,8 @@
 		    <!-- Links -->
 		    <ul class="navbar-nav m-auto">
 	    	  <li class="nav-item">
-		        <a class="nav-link" href="/">All Products</a>
+		        <!-- <a class="nav-link" href="/">All Products</a> -->
+		        <router-link class='nav-link' to='/'>All Products</router-link>
 		      </li>
 		      <li @click='showMenProducts' class="nav-item">
 		        <a class="nav-link" href="#">Men</a>
@@ -82,6 +83,9 @@
 		font-size: 1rem;
 		margin: 0 10px;
 		color: #0a0a0a !important;
+	}
+	a.nav-link:hover {
+		border-bottom: 2px solid black;
 	}
 	#auth {
 		margin: 0 10px 0 20px;

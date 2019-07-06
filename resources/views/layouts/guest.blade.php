@@ -21,6 +21,9 @@
             </a>
 
             <div class="pl-4 dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="text-dark dropdown-item" href="/dashboard">
+                    Dashboard
+                </a>
                 <a class="text-dark dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
@@ -38,7 +41,7 @@
                 Help
             </a>
 
-            <div id="primaryDropdownMenu" class="dropdown-menu dropdown-menu-right">
+            <div id="primaryDropdownMenu" class="dropdown-menu dropdown-menu-right mt-0">
                 <a class="text-dark dropdown-item" href="#">
                     Contact Us
                 </a>
