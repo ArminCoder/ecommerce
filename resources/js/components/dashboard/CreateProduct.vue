@@ -24,8 +24,8 @@
 				<div class="col-12 mt-3">
 					<select class="form-control" v-model='gender'>
 							<option value="all" selected disabled>Choose Gender...</option>
-							<option value="men">Male</option>
-							<option value="women">Female</option>
+							<option value="men">Men</option>
+							<option value="women">Women</option>
 					</select>
 				</div>	
 				<div class="col-12 mt-3">
@@ -195,16 +195,12 @@
 			},
 			createProduct() {
 				this.checkSizeValue();
-				console.log('FILE:::', this.image1);
-
-				// if (this.productBrand == 'chooseBrand' || this.productType == 'chooseType' || this.gender == 'all' || !this.name || !this.price) {
-				// 	this.message = 'All Fields are required';
-				// 	this.error = true;
-				// 	return;
-				// } 
-
+				if (this.productBrand == 'chooseBrand' || this.productType == 'chooseType' || this.gender == 'all' || !this.name || !this.price) {
+					this.message = 'All Fields are required';
+					this.error = true;
+					return;
+				} 
 				let formData = new FormData();
-
 				formData.append('name', this.name);
 				formData.append('price', this.price);
 				formData.append('brand', this.productBrand);
@@ -225,22 +221,18 @@
 				formData.append('size_47', this.size_47);
 				formData.append('size_48', this.size_48);
 				formData.append('size_49', this.size_49);
-				
 
-				// Attach file type='image2' id='image2'a
 				formData.append('image1',  this.image1); 
 				formData.append('image2' , this.image2);
 				formData.append('image3' , this.image3);
 				formData.append('image4' , this.image4);
 				formData.append('image5' , this.image5);
 
-
 				let axiosConfig = {
 				     headers: {
 				         'Content-Type': 'application/json;multipart/form-data'
 				     }
 				}     	
-
 				axios.post( '/products',
 				 			formData,
 				 			axiosConfig

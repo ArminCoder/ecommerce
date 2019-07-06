@@ -1955,11 +1955,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.checkSizeValue();
-      console.log('FILE:::', this.image1); // if (this.productBrand == 'chooseBrand' || this.productType == 'chooseType' || this.gender == 'all' || !this.name || !this.price) {
-      // 	this.message = 'All Fields are required';
-      // 	this.error = true;
-      // 	return;
-      // } 
+
+      if (this.productBrand == 'chooseBrand' || this.productType == 'chooseType' || this.gender == 'all' || !this.name || !this.price) {
+        this.message = 'All Fields are required';
+        this.error = true;
+        return;
+      }
 
       var formData = new FormData();
       formData.append('name', this.name);
@@ -1981,8 +1982,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('size_46', this.size_46);
       formData.append('size_47', this.size_47);
       formData.append('size_48', this.size_48);
-      formData.append('size_49', this.size_49); // Attach file type='image2' id='image2'a
-
+      formData.append('size_49', this.size_49);
       formData.append('image1', this.image1);
       formData.append('image2', this.image2);
       formData.append('image3', this.image3);
@@ -2077,6 +2077,69 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2121,72 +2184,112 @@ __webpack_require__.r(__webpack_exports__);
     return {
       singleProduct: '',
       singleProductSizes: [],
-      openModal: false
+      openModal: false,
+      image1: '',
+      image2: '',
+      image3: '',
+      image4: '',
+      image5: '',
+      brands: '',
+      categories: ''
     };
   },
-  methods: {
-    closeModal: function closeModal() {
+  mounted: function mounted() {
+    this.getData();
+  },
+  methods: _defineProperty({
+    getData: function getData() {
       var _this = this;
+
+      axios.all([axios.get('/api/brands'), axios.get('/api/types')]).then(axios.spread(function (brandsRes, typesRes) {
+        _this.brands = brandsRes.data;
+        _this.categories = typesRes.data;
+      }));
+    },
+    uploadImage: function uploadImage() {},
+    closeModal: function closeModal() {
+      var _this2 = this;
 
       this.singleProduct = [];
       this.singleProductSizes = [];
       this.$nextTick(function () {
-        _this.openModal = false;
+        _this2.openModal = false;
       });
     },
     editProduct: function editProduct() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.$nextTick(function () {
-        _this2.singleProductSizes.push({
+        _this3.singleProductSizes.push({
           number: 35,
-          state: _this2.singleProduct.size_35
+          state: _this3.singleProduct.size_35
         }, {
           number: 36,
-          state: _this2.singleProduct.size_36
+          state: _this3.singleProduct.size_36
         }, {
           number: 37,
-          state: _this2.singleProduct.size_37
+          state: _this3.singleProduct.size_37
         }, {
           number: 38,
-          state: _this2.singleProduct.size_38
+          state: _this3.singleProduct.size_38
         }, {
           number: 39,
-          state: _this2.singleProduct.size_39
+          state: _this3.singleProduct.size_39
         }, {
           number: 40,
-          state: _this2.singleProduct.size_40
+          state: _this3.singleProduct.size_40
         }, {
           number: 41,
-          state: _this2.singleProduct.size_41
+          state: _this3.singleProduct.size_41
         }, {
           number: 42,
-          state: _this2.singleProduct.size_42
+          state: _this3.singleProduct.size_42
         }, {
           number: 43,
-          state: _this2.singleProduct.size_43
+          state: _this3.singleProduct.size_43
         }, {
           number: 44,
-          state: _this2.singleProduct.size_44
+          state: _this3.singleProduct.size_44
         }, {
           number: 45,
-          state: _this2.singleProduct.size_45
+          state: _this3.singleProduct.size_45
         }, {
           number: 46,
-          state: _this2.singleProduct.size_46
+          state: _this3.singleProduct.size_46
         }, {
           number: 47,
-          state: _this2.singleProduct.size_47
+          state: _this3.singleProduct.size_47
         }, {
           number: 48,
-          state: _this2.singleProduct.size_48
+          state: _this3.singleProduct.size_48
         }, {
           number: 49,
-          state: _this2.singleProduct.size_49
+          state: _this3.singleProduct.size_49
         });
       });
+    },
+    submitEdit: function submitEdit() {}
+  }, "uploadImage", function uploadImage(event) {
+    if (event.target.name == 'image1') {
+      this.image1 = this.$refs.image1.files[0];
     }
-  }
+
+    if (event.target.name == 'image2') {
+      this.image2 = this.$refs.image2.files[0];
+    }
+
+    if (event.target.name == 'image3') {
+      this.image3 = this.$refs.image3.files[0];
+    }
+
+    if (event.target.name == 'image4') {
+      this.image4 = this.$refs.image4.files[0];
+    }
+
+    if (event.target.name == 'image5') {
+      this.image5 = this.$refs.image5.files[0];
+    }
+  })
 });
 
 /***/ }),
@@ -2250,7 +2353,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       products: [],
-      brands: [],
       prices: [],
       table: [{
         cell: 'Image'
@@ -2277,11 +2379,9 @@ __webpack_require__.r(__webpack_exports__);
     getData: function getData() {
       var _this = this;
 
-      axios.all([axios.get('/api/brands'), axios.get('/api/types'), axios.get('/products')]).then(axios.spread(function (brandsRes, typesRes, productsRes) {
+      axios.get('/products').then(function (productsRes) {
         _this.products = productsRes.data;
-        _this.brands = brandsRes.data;
-        _this.categories = typesRes.data;
-      }));
+      });
     },
     editProduct: function editProduct(product) {
       var _this2 = this;
@@ -7551,7 +7651,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\nimg[data-v-9ea87ba2] {\n    \twidth: 40px;\n}\n#singleProductEdit[data-v-9ea87ba2] {\n    \tpadding: 40px 20px 0;\n    \tdisplay: -webkit-box;\n    \tdisplay: flex;\n    \t-webkit-box-pack: space-evenly;\n    \t        justify-content: space-evenly;\n}\n.d-grid[data-v-9ea87ba2] {\n\t\tdisplay: grid;\n}\n.singleProductCheckboxes[data-v-9ea87ba2] {\n    \tdisplay: grid;\n    \tgrid-template-columns: repeat(5,1fr);\n}\n.title[data-v-9ea87ba2] {\n    \tfont-size: 1.1rem;\n    \tfont-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\nimg[data-v-9ea87ba2] {\n    \twidth: 40px;\n}\n#singleProductEdit[data-v-9ea87ba2] {\n    \tpadding: 40px 20px 0;\n    \tdisplay: -webkit-box;\n    \tdisplay: flex;\n    \t-webkit-box-orient: vertical;\n    \t-webkit-box-direction: normal;\n    \t        flex-direction: column;\n}\n.singleProductRow[data-v-9ea87ba2] {\n\t\tdisplay: -webkit-box;\n\t\tdisplay: flex;\n\t    -webkit-box-pack: justify;\n\t            justify-content: space-between;\n\t    border-bottom: 1px solid #ccc;\n\t    padding: 15px;\n\t    font-size: 1rem;\n}\n.singleProductCheckboxes[data-v-9ea87ba2] {\n    \tdisplay: grid;\n    \tgrid-template-columns: repeat(8,1fr);\n    \tgrid-column-gap: 12px;\n}\n.title[data-v-9ea87ba2] {\n    \tfont-size: 1.1rem;\n    \tfont-weight: bold;\n}\ninput[type='checkbox'][data-v-9ea87ba2] {\n    \t-webkit-transform: scale(1.2);\n    \t        transform: scale(1.2);\n}\ninput[type='file'][data-v-9ea87ba2] {\n    \tdisplay: none;\n}\n.d-grid[data-v-9ea87ba2] {\n    \tdisplay: grid;\n    \tjustify-items: center;\n}\n.spaceX[data-v-9ea87ba2] {\n    \tmargin: 0 15px;\n}\n.fa-upload[data-v-9ea87ba2] {\n    \tcolor: gray;\n    \tcursor: pointer\n}\n#inputNumber div[data-v-9ea87ba2] {\n    \tz-index: 2;\n}\n#inputNumber input[data-v-9ea87ba2] {\n\t\tmargin-left: -2px;\n\t    border-left: none;\n\t    border-top-left-radius: 0;\n\t    border-bottom-left-radius: 0;\n}\n#editButton[data-v-9ea87ba2] {\n    \tmargin: 30px auto;\n}\n", ""]);
 
 // exports
 
@@ -7665,7 +7765,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#modalBackgound[data-v-824c3e70] {\n\tbackground: rgba(0,0,0,0.5);\n\tposition: fixed;\n\twidth: 100%;\n\theight: 100%;\n\ttop: 0;\n\tleft: 0;\n}\n#modalContent[data-v-824c3e70] {\n\twidth: 70vw;\n\theight: 60vh;\n\tbackground: #fff;\n\tborder: 2px solid #ccc;\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\t-webkit-transform: translate(-50%, -50%);\n\t        transform: translate(-50%, -50%);\n\tbox-shadow: 2px 2px 10px, -2px -2px 10px;\n}\n\n", ""]);
+exports.push([module.i, "\n#modalBackgound[data-v-824c3e70] {\n\tbackground: rgba(0,0,0,0.5);\n\tposition: fixed;\n\twidth: 100%;\n\theight: 100%;\n\ttop: 0;\n\tleft: 0;\n}\n#modalContent[data-v-824c3e70] {\n\twidth: 70vw;\n\tbackground: #fff;\n\tborder: 2px solid #ccc;\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\t-webkit-transform: translate(-50%, -50%);\n\t        transform: translate(-50%, -50%);\n\tbox-shadow: 2px 2px 10px, -2px -2px 10px;\n}\n\n", ""]);
 
 // exports
 
@@ -39853,9 +39953,9 @@ var render = function() {
                 [_vm._v("Choose Gender...")]
               ),
               _vm._v(" "),
-              _c("option", { attrs: { value: "men" } }, [_vm._v("Male")]),
+              _c("option", { attrs: { value: "men" } }, [_vm._v("Men")]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "women" } }, [_vm._v("Female")])
+              _c("option", { attrs: { value: "women" } }, [_vm._v("Women")])
             ]
           )
         ]),
@@ -40649,44 +40749,344 @@ var render = function() {
           "div",
           { staticClass: "container", attrs: { id: "singleProductEdit" } },
           [
-            _c("div", { staticClass: "d-grid" }, [
-              _c("span", { staticClass: "title" }, [_vm._v("Product Image")]),
+            _c("div", { staticClass: "singleProductRow" }, [
+              _c("span", { staticClass: "title" }, [_vm._v("Product Images")]),
               _vm._v(" "),
-              _c("img", {
-                attrs: {
-                  src: _vm.singleProduct.image1,
-                  alt: _vm.singleProduct.name
-                }
-              })
+              _c("div", { staticClass: "d-flex" }, [
+                _c("span", { staticClass: "d-grid spaceX" }, [
+                  _c("img", {
+                    attrs: {
+                      src: _vm.singleProduct.image1,
+                      alt: _vm.singleProduct.name
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "inputFile" }, [
+                    _c("i", {
+                      staticClass: "fas fa-upload",
+                      attrs: { title: "Upload Different Picture" }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      ref: "image1",
+                      attrs: { type: "file", name: "image1", id: "image1" },
+                      on: { change: _vm.uploadImage }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm.singleProduct.image2
+                  ? _c("span", { staticClass: "d-grid spaceX" }, [
+                      _c("img", {
+                        attrs: {
+                          src: _vm.singleProduct.image2,
+                          alt: _vm.singleProduct.name
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "inputFile" }, [
+                        _c("i", {
+                          staticClass: "fas fa-upload",
+                          attrs: { title: "Upload Different Picture" }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          ref: "image1",
+                          attrs: { type: "file", name: "image1", id: "image1" },
+                          on: { change: _vm.uploadImage }
+                        })
+                      ])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.singleProduct.image3
+                  ? _c("span", { staticClass: "d-grid spaceX" }, [
+                      _c("img", {
+                        attrs: {
+                          src: _vm.singleProduct.image3,
+                          alt: _vm.singleProduct.name
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "inputFile" }, [
+                        _c("i", {
+                          staticClass: "fas fa-upload",
+                          attrs: { title: "Upload Different Picture" }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          ref: "image1",
+                          attrs: { type: "file", name: "image1", id: "image1" },
+                          on: { change: _vm.uploadImage }
+                        })
+                      ])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.singleProduct.image4
+                  ? _c("span", { staticClass: "d-grid spaceX" }, [
+                      _c("img", {
+                        attrs: {
+                          src: _vm.singleProduct.image4,
+                          alt: _vm.singleProduct.name
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "inputFile" }, [
+                        _c("i", {
+                          staticClass: "fas fa-upload",
+                          attrs: { title: "Upload Different Picture" }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          ref: "image1",
+                          attrs: { type: "file", name: "image1", id: "image1" },
+                          on: { change: _vm.uploadImage }
+                        })
+                      ])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.singleProduct.image5
+                  ? _c("span", { staticClass: "d-grid spaceX" }, [
+                      _c("img", {
+                        attrs: {
+                          src: _vm.singleProduct.image5,
+                          alt: _vm.singleProduct.name
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "inputFile" }, [
+                        _c("i", {
+                          staticClass: "fas fa-upload",
+                          attrs: { title: "Upload Different Picture" }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          ref: "image1",
+                          attrs: { type: "file", name: "image1", id: "image1" },
+                          on: { change: _vm.uploadImage }
+                        })
+                      ])
+                    ])
+                  : _vm._e()
+              ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "d-grid" }, [
+            _c("div", { staticClass: "singleProductRow" }, [
               _c("span", { staticClass: "title" }, [_vm._v("Product Name")]),
               _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(_vm.singleProduct.name))])
+              _c("span", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.singleProduct.name,
+                      expression: "singleProduct.name"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.singleProduct.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.singleProduct, "name", $event.target.value)
+                    }
+                  }
+                })
+              ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "d-grid" }, [
+            _c("div", { staticClass: "singleProductRow" }, [
               _c("span", { staticClass: "title" }, [_vm._v("Product Price")]),
               _vm._v(" "),
-              _c("span", [_vm._v("$" + _vm._s(_vm.singleProduct.price))])
+              _c(
+                "div",
+                { staticClass: "d-flex", attrs: { id: "inputNumber" } },
+                [
+                  _c("div", { staticClass: "input-group-prepend" }, [
+                    _c("span", { staticClass: "input-group-text" }, [
+                      _vm._v("$")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.singleProduct.price,
+                        expression: "singleProduct.price"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "number" },
+                    domProps: { value: _vm.singleProduct.price },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.singleProduct,
+                          "price",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]
+              )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "d-grid" }, [
+            _c("div", { staticClass: "singleProductRow" }, [
               _c("span", { staticClass: "title" }, [
                 _vm._v("Product Category")
               ]),
               _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(_vm.singleProduct.category))])
+              _c("span", [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.singleProduct.category,
+                        expression: "singleProduct.category"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.singleProduct,
+                          "category",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  _vm._l(_vm.categories, function(category) {
+                    return _c(
+                      "option",
+                      { domProps: { value: category.name } },
+                      [_vm._v(_vm._s(category.name))]
+                    )
+                  }),
+                  0
+                )
+              ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "d-grid" }, [
+            _c("div", { staticClass: "singleProductRow" }, [
+              _c("span", { staticClass: "title" }, [_vm._v("Product Brand")]),
+              _vm._v(" "),
+              _c("span", [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.singleProduct.brand,
+                        expression: "singleProduct.brand"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.singleProduct,
+                          "brand",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  _vm._l(_vm.brands, function(brand) {
+                    return _c("option", { domProps: { value: brand.name } }, [
+                      _vm._v(_vm._s(brand.name))
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "singleProductRow" }, [
               _c("span", { staticClass: "title" }, [_vm._v("Product Gender")]),
               _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(_vm.singleProduct.gender))])
+              _c("span", [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.singleProduct.gender,
+                        expression: "singleProduct.gender"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.singleProduct,
+                          "gender",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "men" } }, [_vm._v("Men")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "women" } }, [
+                      _vm._v("Women")
+                    ])
+                  ]
+                )
+              ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "d-grid" }, [
+            _c("div", { staticClass: "singleProductRow" }, [
               _c("span", { staticClass: "title" }, [_vm._v("Sizes")]),
               _vm._v(" "),
               _c(
@@ -40745,7 +41145,21 @@ var render = function() {
                 }),
                 0
               )
-            ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary w-50",
+                attrs: { id: "editButton" },
+                on: {
+                  click: function($event) {
+                    return _vm.submitEdit()
+                  }
+                }
+              },
+              [_vm._v("Edit Product")]
+            )
           ]
         )
       ])

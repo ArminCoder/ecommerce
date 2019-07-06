@@ -49,7 +49,6 @@
 		data() {
 			return {
 				products: [],
-				brands: [],
 				prices: [],
 				table: [
 					{ cell: 'Image' },
@@ -68,16 +67,10 @@
 		},
 		methods: {
 			getData() {
-				axios.all([
-				    axios.get('/api/brands'),
-				    axios.get('/api/types'),
-				    axios.get('/products'),
-			    ])
-				.then(axios.spread((brandsRes, typesRes, productsRes) => {
+				 axios.get('/products')
+				.then((productsRes) => {
 				  	this.products = productsRes.data;
-				    this.brands = brandsRes.data;
-				    this.categories = typesRes.data;
-				}));
+				});
 			},
 			editProduct(product) {
 		  		this.$refs.editProduct.openModal = true;

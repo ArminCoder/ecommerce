@@ -27,7 +27,6 @@ export default {
 	}
 	#modalContent {
 		width: 70vw;
-		height: 60vh;
 		background: #fff;
 		border: 2px solid #ccc;
 		position: absolute;
