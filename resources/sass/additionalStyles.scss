@@ -5,4 +5,7 @@ div #primaryDropdownMenu { display: none; position: absolute; margin-right: -45p
 #secondaryNavbar { background: #fff; position: fixed; width: 100%; z-index: 3; }
 .secondaryNavLink { padding: 7px 0 0; }
 .secondaryNavLink:hover { border-bottom: 2px solid #000; }
-#userImage { width: 20px; }
+
+#userImage { width: 23px; padding: 2px; border-radius: 50%; background: rgb(242, 242, 242); }
+
+#closeModal { position: fixed; z-index: 10; top: 1vh; right: 1vw; font-size: 20px; color: #000; cursor: pointer; font-weight: bold; }

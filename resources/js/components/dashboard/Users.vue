@@ -37,7 +37,6 @@ export default {
 		getUsers() {
 			axios.get('/api/users')
 			.then((res) => {
-				console.log(res);
 				this.users = res.data;
 			})
 		}
