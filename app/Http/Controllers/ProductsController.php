@@ -78,7 +78,6 @@ class ProductsController extends Controller
         if ($request->hasFile('image1')) 
         {
            $image1Name = $request->file('image1')->getClientOriginalName(); 
-           // dd($request->file('image1')->move(base_path().'/public/img/products', $image1Name));
            $image1Path = $request->file('image1')->storeAs('public/img/products', $image1Name);
            $image1Path = '/img/products/' . $image1Name;
 
@@ -123,11 +122,10 @@ class ProductsController extends Controller
         {
             $image5Path = '';
         }    
-
         $product = new Product([
         	'name' => $request->name,
         	'price' => $request->price,
-        	'category' => $request->category,
+        	'type' => $request->category,
         	'brand' => $request->brand,
         	'gender' => $request->gender,
             'size_35' => $request->size_35,
@@ -171,7 +169,6 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -183,7 +180,9 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product =  Product::where('id', $id)->get();
+        
+        $product->destroy();
     }
 
     /**

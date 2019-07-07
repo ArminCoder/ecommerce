@@ -80,6 +80,15 @@
 		  		});
 			},
 			deleteProduct(product) {
+				axios.post('/products/' + product.id)
+		            .then((response) => {
+
+		              console.log(response);    
+		      
+		            })
+		            .catch(function(error){
+		              console.log(error);
+		            });
 				console.log('DELETE:::',product);
 			},
 			
@@ -112,6 +121,7 @@
     	background: #f2f2f2;
     	font-size: 14px;
     	padding: 5px;
+    	border-bottom: 1px solid #ccc;
     }
     .sizeTableCell {
     	width: 110px;

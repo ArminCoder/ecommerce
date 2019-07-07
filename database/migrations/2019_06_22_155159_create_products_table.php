@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('name');
-            $table->string('category')->default('Running');
+            $table->string('type')->default('Running');
             $table->integer('price');
             $table->string('gender')->default('male');                        
             $table->string('brand')->default('Other');                                             
