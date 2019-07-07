@@ -61,6 +61,7 @@
 			 	}
 			 	}).then((res) => {
 					this.products = res.data;
+					console.log('PRODUCTS:::', this.products);
 				})
 			},
 			changeImg(product , event) {

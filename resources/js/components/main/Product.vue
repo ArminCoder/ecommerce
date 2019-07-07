@@ -5,7 +5,7 @@
 			<!-- <a  href="/products" class="fas fa-arrow-circle-left fa-2x" title="Back To Products"> </a> -->
 			 <router-link id="backToProducts" title='Back To Products' to="/"><span class="fas fa-arrow-circle-left fa-2x"></span></router-link>
 			<div class="row">
-				<div class="col-9">
+				<div id="mainImageHolder" class="col-9">
 					<img id="mainImage" :src="product.image1" alt="product.name">
 				</div>
 				<div class="col-3">
@@ -159,6 +159,12 @@
 </script>
 
 <style scoped>
+	#mainImageHolder {
+		text-align: center;
+	}
+	#mainImage {
+		width: 70%;
+	}
 	.d-flex {
 		justify-content: space-between;
 	}
