@@ -7776,7 +7776,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#createNewProduct[data-v-4e6b28aa] {\n\t\tposition: absolute;\n    \tright: 1vw;\n}\nimg[data-v-4e6b28aa] {\n    \twidth: 40px;\n}\ntable[data-v-4e6b28aa] {\n    \tmargin-top: 80px;\n    \twidth: 100%;\n\t\tborder: 1px solid #ccc;\n}\n.tableHead[data-v-4e6b28aa] {\n    \tfont-size: 15px;\n    \ttext-transform: capitalize;\n    \tbackground: #ccc;\n    \tcolor: #fff;\n    \tfont-weight: bold;\n    \ttext-shadow: 1px 1px 1px black;\n}\n.tableRow[data-v-4e6b28aa] {\n    \tbackground: #f2f2f2;\n    \tfont-size: 14px;\n    \tpadding: 5px;\n    \tborder-bottom: 1px solid #ccc;\n    \theight: 70px;\n}\n.sizeTableCell[data-v-4e6b28aa] {\n    \twidth: 110px;\n    \tdisplay: grid;\n    \tgrid-template-columns: repeat(5,1fr);\n    \theight: 70px;\n    \t-webkit-box-align: center;\n    \t        align-items: center;\n}\n.tools[data-v-4e6b28aa] {\n    \tposition: absolute;\n    \tright: 2vw;\n    \tmargin-top: -45px;\n}\n.fas[data-v-4e6b28aa] {\n    \tcursor: pointer;\n}\n#singleProductEdit[data-v-4e6b28aa] {\n    \tpadding: 40px 20px 0;\n    \tdisplay: -webkit-box;\n    \tdisplay: flex;\n    \t-webkit-box-pack: space-evenly;\n    \t        justify-content: space-evenly;\n}\n.d-grid[data-v-4e6b28aa] {\n\t\tdisplay: grid;\n}\n.singleProductCheckboxes[data-v-4e6b28aa] {\n    \tdisplay: grid;\n    \tgrid-template-columns: repeat(5,1fr);\n}\n.title[data-v-4e6b28aa] {\n    \tfont-size: 1.1rem;\n    \tfont-weight: bold;\n}\n    \n", ""]);
+exports.push([module.i, "\n#createNewProduct[data-v-4e6b28aa] {\n\t\tposition: absolute;\n    \tright: 1vw;\n}\nimg[data-v-4e6b28aa] {\n    \twidth: 40px;\n}\ntable[data-v-4e6b28aa] {\n    \tmargin-top: 80px;\n    \twidth: 100%;\n\t\tborder: 1px solid #ccc;\n}\n.tableHead[data-v-4e6b28aa] {\n    \tfont-size: 15px;\n    \ttext-transform: capitalize;\n    \tbackground: #ccc;\n    \tcolor: #fff;\n    \tfont-weight: bold;\n    \ttext-shadow: 1px 1px 1px black;\n}\n.tableRow[data-v-4e6b28aa] {\n    \tbackground: #f2f2f2;\n    \tfont-size: 14px;\n    \tpadding: 5px;\n    \tborder-bottom: 1px solid #ccc;\n    \theight: 70px;\n}\n.tableHeadCell[data-v-4e6b28aa]:nth-child(1) {\n \t\ttext-align: center;\n}\n.sizeTableCell[data-v-4e6b28aa] {\n    \twidth: 110px;\n    \tdisplay: grid;\n    \tgrid-template-columns: repeat(5,1fr);\n    \theight: 70px;\n    \t-webkit-box-align: center;\n    \t        align-items: center;\n}\n.tools[data-v-4e6b28aa] {\n    \tposition: absolute;\n    \tright: 2vw;\n    \tmargin-top: -45px;\n}\n.fas[data-v-4e6b28aa] {\n    \tcursor: pointer;\n}\n#singleProductEdit[data-v-4e6b28aa] {\n    \tpadding: 40px 20px 0;\n    \tdisplay: -webkit-box;\n    \tdisplay: flex;\n    \t-webkit-box-pack: space-evenly;\n    \t        justify-content: space-evenly;\n}\n.d-grid[data-v-4e6b28aa] {\n\t\tdisplay: grid;\n}\n.singleProductCheckboxes[data-v-4e6b28aa] {\n    \tdisplay: grid;\n    \tgrid-template-columns: repeat(5,1fr);\n}\n.title[data-v-4e6b28aa] {\n    \tfont-size: 1.1rem;\n    \tfont-weight: bold;\n}\n    \n", ""]);
 
 // exports
 
@@ -41335,14 +41335,16 @@ var render = function() {
                   "tr",
                   { staticClass: "tableHead" },
                   _vm._l(_vm.table, function(row) {
-                    return _c("th", [_vm._v(_vm._s(row.cell))])
+                    return _c("th", { staticClass: "tableHeadCell" }, [
+                      _vm._v(_vm._s(row.cell))
+                    ])
                   }),
                   0
                 ),
                 _vm._v(" "),
                 _vm._l(_vm.products, function(product) {
                   return _c("tr", { staticClass: "tableRow" }, [
-                    _c("td", [
+                    _c("td", { staticClass: "text-center" }, [
                       _c("img", {
                         attrs: { src: product.image1, alt: product.name }
                       })

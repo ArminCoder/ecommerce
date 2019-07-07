@@ -7,10 +7,10 @@
 		<div v-if='!rerendered'>
 			<table>
 				  <tr class="tableHead">
-				   	    <th v-for='row in table'>{{ row.cell }}</th>
+				   	    <th class="tableHeadCell" v-for='row in table'>{{ row.cell }}</th>
 				  </tr>
 				  <tr class="tableRow" v-for='product in products'>
-				    	<td><img :src="product.image1" :alt="product.name"></td>
+				    	<td class="text-center"><img :src="product.image1" :alt="product.name"></td>
 				    	<td>{{ product.name }}</td>
 				    	<td>${{ product.price }}</td>
 				    	<td>{{ product.brand }}</td>
@@ -137,6 +137,10 @@
     	border-bottom: 1px solid #ccc;
     	height: 70px;
     }
+ 	.tableHeadCell:nth-child(1) {
+ 		text-align: center;
+ 	}
+
     .sizeTableCell {
     	width: 110px;
     	display: grid;
