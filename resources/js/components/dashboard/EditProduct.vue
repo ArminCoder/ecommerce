@@ -12,29 +12,33 @@
 								<input @change='uploadImage' type="file" name="image1" ref='image1' id="image1">
 							</label>	
 		    			</span>
-						<span class="d-grid spaceX" v-if='singleProduct.image2'>
-		    				<img :src="singleProduct.image2" :alt="singleProduct.name">
+						<span class="d-grid spaceX">
+		    				<img v-if='singleProduct.image2' :src="singleProduct.image2" :alt="singleProduct.name">
+		    				<img v-else src="/img/no-image.png" alt="No Image">
 							<label class="inputFile">
 								<i class="fas fa-upload" title='Upload Different Picture'></i>
 								<input @change='uploadImage' type="file" name="image1" ref='image1' id="image1">
 							</label>	
 		    			</span>
-						<span class="d-grid spaceX" v-if='singleProduct.image3'>
-		    				<img :src="singleProduct.image3" :alt="singleProduct.name">
+						<span class="d-grid spaceX">
+		    				<img v-if='singleProduct.image3' :src="singleProduct.image3" :alt="singleProduct.name">
+		    				<img v-else src="/img/no-image.png" alt="No Image">
 							<label class="inputFile">
 								<i class="fas fa-upload" title='Upload Different Picture'></i>
 								<input @change='uploadImage' type="file" name="image1" ref='image1' id="image1">
 							</label>	
 		    			</span>
-						<span class="d-grid spaceX" v-if='singleProduct.image4'>
-		    				<img :src="singleProduct.image4" :alt="singleProduct.name">
+						<span class="d-grid spaceX">
+		    				<img v-if='singleProduct.image4' :src="singleProduct.image4" :alt="singleProduct.name">
+		    				<img v-else src="/img/no-image.png" alt="No Image">
 							<label class="inputFile">
 								<i class="fas fa-upload" title='Upload Different Picture'></i>
 								<input @change='uploadImage' type="file" name="image1" ref='image1' id="image1">
 							</label>	
 		    			</span>
-						<span class="d-grid spaceX" v-if='singleProduct.image5'>
-		    				<img :src="singleProduct.image5" :alt="singleProduct.name">
+						<span class="d-grid spaceX">
+		    				<img v-if='singleProduct.image5' :src="singleProduct.image5" :alt="singleProduct.name">
+		    				<img v-else src="/img/no-image.png" alt="No Image">
 							<label class="inputFile">
 								<i class="fas fa-upload" title='Upload Different Picture'></i>
 								<input @change='uploadImage' type="file" name="image1" ref='image1' id="image1">
@@ -60,7 +64,7 @@
 				<div class="singleProductRow">
 					<span class="title">Product Category</span> 
 					<span>
-						<select class="form-control" v-model='singleProduct.category'>
+						<select class="form-control" v-model='singleProduct.type'>
 							<option v-for='category in categories' :value="category.name">{{ category.name }}</option>
 						</select>	
 					</span>
@@ -160,7 +164,11 @@ export default {
   		})
 	},
 	submitEdit() {
-
+		let data = this.singleProduct;
+		axios.put('/products/' + this.singleProduct.id, data)
+			.then((res) => {
+				console.log(res);
+			})
 	},
 	uploadImage(event) {
 		if(event.target.name == 'image1') {

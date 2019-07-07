@@ -2214,6 +2214,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2303,7 +2307,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       });
     },
-    submitEdit: function submitEdit() {}
+    submitEdit: function submitEdit() {
+      var data = this.singleProduct;
+      axios.put('/products/' + this.singleProduct.id, data).then(function (res) {
+        console.log(res);
+      });
+    }
   }, "uploadImage", function uploadImage(event) {
     if (event.target.name == 'image1') {
       this.image1 = this.$refs.image1.files[0];
@@ -40844,101 +40853,109 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm.singleProduct.image2
-                  ? _c("span", { staticClass: "d-grid spaceX" }, [
-                      _c("img", {
+                _c("span", { staticClass: "d-grid spaceX" }, [
+                  _vm.singleProduct.image2
+                    ? _c("img", {
                         attrs: {
                           src: _vm.singleProduct.image2,
                           alt: _vm.singleProduct.name
                         }
+                      })
+                    : _c("img", {
+                        attrs: { src: "/img/no-image.png", alt: "No Image" }
                       }),
-                      _vm._v(" "),
-                      _c("label", { staticClass: "inputFile" }, [
-                        _c("i", {
-                          staticClass: "fas fa-upload",
-                          attrs: { title: "Upload Different Picture" }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          ref: "image1",
-                          attrs: { type: "file", name: "image1", id: "image1" },
-                          on: { change: _vm.uploadImage }
-                        })
-                      ])
-                    ])
-                  : _vm._e(),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "inputFile" }, [
+                    _c("i", {
+                      staticClass: "fas fa-upload",
+                      attrs: { title: "Upload Different Picture" }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      ref: "image1",
+                      attrs: { type: "file", name: "image1", id: "image1" },
+                      on: { change: _vm.uploadImage }
+                    })
+                  ])
+                ]),
                 _vm._v(" "),
-                _vm.singleProduct.image3
-                  ? _c("span", { staticClass: "d-grid spaceX" }, [
-                      _c("img", {
+                _c("span", { staticClass: "d-grid spaceX" }, [
+                  _vm.singleProduct.image3
+                    ? _c("img", {
                         attrs: {
                           src: _vm.singleProduct.image3,
                           alt: _vm.singleProduct.name
                         }
+                      })
+                    : _c("img", {
+                        attrs: { src: "/img/no-image.png", alt: "No Image" }
                       }),
-                      _vm._v(" "),
-                      _c("label", { staticClass: "inputFile" }, [
-                        _c("i", {
-                          staticClass: "fas fa-upload",
-                          attrs: { title: "Upload Different Picture" }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          ref: "image1",
-                          attrs: { type: "file", name: "image1", id: "image1" },
-                          on: { change: _vm.uploadImage }
-                        })
-                      ])
-                    ])
-                  : _vm._e(),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "inputFile" }, [
+                    _c("i", {
+                      staticClass: "fas fa-upload",
+                      attrs: { title: "Upload Different Picture" }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      ref: "image1",
+                      attrs: { type: "file", name: "image1", id: "image1" },
+                      on: { change: _vm.uploadImage }
+                    })
+                  ])
+                ]),
                 _vm._v(" "),
-                _vm.singleProduct.image4
-                  ? _c("span", { staticClass: "d-grid spaceX" }, [
-                      _c("img", {
+                _c("span", { staticClass: "d-grid spaceX" }, [
+                  _vm.singleProduct.image4
+                    ? _c("img", {
                         attrs: {
                           src: _vm.singleProduct.image4,
                           alt: _vm.singleProduct.name
                         }
+                      })
+                    : _c("img", {
+                        attrs: { src: "/img/no-image.png", alt: "No Image" }
                       }),
-                      _vm._v(" "),
-                      _c("label", { staticClass: "inputFile" }, [
-                        _c("i", {
-                          staticClass: "fas fa-upload",
-                          attrs: { title: "Upload Different Picture" }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          ref: "image1",
-                          attrs: { type: "file", name: "image1", id: "image1" },
-                          on: { change: _vm.uploadImage }
-                        })
-                      ])
-                    ])
-                  : _vm._e(),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "inputFile" }, [
+                    _c("i", {
+                      staticClass: "fas fa-upload",
+                      attrs: { title: "Upload Different Picture" }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      ref: "image1",
+                      attrs: { type: "file", name: "image1", id: "image1" },
+                      on: { change: _vm.uploadImage }
+                    })
+                  ])
+                ]),
                 _vm._v(" "),
-                _vm.singleProduct.image5
-                  ? _c("span", { staticClass: "d-grid spaceX" }, [
-                      _c("img", {
+                _c("span", { staticClass: "d-grid spaceX" }, [
+                  _vm.singleProduct.image5
+                    ? _c("img", {
                         attrs: {
                           src: _vm.singleProduct.image5,
                           alt: _vm.singleProduct.name
                         }
+                      })
+                    : _c("img", {
+                        attrs: { src: "/img/no-image.png", alt: "No Image" }
                       }),
-                      _vm._v(" "),
-                      _c("label", { staticClass: "inputFile" }, [
-                        _c("i", {
-                          staticClass: "fas fa-upload",
-                          attrs: { title: "Upload Different Picture" }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          ref: "image1",
-                          attrs: { type: "file", name: "image1", id: "image1" },
-                          on: { change: _vm.uploadImage }
-                        })
-                      ])
-                    ])
-                  : _vm._e()
+                  _vm._v(" "),
+                  _c("label", { staticClass: "inputFile" }, [
+                    _c("i", {
+                      staticClass: "fas fa-upload",
+                      attrs: { title: "Upload Different Picture" }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      ref: "image1",
+                      attrs: { type: "file", name: "image1", id: "image1" },
+                      on: { change: _vm.uploadImage }
+                    })
+                  ])
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -41025,8 +41042,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.singleProduct.category,
-                        expression: "singleProduct.category"
+                        value: _vm.singleProduct.type,
+                        expression: "singleProduct.type"
                       }
                     ],
                     staticClass: "form-control",
@@ -41042,7 +41059,7 @@ var render = function() {
                           })
                         _vm.$set(
                           _vm.singleProduct,
-                          "category",
+                          "type",
                           $event.target.multiple
                             ? $$selectedVal
                             : $$selectedVal[0]
@@ -41291,7 +41308,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(product.brand))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(product.category))]),
+                    _c("td", [_vm._v(_vm._s(product.type))]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(product.gender))]),
                     _vm._v(" "),

@@ -14,7 +14,7 @@
 				    	<td>{{ product.name }}</td>
 				    	<td>${{ product.price }}</td>
 				    	<td>{{ product.brand }}</td>
-				    	<td>{{ product.category }}</td>
+				    	<td>{{ product.type }}</td>
 				    	<td>{{ product.gender }}</td>
 				    	<td class="sizeTableCell">
 							<span v-if='product.size_35'>{{ 35 }}</span>
