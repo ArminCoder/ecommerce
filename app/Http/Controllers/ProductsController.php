@@ -180,9 +180,7 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product =  Product::where('id', $id)->get();
-        
-        $product->destroy();
+        dd('EDIT PRODUCT');
     }
 
     /**
@@ -193,6 +191,10 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product =  Product::all();
+
+        $productToDelete = $product->where('id', $id)->each->delete();
+
+        return response()->json( ['message' => 'Product Deleted!']);
     }
 }

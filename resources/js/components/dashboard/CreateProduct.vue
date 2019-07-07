@@ -1,5 +1,5 @@
 <template>
-		<form v-cloak class="form-group mt-4">
+		<form v-if='!rerendered' v-cloak class="form-group mt-4">
 			<div class="row">
 				<div class="col-12 mt-3">
 					<input class="form-control" type="text" v-model='name' placeholder="Product name...">
@@ -156,6 +156,7 @@
 				image3: '',
 				image4: '',
 				image5: '',
+				rerendered: false
 			}
 		}, 
 		created() {
@@ -238,9 +239,14 @@
 				 			axiosConfig
 				)
 				.then((res) => {
-					console.log(res);
 					this.error = false;
 					this.message = res.data.message;
+					this.rerendered = true;
+					this.resetData();
+					setTimeout(() => {
+						this.rerendered = false;
+						console.log('set timeout', this.rerendered);
+					}, 500);
 				})
 				.catch((error) => {
 					console.log(error.response);
@@ -273,6 +279,33 @@
 				this.size_47 ? this.size_47 = 1 : this.size_47 = 0;
 				this.size_48 ? this.size_48 = 1 : this.size_48 = 0;
 				this.size_49 ? this.size_49 = 1 : this.size_49 = 0;
+			},
+			resetData() {
+				 this.name = '';
+				 this.price = '';
+				 this.productBrand = 'chooseBrand';
+				 this.gender = 'all';
+				 this.productType = 'chooseType';
+			     this.size_35 = '';
+			     this.size_36 = false;
+				 this.size_37 = false;
+				 this.size_38 = false;
+				 this.size_39 = false;
+				 this.size_40 = false;
+				 this.size_41 = false;
+				 this.size_42 = false;
+				 this.size_43 = false;
+				 this.size_44 = false;
+				 this.size_45 = false;
+				 this.size_46 = false;
+				 this.size_47 = false;
+				 this.size_48 = false;
+				 this.size_49 = false;
+			     this.image1 = ''; 
+				 this.image2 = '';
+				 this.image3 = '';
+				 this.image4 = '';
+				 this.image5 = '';
 			}
 		}
 	};

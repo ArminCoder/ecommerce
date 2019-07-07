@@ -4,7 +4,7 @@
 		<span>
 			<a id="createNewProduct" class="btn btn-dark text-white font-weight-bold" href="/dashboard/products/create">+ New product</a>
 		</span>
-		<div>
+		<div v-if='!rerendered'>
 			<table>
 				  <tr class="tableHead">
 				   	    <th v-for='row in table'>{{ row.cell }}</th>
@@ -40,6 +40,7 @@
 				  </tr>
 			</table>
 		</div>
+		<notify v-if='message' :message='message' :error='error' :success='success'></notify>
 		<editProduct ref='editProduct'></editProduct>
 	</div>
 </template>
@@ -60,6 +61,10 @@
 					{ cell: 'Available Sizes' },
 				],
 				sizes: [],
+				message: '',
+				success: false,
+				error: false,
+				rerendered: false
 			}
 		},
 		mounted() {
@@ -80,18 +85,26 @@
 		  		});
 			},
 			deleteProduct(product) {
-				axios.post('/products/' + product.id)
+				axios.delete('/products/' + product.id)
 		            .then((response) => {
-
-		              console.log(response);    
-		      
+		              if(response.status == 200) 
+		              {
+		              	  console.log('response', response);    
+		                  this.message = response.data.message;
+		                  this.rerendered = true;
+		                  this.success = true;
+		                  setTimeout(() => {
+		                  	this.rerendered = false;
+							this.getData();
+		                  }, 500);
+		              }
 		            })
-		            .catch(function(error){
-		              console.log(error);
+		            .catch(function(error) {
+		            	this.error = true;
+		            	this.message = 'Oops! Something went wrong, please try again.';
+		                console.log(error);
 		            });
-				console.log('DELETE:::',product);
 			},
-			
 		}
 	};
 </script>
@@ -122,11 +135,14 @@
     	font-size: 14px;
     	padding: 5px;
     	border-bottom: 1px solid #ccc;
+    	height: 70px;
     }
     .sizeTableCell {
     	width: 110px;
     	display: grid;
     	grid-template-columns: repeat(5,1fr);
+    	height: 70px;
+    	align-items: center;
     }
     .tools {
     	position: absolute;
