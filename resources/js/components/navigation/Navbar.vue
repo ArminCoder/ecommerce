@@ -34,7 +34,7 @@
 		    </ul>
 		    <form class="form-inline">
 		      <div class="md-form my-0">
-		        <input class="form-control mr-sm-4" type="text" placeholder="Search" aria-label="Search">
+		        <input @keyup='searchProducts' v-model='keyword' class="form-control mr-sm-4" type="text" placeholder="Search" aria-label="Search">
 		      </div>
 		    </form>
 		  </div>
@@ -45,8 +45,19 @@
 </template>
 
 <script>
+	import { eventBus } from '../../app.js';
+
 	export default {
+		data() {
+			return {
+				keyword: ''
+			}
+		},
 		methods: {
+			searchProducts() {
+				console.log('keyword data:::', this.keyword);
+				eventBus.$emit('search', this.keyword);
+			},
 			showMenProducts() {
 				console.log('TODO SHOW MEN SHOES');
 			},

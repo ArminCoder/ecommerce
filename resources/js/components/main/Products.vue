@@ -30,11 +30,16 @@
 				hoveredProduct: {
 					id: ''
 				},
-				productImage: ''
+				productImage: '',
+				keyword: '',
 			}
 		},
 		mounted() {
 			this.getProducts();	
+			eventBus.$on('search', (keyword) => {
+				this.keyword = keyword;
+				this.getProducts();
+			});	
 			eventBus.$on('event', (data) => {
 				this.pickedGender = data.pickedGender;
 				this.pickedCategory = data.pickedCategory;
@@ -57,7 +62,8 @@
 			    	type: this.pickedCategory,
 			    	gender: this.pickedGender,
 			    	brand: this.pickedBrand,
-			    	price: this.pickedPrice
+			    	price: this.pickedPrice,
+			    	keyword: this.keyword
 			 	}
 			 	}).then((res) => {
 					this.products = res.data;

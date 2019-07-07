@@ -27,10 +27,6 @@
 				<option selected value="all">All</option>
 				<option v-for='price in prices' :value="price.value">{{ price.name }}</option>
 			</select>
-			<!-- <span v-for='price in prices'>
-				<input @change='sendData' v-model='pickedPrice' type='checkbox' :value='price.value'>
-				<span class="option">{{ price.name }}</span>
-			</span> -->
 		</div>	
 	</div>
 </template>

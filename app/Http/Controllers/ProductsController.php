@@ -11,6 +11,8 @@ class ProductsController extends Controller
 {
 	public function index(Request $request)
 	{
+            $keyword = $request->keyword;
+
 			$products = Product::all();
 
 		    if ($request->type) {
@@ -39,6 +41,10 @@ class ProductsController extends Controller
 		        	$products = $products->where('price', '<=', $request->price);
 		    	}	
 		    }
+
+            if ($request->keyword) {
+                    $products = $products->where(strtolower('name'), strtolower($keyword));
+            }
 
 		    return $products;
 
@@ -181,7 +187,32 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd('EDIT PRODUCT');
+        // dd($request->product['name']);
+
+        $editedProduct = $request->product;
+        $sizes = $request->sizes;
+        dd('sizes', $sizes);
+
+        // $product =  Product::where('id', $id)->get();
+        $product =  Product::find($id);
+        dd($product->name);
+
+        $product->name = $editedProduct['name'];
+        $product->type = $editedProduct['type'];
+        $product->price = $editedProduct['price'];
+        $product->gender = $editedProduct['gender'];
+        $product->brand = $editedProduct['brand'];
+        $product->name = $editedProduct['name'];
+
+
+        /*
+              "image1" => "/img/products/Nike-Air-Max-Plus-Yellow.png"
+              "image2" => null
+              "image3" => null
+              "image4" => null
+              "image5" => null
+
+         */
     }
 
     /**

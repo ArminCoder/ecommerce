@@ -91,7 +91,7 @@
 					<div class="singleProductCheckboxes">
 						<span v-for='size in singleProductSizes'>
 							<label>
-								<input @change='updateSingleProductData(size)' v-model='size.state' type="checkbox">
+								<input v-model='size.state' type="checkbox">
 								{{ size.number }} 
 							</label>
 						</span>
@@ -165,7 +165,10 @@ export default {
 	},
 	submitEdit() {
 		let data = this.singleProduct;
-		axios.put('/products/' + this.singleProduct.id, data)
+		axios.put('/products/' + this.singleProduct.id, {
+			product: this.singleProduct,
+			sizes: this.singleProductSizes
+		})
 			.then((res) => {
 				console.log(res);
 			})
@@ -187,34 +190,6 @@ export default {
 			this.image5 = this.$refs.image5.files[0];
 		}
 	},
-	updateSingleProductData(size) {
-		let productKeys = Object.keys(this.singleProduct);
-		for(let i = 0; i < productKeys.length; i++) {
-			if(productKeys[i] == size.name) {
-				console.log('CHECK IF SAME:::', productKeys[i] , size.name);
-
-				console.log('product', this.singleProduct);
-			}
-		}
-		
-		// let object = this.singleProduct;
-		// function getKeyByValue(object, value) {
-		//    Object.keys(object).find((key) => {
-		//   		object[key] === value
-		//   		console.log(object[key])
-		//   	});
-
-		// }
-		
-
-		
-
-		// console.log(this.singleProduct);
-		// if(this.singleProduct.hasOwnProperty(size.name)) {
-		// 	console.log('CHeck Key:::',size.name, size.state);
-		// 	console.log('keys:::',Object.keys(this.singleProduct))
-		// }
-	}
   }
 };
 </script>
