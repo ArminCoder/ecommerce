@@ -91,7 +91,7 @@
 					<div class="singleProductCheckboxes">
 						<span v-for='size in singleProductSizes'>
 							<label>
-								<input v-model='size.state' type="checkbox">
+								<input @change='updateSingleProductData(size)' v-model='size.state' type="checkbox">
 								{{ size.number }} 
 							</label>
 						</span>
@@ -145,21 +145,21 @@ export default {
 	editProduct() {
   		this.$nextTick(() => {
   			this.singleProductSizes.push(
-  				{ number: 35, state : this.singleProduct.size_35 },
-  				{ number: 36, state : this.singleProduct.size_36 },
-  				{ number: 37, state : this.singleProduct.size_37 },
-  				{ number: 38, state : this.singleProduct.size_38 },
-  				{ number: 39, state : this.singleProduct.size_39 },
-  				{ number: 40, state : this.singleProduct.size_40 },
-  				{ number: 41, state : this.singleProduct.size_41 },
-  				{ number: 42, state : this.singleProduct.size_42 },
-  				{ number: 43, state : this.singleProduct.size_43 },
-  				{ number: 44, state : this.singleProduct.size_44 },
-  				{ number: 45, state : this.singleProduct.size_45 },
-  				{ number: 46, state : this.singleProduct.size_46 },
-  				{ number: 47, state : this.singleProduct.size_47 },
-  				{ number: 48, state : this.singleProduct.size_48 },
-  				{ number: 49, state : this.singleProduct.size_49 },
+  				{ name: 'size_35' , number: 35, state : this.singleProduct.size_35 },
+  				{ name: 'size_36' , number: 36, state : this.singleProduct.size_36 },
+  				{ name: 'size_37' , number: 37, state : this.singleProduct.size_37 },
+  				{ name: 'size_38' , number: 38, state : this.singleProduct.size_38 },
+  				{ name: 'size_39' , number: 39, state : this.singleProduct.size_39 },
+  				{ name: 'size_40' , number: 40, state : this.singleProduct.size_40 },
+  				{ name: 'size_41' , number: 41, state : this.singleProduct.size_41 },
+  				{ name: 'size_42' , number: 42, state : this.singleProduct.size_42 },
+  				{ name: 'size_43' , number: 43, state : this.singleProduct.size_43 },
+  				{ name: 'size_44' , number: 44, state : this.singleProduct.size_44 },
+  				{ name: 'size_45' , number: 45, state : this.singleProduct.size_45 },
+  				{ name: 'size_46' , number: 46, state : this.singleProduct.size_46 },
+  				{ name: 'size_47' , number: 47, state : this.singleProduct.size_47 },
+  				{ name: 'size_48' , number: 48, state : this.singleProduct.size_48 },
+  				{ name: 'size_49' , number: 49, state : this.singleProduct.size_49 },
   			);
   		})
 	},
@@ -186,6 +186,34 @@ export default {
 		if(event.target.name == 'image5') {
 			this.image5 = this.$refs.image5.files[0];
 		}
+	},
+	updateSingleProductData(size) {
+		let productKeys = Object.keys(this.singleProduct);
+		for(let i = 0; i < productKeys.length; i++) {
+			if(productKeys[i] == size.name) {
+				console.log('CHECK IF SAME:::', productKeys[i] , size.name);
+
+				console.log('product', this.singleProduct);
+			}
+		}
+		
+		// let object = this.singleProduct;
+		// function getKeyByValue(object, value) {
+		//    Object.keys(object).find((key) => {
+		//   		object[key] === value
+		//   		console.log(object[key])
+		//   	});
+
+		// }
+		
+
+		
+
+		// console.log(this.singleProduct);
+		// if(this.singleProduct.hasOwnProperty(size.name)) {
+		// 	console.log('CHeck Key:::',size.name, size.state);
+		// 	console.log('keys:::',Object.keys(this.singleProduct))
+		// }
 	}
   }
 };
