@@ -15,23 +15,16 @@ Route::get('/', function() {
 	return view('landing');
 });
 
-Route::get('/dashboard', function() {
-	return view('admin/dashboard');
-});
 
 Route::get('/dashboard', 'DashboardController@index');
-Route::get('/dashboard/main', function() {
-	return view('/admin/main');
-});
-Route::get('/dashboard/users', function() {
-	return view('/admin/user');
-});
-Route::get('/dashboard/products', function() {
-	return view('/admin/products');
-});
-Route::get('/dashboard/products/create', function() {
-	return view('/admin/create_product');
-});
+
+Route::get('/dashboard/main', 'DashboardController@index');
+
+Route::get('/dashboard/users', 'DashboardController@index');
+
+Route::get('/dashboard/products', 'DashboardController@index');
+
+Route::get('/dashboard/products/create', 'DashboardController@index');
 
 Route::resource('products', 'ProductsController');
 

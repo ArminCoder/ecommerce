@@ -1,5 +1,5 @@
 <template>
-		<form v-cloak class="form-group mt-4">
+		<form v-if='!rerendered' v-cloak class="form-group mt-4">
 			<div class="row">
 				<div class="col-12 mt-3">
 					<input class="form-control" type="text" v-model='name' placeholder="Product name...">
@@ -24,8 +24,8 @@
 				<div class="col-12 mt-3">
 					<select class="form-control" v-model='gender'>
 							<option value="all" selected disabled>Choose Gender...</option>
-							<option value="men">Male</option>
-							<option value="women">Female</option>
+							<option value="men">Men</option>
+							<option value="women">Women</option>
 					</select>
 				</div>	
 				<div class="col-12 mt-3">
@@ -156,6 +156,7 @@
 				image3: '',
 				image4: '',
 				image5: '',
+				rerendered: false
 			}
 		}, 
 		created() {
@@ -195,16 +196,12 @@
 			},
 			createProduct() {
 				this.checkSizeValue();
-				console.log('FILE:::', this.image1);
-
-				// if (this.productBrand == 'chooseBrand' || this.productType == 'chooseType' || this.gender == 'all' || !this.name || !this.price) {
-				// 	this.message = 'All Fields are required';
-				// 	this.error = true;
-				// 	return;
-				// } 
-
+				if (this.productBrand == 'chooseBrand' || this.productType == 'chooseType' || this.gender == 'all' || !this.name || !this.price) {
+					this.message = 'All Fields are required';
+					this.error = true;
+					return;
+				} 
 				let formData = new FormData();
-
 				formData.append('name', this.name);
 				formData.append('price', this.price);
 				formData.append('brand', this.productBrand);
@@ -225,30 +222,31 @@
 				formData.append('size_47', this.size_47);
 				formData.append('size_48', this.size_48);
 				formData.append('size_49', this.size_49);
-				
 
-				// Attach file type='image2' id='image2'a
 				formData.append('image1',  this.image1); 
 				formData.append('image2' , this.image2);
 				formData.append('image3' , this.image3);
 				formData.append('image4' , this.image4);
 				formData.append('image5' , this.image5);
 
-
 				let axiosConfig = {
 				     headers: {
 				         'Content-Type': 'application/json;multipart/form-data'
 				     }
 				}     	
-
 				axios.post( '/products',
 				 			formData,
 				 			axiosConfig
 				)
 				.then((res) => {
-					console.log(res);
 					this.error = false;
 					this.message = res.data.message;
+					this.rerendered = true;
+					this.resetData();
+					setTimeout(() => {
+						this.rerendered = false;
+						console.log('set timeout', this.rerendered);
+					}, 500);
 				})
 				.catch((error) => {
 					console.log(error.response);
@@ -281,12 +279,39 @@
 				this.size_47 ? this.size_47 = 1 : this.size_47 = 0;
 				this.size_48 ? this.size_48 = 1 : this.size_48 = 0;
 				this.size_49 ? this.size_49 = 1 : this.size_49 = 0;
+			},
+			resetData() {
+				 this.name = '';
+				 this.price = '';
+				 this.productBrand = 'chooseBrand';
+				 this.gender = 'all';
+				 this.productType = 'chooseType';
+			     this.size_35 = '';
+			     this.size_36 = false;
+				 this.size_37 = false;
+				 this.size_38 = false;
+				 this.size_39 = false;
+				 this.size_40 = false;
+				 this.size_41 = false;
+				 this.size_42 = false;
+				 this.size_43 = false;
+				 this.size_44 = false;
+				 this.size_45 = false;
+				 this.size_46 = false;
+				 this.size_47 = false;
+				 this.size_48 = false;
+				 this.size_49 = false;
+			     this.image1 = ''; 
+				 this.image2 = '';
+				 this.image3 = '';
+				 this.image4 = '';
+				 this.image5 = '';
 			}
 		}
 	};
 </script>
 
-<style scope>
+<style scoped>
 	.checkboxes {
 		display: grid;
 		grid-template-columns: repeat(8,1fr);

@@ -17,5 +17,6 @@
 body { background: #fff }
 [v-cloak] { display: none; }
 
-// dashboard
+// components
 @import './dashboard';
+@import './additionalStyles';

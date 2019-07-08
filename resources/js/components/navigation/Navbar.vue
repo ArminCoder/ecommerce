@@ -19,7 +19,8 @@
 		    <!-- Links -->
 		    <ul class="navbar-nav m-auto">
 	    	  <li class="nav-item">
-		        <a class="nav-link" href="/">All Products</a>
+		        <!-- <a class="nav-link" href="/">All Products</a> -->
+		        <router-link class='nav-link' to='/'>All Products</router-link>
 		      </li>
 		      <li @click='showMenProducts' class="nav-item">
 		        <a class="nav-link" href="#">Men</a>
@@ -33,10 +34,9 @@
 		    </ul>
 		    <form class="form-inline">
 		      <div class="md-form my-0">
-		        <input class="form-control mr-sm-4" type="text" placeholder="Search" aria-label="Search">
+		        <input @keyup='searchProducts' v-model='keyword' class="form-control mr-sm-4" type="text" placeholder="Search" aria-label="Search">
 		      </div>
 		    </form>
-		    <a class="fas fa-shopping-cart fa-2x"></a> 
 		  </div>
 		  <!-- Collapsible content -->
 		</nav>
@@ -45,8 +45,25 @@
 </template>
 
 <script>
+	import { eventBus } from '../../app.js';
+
 	export default {
+		data() {
+			return {
+				keyword: ''
+			}
+		},
+		mounted() {
+			eventBus.$on('event', () => {
+				this.keyword = '';
+			});
+
+		},
 		methods: {
+			searchProducts() {
+				console.log('keyword data:::', this.keyword);
+				eventBus.$emit('search', this.keyword);
+			},
 			showMenProducts() {
 				console.log('TODO SHOW MEN SHOES');
 			},
@@ -63,6 +80,7 @@
 		width: 100%;
 		background: #fff;
     	z-index: 2;
+    	margin-top: 29px;
 	}
 	#logoImg {
 		width: 140px;
@@ -70,12 +88,21 @@
 	.navbar-toggler {
 		background: black;
 	}
+	nav {
+		padding-top: 0;
+	}
+	form {
+		margin-top: 5px;
+	}
 	a.nav-link {
 		font-weight: 600;
 		text-transform: uppercase;
 		font-size: 1rem;
 		margin: 0 10px;
 		color: #0a0a0a !important;
+	}
+	a.nav-link:hover {
+		border-bottom: 2px solid black;
 	}
 	#auth {
 		margin: 0 10px 0 20px;

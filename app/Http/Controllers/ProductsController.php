@@ -11,7 +11,15 @@ class ProductsController extends Controller
 {
 	public function index(Request $request)
 	{
-			$products = Product::all();
+            $keyword = $request->keyword;
+            $type = $request->type;
+            $gender = $request->gender;
+            $brand = $request->brand;
+            $price = $request->price;
+
+
+
+			$products = Product::get();
 
 		    if ($request->type) {
 		        $products = $products->whereIn('type', $request->type);
@@ -40,9 +48,21 @@ class ProductsController extends Controller
 		    	}	
 		    }
 
-		    return $products;
+            if ($keyword) {
+                    // $products = $products->where(strtolower('name'), strtolower($keyword));
 
-		return response()->json($products);
+                // TODO: make this filter work together with other filters
+                   $products = Product::where('name', 'LIKE', '%' . $keyword . '%')
+                                        ->orWhere('brand', 'LIKE', '%' . $keyword .'%')
+                                        ->orWhere('name', 'LIKE', '%' . $keyword .'%')
+                                        ->orWhere('gender', 'LIKE', '%' . $keyword .'%')
+                                        ->orWhere('type', 'LIKE', '%' . $keyword .'%')
+                                        ->get();
+            }
+
+		    return response()->json($products);
+
+		 
 	}
 	
 	public function show(Product $product)
@@ -78,7 +98,6 @@ class ProductsController extends Controller
         if ($request->hasFile('image1')) 
         {
            $image1Name = $request->file('image1')->getClientOriginalName(); 
-           // dd($request->file('image1')->move(base_path().'/public/img/products', $image1Name));
            $image1Path = $request->file('image1')->storeAs('public/img/products', $image1Name);
            $image1Path = '/img/products/' . $image1Name;
 
@@ -123,11 +142,10 @@ class ProductsController extends Controller
         {
             $image5Path = '';
         }    
-
         $product = new Product([
         	'name' => $request->name,
         	'price' => $request->price,
-        	'category' => $request->category,
+        	'type' => $request->category,
         	'brand' => $request->brand,
         	'gender' => $request->gender,
             'size_35' => $request->size_35,
@@ -171,7 +189,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        // 
     }
 
     /**
@@ -183,7 +201,32 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->product['name']);
+
+        $editedProduct = $request->product;
+        $sizes = $request->sizes;
+        dd('sizes', $sizes);
+
+        // $product =  Product::where('id', $id)->get();
+        $product =  Product::find($id);
+        dd($product->name);
+
+        $product->name = $editedProduct['name'];
+        $product->type = $editedProduct['type'];
+        $product->price = $editedProduct['price'];
+        $product->gender = $editedProduct['gender'];
+        $product->brand = $editedProduct['brand'];
+        $product->name = $editedProduct['name'];
+
+
+        /*
+              "image1" => "/img/products/Nike-Air-Max-Plus-Yellow.png"
+              "image2" => null
+              "image3" => null
+              "image4" => null
+              "image5" => null
+
+         */
     }
 
     /**
@@ -194,6 +237,10 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product =  Product::all();
+
+        $productToDelete = $product->where('id', $id)->each->delete();
+
+        return response()->json( ['message' => 'Product Deleted!']);
     }
 }

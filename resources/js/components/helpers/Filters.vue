@@ -27,10 +27,6 @@
 				<option selected value="all">All</option>
 				<option v-for='price in prices' :value="price.value">{{ price.name }}</option>
 			</select>
-			<!-- <span v-for='price in prices'>
-				<input @change='sendData' v-model='pickedPrice' type='checkbox' :value='price.value'>
-				<span class="option">{{ price.name }}</span>
-			</span> -->
 		</div>	
 	</div>
 </template>
@@ -55,10 +51,16 @@
 			}
 		},
 		mounted() {
-			this.getBrands();
+			this.getData();
+			eventBus.$on('search', () => {
+				this.pickedCategory = [];
+				this.pickedGender = [];
+				this.pickedBrand = [];
+				this.pickedPrice = 'all';
+			});	
 		},
 		methods: {
-			getBrands() {
+			getData() {
 				axios.all([
 				    axios.get('/api/brands'),
 				    axios.get('/api/types'),
@@ -72,6 +74,9 @@
 				  }));
 			},
 			sendData() {
+				if(this.pickedPrice == 'all') {
+					this.pickedPrice = '';
+				}
 				let data = { 
 					pickedGender: this.pickedGender,
 					pickedCategory: this.pickedCategory,

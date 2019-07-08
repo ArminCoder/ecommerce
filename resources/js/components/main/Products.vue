@@ -30,12 +30,22 @@
 				hoveredProduct: {
 					id: ''
 				},
-				productImage: ''
+				productImage: '',
+				keyword: '',
 			}
 		},
 		mounted() {
 			this.getProducts();	
+			eventBus.$on('search', (keyword) => {
+				this.keyword = keyword;
+				this.pickedCategory = '';
+				this.pickedGender = '';
+				this.pickedBrand = '';
+				this.pickedPrice = '';
+				this.getProducts();
+			});	
 			eventBus.$on('event', (data) => {
+				this.keyword = '';
 				this.pickedGender = data.pickedGender;
 				this.pickedCategory = data.pickedCategory;
 				this.pickedBrand = data.pickedBrand;
@@ -57,10 +67,13 @@
 			    	type: this.pickedCategory,
 			    	gender: this.pickedGender,
 			    	brand: this.pickedBrand,
-			    	price: this.pickedPrice
+			    	price: this.pickedPrice,
+			    	keyword: this.keyword
 			 	}
 			 	}).then((res) => {
+			 		console.log('RESPONSE::::',res);
 					this.products = res.data;
+					console.log('PRODUCTS:::', this.products);
 				})
 			},
 			changeImg(product , event) {
