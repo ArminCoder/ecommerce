@@ -2707,20 +2707,32 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.getBrands();
+    var _this = this;
+
+    this.getData();
+    _app_js__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$on('search', function () {
+      _this.pickedCategory = [];
+      _this.pickedGender = [];
+      _this.pickedBrand = [];
+      _this.pickedPrice = 'all';
+    });
   },
   methods: {
-    getBrands: function getBrands() {
-      var _this = this;
+    getData: function getData() {
+      var _this2 = this;
 
       axios.all([axios.get('/api/brands'), axios.get('/api/types'), axios.get('/api/prices')]).then(axios.spread(function (brandsRes, typesRes, pricesRes) {
         console.log('RESPONSES:::,', brandsRes, typesRes, pricesRes);
-        _this.brands = brandsRes.data;
-        _this.categories = typesRes.data;
-        _this.prices = pricesRes.data;
+        _this2.brands = brandsRes.data;
+        _this2.categories = typesRes.data;
+        _this2.prices = pricesRes.data;
       }));
     },
     sendData: function sendData() {
+      if (this.pickedPrice == 'all') {
+        this.pickedPrice = '';
+      }
+
       var data = {
         pickedGender: this.pickedGender,
         pickedCategory: this.pickedCategory,
@@ -3125,10 +3137,15 @@ __webpack_require__.r(__webpack_exports__);
     this.getProducts();
     _app_js__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$on('search', function (keyword) {
       _this.keyword = keyword;
+      _this.pickedCategory = '';
+      _this.pickedGender = '';
+      _this.pickedBrand = '';
+      _this.pickedPrice = '';
 
       _this.getProducts();
     });
     _app_js__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$on('event', function (data) {
+      _this.keyword = '';
       _this.pickedGender = data.pickedGender;
       _this.pickedCategory = data.pickedCategory;
       _this.pickedBrand = data.pickedBrand;
@@ -3160,6 +3177,7 @@ __webpack_require__.r(__webpack_exports__);
           keyword: this.keyword
         }
       }).then(function (res) {
+        console.log('RESPONSE::::', res);
         _this2.products = res.data;
         console.log('PRODUCTS:::', _this2.products);
       });
@@ -3239,6 +3257,13 @@ __webpack_require__.r(__webpack_exports__);
     return {
       keyword: ''
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    _app_js__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$on('event', function () {
+      _this.keyword = '';
+    });
   },
   methods: {
     searchProducts: function searchProducts() {

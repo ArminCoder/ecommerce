@@ -53,6 +53,12 @@
 				keyword: ''
 			}
 		},
+		mounted() {
+			eventBus.$on('event', () => {
+				this.keyword = '';
+			});
+
+		},
 		methods: {
 			searchProducts() {
 				console.log('keyword data:::', this.keyword);

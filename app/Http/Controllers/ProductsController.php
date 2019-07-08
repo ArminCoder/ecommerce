@@ -12,8 +12,14 @@ class ProductsController extends Controller
 	public function index(Request $request)
 	{
             $keyword = $request->keyword;
+            $type = $request->type;
+            $gender = $request->gender;
+            $brand = $request->brand;
+            $price = $request->price;
 
-			$products = Product::all();
+
+
+			$products = Product::get();
 
 		    if ($request->type) {
 		        $products = $products->whereIn('type', $request->type);
@@ -42,13 +48,21 @@ class ProductsController extends Controller
 		    	}	
 		    }
 
-            if ($request->keyword) {
-                    $products = $products->where(strtolower('name'), strtolower($keyword));
+            if ($keyword) {
+                    // $products = $products->where(strtolower('name'), strtolower($keyword));
+
+                // TODO: make this filter work together with other filters
+                   $products = Product::where('name', 'LIKE', '%' . $keyword . '%')
+                                        ->orWhere('brand', 'LIKE', '%' . $keyword .'%')
+                                        ->orWhere('name', 'LIKE', '%' . $keyword .'%')
+                                        ->orWhere('gender', 'LIKE', '%' . $keyword .'%')
+                                        ->orWhere('type', 'LIKE', '%' . $keyword .'%')
+                                        ->get();
             }
 
-		    return $products;
+		    return response()->json($products);
 
-		return response()->json($products);
+		 
 	}
 	
 	public function show(Product $product)
