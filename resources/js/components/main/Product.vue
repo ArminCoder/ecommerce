@@ -98,7 +98,6 @@
 			}
 		},
 		created() {
-			console.log('ROUTE PARAMETER:::', this.$route.params.id);
 			this.requestedId = this.$route.params.id;
 		},
 		mounted() {
@@ -107,23 +106,23 @@
 			    	
 			 	}
 			 	}).then((res) => {
-					console.log('RES', res.data);
 					this.product = res.data;
 				})
 		},
 		methods: {
 			chooseSize(e) {
-				console.log(e.target.textContent);
+				if (e.target.classList.value.includes('disabled')) {
+					return;
+				}
 				this.choosenProduct.size = e.target.textContent;
 				e.target.classList.add('selectedSizeBorder');
 
 				let productSizes = document.getElementsByClassName('pickedProductSizes');
-				console.log(productSizes);
 				for(let i = 0; i < productSizes.length; i++) {
 					productSizes[i].classList.remove('selectedSizeBorder');
 				}
-				console.log(e.target.classList);
 				e.target.classList.add('selectedSizeBorder');
+				console.log(this.choosenProduct.size);
 			},
 			changeSizeOptions() {
 				if(this.sizeOption == 'us') {
@@ -145,7 +144,7 @@
 					event.target.classList.add('selectedImageBorder');
 				}
 				this.choosenProduct.image = event.target.src;
-				console.log('chosen product image::::', this.choosenProduct.image);
+				console.log(this.choosenProduct.image);
 			}
 		},
 		filters: {
@@ -226,10 +225,10 @@
 		color: #fff;
 	}
 	.selectedImageBorder {
-		border-bottom: 2px solid red;
+		border-bottom: 2px solid #45c57b;
 	}
 	.selectedSizeBorder {
-		border: 1px solid red !important;
+		border: 1px solid #45c57b !important;
 	}
 	#backToProducts {
 		position: absolute;

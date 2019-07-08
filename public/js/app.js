@@ -3044,7 +3044,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    console.log('ROUTE PARAMETER:::', this.$route.params.id);
     this.requestedId = this.$route.params.id;
   },
   mounted: function mounted() {
@@ -3053,24 +3052,25 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/products/' + this.requestedId, {
       params: {}
     }).then(function (res) {
-      console.log('RES', res.data);
       _this.product = res.data;
     });
   },
   methods: {
     chooseSize: function chooseSize(e) {
-      console.log(e.target.textContent);
+      if (e.target.classList.value.includes('disabled')) {
+        return;
+      }
+
       this.choosenProduct.size = e.target.textContent;
       e.target.classList.add('selectedSizeBorder');
       var productSizes = document.getElementsByClassName('pickedProductSizes');
-      console.log(productSizes);
 
       for (var i = 0; i < productSizes.length; i++) {
         productSizes[i].classList.remove('selectedSizeBorder');
       }
 
-      console.log(e.target.classList);
       e.target.classList.add('selectedSizeBorder');
+      console.log(this.choosenProduct.size);
     },
     changeSizeOptions: function changeSizeOptions() {
       if (this.sizeOption == 'us') {
@@ -3095,7 +3095,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.choosenProduct.image = event.target.src;
-      console.log('chosen product image::::', this.choosenProduct.image);
+      console.log(this.choosenProduct.image);
     }
   },
   filters: {
@@ -7969,7 +7969,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#mainImageHolder[data-v-48a929c4] {\n\ttext-align: center;\n}\n#mainImage[data-v-48a929c4] {\n\twidth: 70%;\n}\n.d-flex[data-v-48a929c4] {\n\t-webkit-box-pack: justify;\n\t        justify-content: space-between;\n}\n#productName span[data-v-48a929c4] {\n\tfont-size: 2rem;\n\tfont-weight: 900;\n}\n.container[data-v-48a929c4] {\n\tpadding-top: 10vh;\n}\n#selectProductColor[data-v-48a929c4] {\n\tdisplay: -webkit-box;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t        flex-direction: column;\n}\n#selectProductColor img[data-v-48a929c4] {\n\twidth: 50px;\n\tcursor: pointer;\n}\n.borderImg[data-v-48a929c4] {\n\tborder: 1px solid black;\n}\n#selectProductSize select[data-v-48a929c4] {\n\tfloat: right;\n    background: none;\n    border: none;\n    font-size: 0.9rem;\n    color: inherit;\n    cursor: pointer;\n}\ndiv.productSizes[data-v-48a929c4] {\n\tdisplay: grid;\n\tgrid-template-columns: repeat(4,1fr);\n}\ndiv.productSizes span[data-v-48a929c4] {\n\tpadding: 5px 10px;\n    margin-left: 4px;\n    border: 1px solid #e2dede;\n    margin: 2px;\n    text-align: center;\n    color: #585353;\n    cursor: pointer;\n    border-radius: 2px;\n}\ndiv.productSizes span[data-v-48a929c4]:hover {\n\tborder: 1px solid black;\n\tborder-radius: 4px;\n}\n.disabled[data-v-48a929c4] {\n\tcolor: #c6c6c6 !important;\n\tbackground: #fff !important;\n\tcursor: not-allowed !important;\n}\ndiv.addToCart button.btn-block[data-v-48a929c4] {\n\tbackground-color: black;\n\tcolor: #fff;\n}\ndiv.addToCart button.btn-block[data-v-48a929c4]:hover {\n\tbackground: #343940;;\n\tcolor: #fff;\n}\n.selectedImageBorder[data-v-48a929c4] {\n\tborder-bottom: 2px solid red;\n}\n.selectedSizeBorder[data-v-48a929c4] {\n\tborder: 1px solid red !important;\n}\n#backToProducts[data-v-48a929c4] {\n\tposition: absolute;\n\tleft: 2vw;\n\tcolor: #0a0a0a;\n}\n#backToProducts[data-v-48a929c4]:hover {\n\ttext-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\n#mainImageHolder[data-v-48a929c4] {\n\ttext-align: center;\n}\n#mainImage[data-v-48a929c4] {\n\twidth: 70%;\n}\n.d-flex[data-v-48a929c4] {\n\t-webkit-box-pack: justify;\n\t        justify-content: space-between;\n}\n#productName span[data-v-48a929c4] {\n\tfont-size: 2rem;\n\tfont-weight: 900;\n}\n.container[data-v-48a929c4] {\n\tpadding-top: 10vh;\n}\n#selectProductColor[data-v-48a929c4] {\n\tdisplay: -webkit-box;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t        flex-direction: column;\n}\n#selectProductColor img[data-v-48a929c4] {\n\twidth: 50px;\n\tcursor: pointer;\n}\n.borderImg[data-v-48a929c4] {\n\tborder: 1px solid black;\n}\n#selectProductSize select[data-v-48a929c4] {\n\tfloat: right;\n    background: none;\n    border: none;\n    font-size: 0.9rem;\n    color: inherit;\n    cursor: pointer;\n}\ndiv.productSizes[data-v-48a929c4] {\n\tdisplay: grid;\n\tgrid-template-columns: repeat(4,1fr);\n}\ndiv.productSizes span[data-v-48a929c4] {\n\tpadding: 5px 10px;\n    margin-left: 4px;\n    border: 1px solid #e2dede;\n    margin: 2px;\n    text-align: center;\n    color: #585353;\n    cursor: pointer;\n    border-radius: 2px;\n}\ndiv.productSizes span[data-v-48a929c4]:hover {\n\tborder: 1px solid black;\n\tborder-radius: 4px;\n}\n.disabled[data-v-48a929c4] {\n\tcolor: #c6c6c6 !important;\n\tbackground: #fff !important;\n\tcursor: not-allowed !important;\n}\ndiv.addToCart button.btn-block[data-v-48a929c4] {\n\tbackground-color: black;\n\tcolor: #fff;\n}\ndiv.addToCart button.btn-block[data-v-48a929c4]:hover {\n\tbackground: #343940;;\n\tcolor: #fff;\n}\n.selectedImageBorder[data-v-48a929c4] {\n\tborder-bottom: 2px solid #45c57b;\n}\n.selectedSizeBorder[data-v-48a929c4] {\n\tborder: 1px solid #45c57b !important;\n}\n#backToProducts[data-v-48a929c4] {\n\tposition: absolute;\n\tleft: 2vw;\n\tcolor: #0a0a0a;\n}\n#backToProducts[data-v-48a929c4]:hover {\n\ttext-decoration: none;\n}\n", ""]);
 
 // exports
 
