@@ -11,4 +11,12 @@
 @import '~bootstrap/scss/bootstrap';
 
 // Font Awesome 5 fix
-.fas { font-family: FontAwesome }
+.fas, .fab { font-family: FontAwesome }
+
+// important styles
+body { background: #fff }
+[v-cloak] { display: none; }
+
+// components
+@import './dashboard';
+@import './additionalStyles';

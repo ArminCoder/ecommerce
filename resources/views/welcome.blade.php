@@ -5,8 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <script>window.Laravel = { csrfToken: '{{ csrf_token() }}' }</script>
+        {{-- favicon --}}
+        <link rel="icon" type="image/png" href='/img/favicon.png' style="margin-top: -30px">
 
-        <title>Laravel</title>
+        <title>Fair Shoes</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -15,10 +17,7 @@
         <!-- Styles -->
     </head>
     <body>
-        <div id="app">
-            <app></app>
-        </div>
-
-        <script src="{{ asset('js/app.js') }}"></script>
+        @yield('content')
+        @yield('scripts')
     </body>
 </html>

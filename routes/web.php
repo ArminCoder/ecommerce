@@ -11,6 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function() {
+	return view('landing');
 });
+
+
+Route::get('/dashboard', 'DashboardController@index');
+
+Route::get('/dashboard/main', 'DashboardController@index');
+
+Route::get('/dashboard/users', 'DashboardController@index');
+
+Route::get('/dashboard/products', 'DashboardController@index');
+
+Route::get('/dashboard/products/create', 'DashboardController@index');
+
+Route::resource('products', 'ProductsController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
