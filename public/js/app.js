@@ -2218,6 +2218,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2230,7 +2231,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       image4: '',
       image5: '',
       brands: '',
-      categories: ''
+      categories: '',
+      message: '',
+      success: false,
+      error: false
     };
   },
   mounted: function mounted() {
@@ -2323,12 +2327,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     submitEdit: function submitEdit() {
+      var _this4 = this;
+
       var data = this.singleProduct;
       axios.put('/products/' + this.singleProduct.id, {
         product: this.singleProduct,
         sizes: this.singleProductSizes
       }).then(function (res) {
-        console.log(res);
+        if (res.status == 200) {
+          _this4.$parent.showSuccessMessage('Success! Product has been edited!');
+
+          setTimeout(function () {
+            _this4.openModal = false;
+          }, 100);
+        }
       });
     }
   }, "uploadImage", function uploadImage(event) {
@@ -2480,6 +2492,16 @@ __webpack_require__.r(__webpack_exports__);
         this.message = 'Oops! Something went wrong, please try again.';
         console.log(error);
       });
+    },
+    showSuccessMessage: function showSuccessMessage(message) {
+      var _this4 = this;
+
+      this.message = message;
+      this.success = true;
+      setTimeout(function () {
+        _this4.message = '';
+        _this4.success = false;
+      }, 2000);
     }
   }
 });
@@ -41303,8 +41325,19 @@ var render = function() {
                 }
               },
               [_vm._v("Edit Product")]
-            )
-          ]
+            ),
+            _vm._v(" "),
+            _vm.message
+              ? _c("notify", {
+                  attrs: {
+                    message: _vm.message,
+                    success: _vm.success,
+                    error: _vm.error
+                  }
+                })
+              : _vm._e()
+          ],
+          1
         )
       ])
     : _vm._e()

@@ -105,6 +105,14 @@
 		                console.log(error);
 		            });
 			},
+			showSuccessMessage(message) {
+				this.message = message;
+				this.success = true;
+				setTimeout(() => {
+					this.message = '';
+					this.success = false;
+				}, 2000);
+			}
 		}
 	};
 </script>

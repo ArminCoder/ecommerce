@@ -98,6 +98,7 @@
 					</div>	
 				</div>
 				<button id="editButton" class="btn btn-primary w-50" @click='submitEdit()'>Edit Product</button>
+				<notify v-if='message' :message='message' :success='success' :error='error'></notify>
 			</div>
 	</modal>
 </template>
@@ -115,7 +116,10 @@ export default {
     	image4: '',
     	image5: '',
     	brands: '',
-    	categories: ''
+    	categories: '',
+    	message: '',
+    	success: false,
+    	error: false
     }
   },
   mounted() {
@@ -170,7 +174,13 @@ export default {
 			sizes: this.singleProductSizes
 		})
 			.then((res) => {
-				console.log(res);
+				if(res.status == 200)
+				{
+					this.$parent.showSuccessMessage('Success! Product has been edited!');
+					setTimeout(() => {
+						this.openModal = false;
+					}, 100)
+				}	
 			})
 	},
 	uploadImage(event) {

@@ -201,32 +201,54 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->product['name']);
-
         $editedProduct = $request->product;
         $sizes = $request->sizes;
-        dd('sizes', $sizes);
 
         // $product =  Product::where('id', $id)->get();
         $product =  Product::find($id);
-        dd($product->name);
 
         $product->name = $editedProduct['name'];
         $product->type = $editedProduct['type'];
         $product->price = $editedProduct['price'];
         $product->gender = $editedProduct['gender'];
         $product->brand = $editedProduct['brand'];
-        $product->name = $editedProduct['name'];
+
+        if ($editedProduct['image1']) {
+            $product->image1 = $editedProduct['image1'];    
+        } 
+        if ($editedProduct['image2']) {
+            $product->image2 = $editedProduct['image2'];    
+        } 
+        if ($editedProduct['image3']) {
+            $product->image3 = $editedProduct['image3'];    
+        } 
+        if ($editedProduct['image4']) {
+            $product->image4 = $editedProduct['image4'];    
+        } 
+        if ($editedProduct['image5']) {
+            $product->image5 = $editedProduct['image5'];    
+        } 
+
+        $product->size_35 = $sizes[0]['state'];
+        $product->size_36 = $sizes[1]['state'];
+        $product->size_37 = $sizes[2]['state'];
+        $product->size_38 = $sizes[3]['state'];
+        $product->size_39 = $sizes[4]['state'];
+        $product->size_40 = $sizes[5]['state'];
+        $product->size_41 = $sizes[6]['state'];
+        $product->size_42 = $sizes[7]['state'];
+        $product->size_43 = $sizes[8]['state'];
+        $product->size_44 = $sizes[9]['state'];
+        $product->size_45 = $sizes[10]['state'];
+        $product->size_46 = $sizes[11]['state'];
+        $product->size_47 = $sizes[12]['state'];
+        $product->size_48 = $sizes[13]['state'];
+        $product->size_49 = $sizes[14]['state'];
 
 
-        /*
-              "image1" => "/img/products/Nike-Air-Max-Plus-Yellow.png"
-              "image2" => null
-              "image3" => null
-              "image4" => null
-              "image5" => null
+        $product->save();
 
-         */
+        return response()->json(['message' => 'Product has been edited']);
     }
 
     /**
