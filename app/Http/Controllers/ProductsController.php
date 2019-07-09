@@ -213,21 +213,23 @@ class ProductsController extends Controller
         $product->gender = $editedProduct['gender'];
         $product->brand = $editedProduct['brand'];
 
-        if ($editedProduct['image1']) {
-            $product->image1 = $editedProduct['image1'];    
-        } 
-        if ($editedProduct['image2']) {
-            $product->image2 = $editedProduct['image2'];    
-        } 
-        if ($editedProduct['image3']) {
-            $product->image3 = $editedProduct['image3'];    
-        } 
-        if ($editedProduct['image4']) {
-            $product->image4 = $editedProduct['image4'];    
-        } 
-        if ($editedProduct['image5']) {
-            $product->image5 = $editedProduct['image5'];    
-        } 
+        // TODO: Enable image editing
+        // if ($editedProduct['image1']) {
+        //     $product->image1 = $editedProduct['image1'];    
+        // } 
+        // if ($editedProduct['image2']) {
+        //     $product->image2 = $editedProduct['image2'];    
+        // } 
+        // if ($editedProduct['image3']) {
+        //     $product->image3 = $editedProduct['image3'];    
+        // } 
+        // if ($editedProduct['image4']) {
+        //     $product->image4 = $editedProduct['image4'];    
+        // } 
+        // if ($editedProduct['image5']) {
+        //     $product->image5 = $editedProduct['image5'];    
+        // } 
+
 
         $product->size_35 = $sizes[0]['state'];
         $product->size_36 = $sizes[1]['state'];

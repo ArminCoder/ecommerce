@@ -11,6 +11,7 @@ Vue.component('editProduct', require('./components/dashboard/EditProduct.vue').d
 Vue.component('heading', require('./components/helpers/Heading.vue').default);
 Vue.component('notify', require('./components/helpers/Notify.vue').default);
 Vue.component('modal', require('./components/helpers/Modal.vue').default);
+Vue.component('popup', require('./components/helpers/PopUp.vue').default);
 
 
 

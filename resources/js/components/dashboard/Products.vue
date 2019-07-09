@@ -35,7 +35,18 @@
 				        </td>
 				        <td class="tools">
 				        	<span @click='editProduct(product)' class="fas fa-edit mx-1"></span>
-				        	<span @click='deleteProduct(product)' class="fas fa-times-circle mx-1"></span>
+				        	<span @click='productID = product.id; popupActive = true' class="fas fa-times-circle mx-1"></span>
+				        	<popup v-if='productID == product.id' :popupActive='popupActive'>
+				        		<template v-slot:text>
+				        			<span>Delete Product?</span>
+				        		</template>
+				        		<template v-slot:approve>
+				        			<span @click='deleteProduct(product)' class="text-white bg-primary popupButtons">YES</span>
+				        		</template>
+				        		<template v-slot:deny>
+				        			<span @click='popupActive = false' class="text-white bg-secondary popupButtons">NO</span>
+				        		</template>
+				        	</popup>
 				        </td>
 				  </tr>
 			</table>
@@ -64,7 +75,9 @@
 				message: '',
 				success: false,
 				error: false,
-				rerendered: false
+				rerendered: false,
+				popupActive: false,
+				productID : ''
 			}
 		},
 		mounted() {
@@ -112,6 +125,9 @@
 					this.message = '';
 					this.success = false;
 				}, 2000);
+			},
+			confirmDelete() {
+				console.log('it works')
 			}
 		}
 	};
@@ -180,5 +196,10 @@
     	font-size: 1.1rem;
     	font-weight: bold;
     }
-    
+    .popupButtons {
+    	padding: 2px;
+    	border: 1px solid #ccc;
+    	border-radius: 4px;
+    	cursor: pointer;
+    }
 </style>

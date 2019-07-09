@@ -2,8 +2,9 @@
 	<modal v-if='openModal'>
 		<span id="closeModal" @click='closeModal'>X</span>
 			<div id="singleProductEdit" class="container">
-		    	<div class="singleProductRow">
-		    		<span class="title">Product Images</span> 
+		    	<div class="singleProductRow disabledColorField">
+		    		<span class="title titleDisabled">Product Images</span> 
+		    		<small class="text-primary">Editing images functionality will be available soon!</small>
 		    		<div class="d-flex">
 		    			<span class="d-grid spaceX">
 		    				<img :src="singleProduct.image1" :alt="singleProduct.name">		    			
@@ -177,7 +178,10 @@ export default {
 				if(res.status == 200)
 				{
 					this.$parent.showSuccessMessage('Success! Product has been edited!');
+					this.$parent.getData();
+					this.singleProductSizes = [];
 					setTimeout(() => {
+						
 						this.openModal = false;
 					}, 100)
 				}	
@@ -257,5 +261,12 @@ export default {
     }
     #editButton {
     	margin: 30px auto;
+    }
+    .disabledColorField {
+    	background: #b7b5b5;
+    	cursor: not-allowed;
+    }
+    .titleDisabled {
+    	color: #ccc;
     }
 </style>
