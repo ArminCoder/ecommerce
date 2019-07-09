@@ -10,7 +10,9 @@
 				   	    <th class="tableHeadCell" v-for='row in table'>{{ row.cell }}</th>
 				  </tr>
 				  <tr class="tableRow" v-for='product in products'>
-				    	<td class="text-center"><img :src="product.image1" :alt="product.name"></td>
+				    	<td class="text-center">
+				    		<img :src="product.image1" :alt="product.name">
+				    	</td>
 				    	<td>{{ product.name }}</td>
 				    	<td>${{ product.price }}</td>
 				    	<td>{{ product.brand }}</td>
