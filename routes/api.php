@@ -31,3 +31,4 @@ Route::get('/prices', 'PricesController@index');
 
 // Users
 Route::get('/users', 'UsersController@index');
+

@@ -15,13 +15,24 @@
 		},
 		data() {
 			return {
-				show: false
+				show: false,
 			}
 		},
 		mounted() {
-			setTimeout(() => {
-			  this.$parent.message = '';
-			}, 3000)
+				this.resetMessage(3000);
+		},
+		updated() {
+			this.resetMessage(3000);
+			console.log('componennnnnttt updateeeeddd');
+		},
+		methods: {
+			resetMessage(timer) {
+				if(!timer) timer = 2500;
+				console.log('timer', timer);
+				setTimeout(() => {
+				  this.$parent.message = '';
+				}, timer)
+			}
 		}
 	};
 </script>
@@ -38,6 +49,7 @@
 		border-radius: 5px;
 		background: #6ed66e;
 		color: #fff;
+		z-index: 10;
 	}
 	.error {
 		background: #ff3c09 !important;

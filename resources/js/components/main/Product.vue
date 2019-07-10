@@ -68,10 +68,11 @@
 						</div>
 					</div>
 					<div class="addToCart mt-4 text-center">
-						<button class="btn btn-block px-4 py-2">Add To Cart</button>
+						<button @click='addToCart' class="btn btn-block px-4 py-2">Add To Cart</button>
 					</div>
 				</div>
 			</div>
+		<notify ref='notify' :message='message' :error='isError'></notify>	
         </div>
         <productsFooter></productsFooter> 
 		
@@ -82,6 +83,7 @@
 	import { eventBus } from '../../app.js';
 	import navbar from '../navigation/Navbar';
 	import productsFooter from '../footer/Footer';
+	import notify from '../helpers/Notify';
 
 	export default {
 		components: { navbar, productsFooter },
@@ -92,9 +94,12 @@
 				usSize: true,
 				sizeOption: 'us',
 				choosenProduct: { 
+					id: '',
 					image: '',
 					size: ''
-				}
+				},
+				message: '',
+				isError: false
 			}
 		},
 		created() {
@@ -145,6 +150,24 @@
 				}
 				this.choosenProduct.image = event.target.src;
 				console.log(this.choosenProduct.image);
+			},
+			addToCart() {
+				this.choosenProduct.id = this.product.id;
+				console.log('add to cart', this.choosenProduct);
+				if(!this.choosenProduct.image || !this.choosenProduct.size) {
+					this.message = 'Please choose product color and size.'
+					this.isError = true;
+					return;
+				}
+				let data = this.choosenProduct;
+				axios.post('/cart', data)
+					 .then((res) => {
+					 	console.log(res);
+					 	this.message = 'Product Added To Cart!';
+					 	this.choosenProduct.id = '';
+					 	this.choosenProduct.image = '';
+					 	this.choosenProduct.size = '';
+					 }) 
 			}
 		},
 		filters: {

@@ -2877,11 +2877,22 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    var _this = this;
+    this.resetMessage(3000);
+  },
+  updated: function updated() {
+    this.resetMessage(3000);
+    console.log('componennnnnttt updateeeeddd');
+  },
+  methods: {
+    resetMessage: function resetMessage(timer) {
+      var _this = this;
 
-    setTimeout(function () {
-      _this.$parent.message = '';
-    }, 3000);
+      if (!timer) timer = 2500;
+      console.log('timer', timer);
+      setTimeout(function () {
+        _this.$parent.message = '';
+      }, timer);
+    }
   }
 });
 
@@ -3011,6 +3022,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../app.js */ "./resources/js/app.js");
 /* harmony import */ var _navigation_Navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../navigation/Navbar */ "./resources/js/components/navigation/Navbar.vue");
 /* harmony import */ var _footer_Footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../footer/Footer */ "./resources/js/components/footer/Footer.vue");
+/* harmony import */ var _helpers_Notify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../helpers/Notify */ "./resources/js/components/helpers/Notify.vue");
 //
 //
 //
@@ -3091,6 +3103,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 
@@ -3106,9 +3120,12 @@ __webpack_require__.r(__webpack_exports__);
       usSize: true,
       sizeOption: 'us',
       choosenProduct: {
+        id: '',
         image: '',
         size: ''
-      }
+      },
+      message: '',
+      isError: false
     };
   },
   created: function created() {
@@ -3164,6 +3181,27 @@ __webpack_require__.r(__webpack_exports__);
 
       this.choosenProduct.image = event.target.src;
       console.log(this.choosenProduct.image);
+    },
+    addToCart: function addToCart() {
+      var _this2 = this;
+
+      this.choosenProduct.id = this.product.id;
+      console.log('add to cart', this.choosenProduct);
+
+      if (!this.choosenProduct.image || !this.choosenProduct.size) {
+        this.message = 'Please choose product color and size.';
+        this.isError = true;
+        return;
+      }
+
+      var data = this.choosenProduct;
+      axios.post('/cart', data).then(function (res) {
+        console.log(res);
+        _this2.message = 'Product Added To Cart!';
+        _this2.choosenProduct.id = '';
+        _this2.choosenProduct.image = '';
+        _this2.choosenProduct.size = '';
+      });
     }
   },
   filters: {
@@ -3401,6 +3439,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {};
+  },
+  mounted: function mounted() {
+    axios.get('/cart').then(function (res) {
+      console.log(res);
+    });
   }
 });
 
@@ -8034,7 +8077,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#notification[data-v-2fb36bbe] {\n\tposition: fixed;\n\ttop: 2vh;\n\tright: 3vw;\n\tpadding: 35px 25px;\n\tmax-width: 300px;\n\tfont-size: 1rem;\n\tfont-weight: 400;\n\tborder-radius: 5px;\n\tbackground: #6ed66e;\n\tcolor: #fff;\n}\n.error[data-v-2fb36bbe] {\n\tbackground: #ff3c09 !important;\n\tcolor: #fff;\n}\n", ""]);
+exports.push([module.i, "\n#notification[data-v-2fb36bbe] {\n\tposition: fixed;\n\ttop: 2vh;\n\tright: 3vw;\n\tpadding: 35px 25px;\n\tmax-width: 300px;\n\tfont-size: 1rem;\n\tfont-weight: 400;\n\tborder-radius: 5px;\n\tbackground: #6ed66e;\n\tcolor: #fff;\n\tz-index: 10;\n}\n.error[data-v-2fb36bbe] {\n\tbackground: #ff3c09 !important;\n\tcolor: #fff;\n}\n", ""]);
 
 // exports
 
@@ -42891,9 +42934,23 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(0)
+              _c("div", { staticClass: "addToCart mt-4 text-center" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-block px-4 py-2",
+                    on: { click: _vm.addToCart }
+                  },
+                  [_vm._v("Add To Cart")]
+                )
+              ])
             ])
-          ])
+          ]),
+          _vm._v(" "),
+          _c("notify", {
+            ref: "notify",
+            attrs: { message: _vm.message, error: _vm.isError }
+          })
         ],
         1
       ),
@@ -42903,18 +42960,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "addToCart mt-4 text-center" }, [
-      _c("button", { staticClass: "btn btn-block px-4 py-2" }, [
-        _vm._v("Add To Cart")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

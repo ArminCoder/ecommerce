@@ -21,6 +21,12 @@ export default {
     return {
 
     }
+  },
+  mounted() {
+  	axios.get('/cart')
+  	  .then((res) => {
+  	  	console.log(res);
+  	})
   }
 };
 </script>

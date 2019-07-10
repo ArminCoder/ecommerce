@@ -28,6 +28,9 @@ Route::get('/dashboard/products/create', 'DashboardController@index');
 
 Route::resource('products', 'ProductsController');
 
+Route::resource('cart', 'ShoppingCartController');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
