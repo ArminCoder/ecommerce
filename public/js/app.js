@@ -2256,6 +2256,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.singleProduct = [];
       this.singleProductSizes = [];
+      this.$parent.getData();
       this.$nextTick(function () {
         _this2.openModal = false;
       });
@@ -7979,7 +7980,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#modalBackgound[data-v-824c3e70] {\n\tbackground: rgba(0,0,0,0.5);\n\tposition: fixed;\n\twidth: 100%;\n\theight: 100%;\n\ttop: 0;\n\tleft: 0;\n}\n#modalContent[data-v-824c3e70] {\n\twidth: 70vw;\n\tbackground: #fff;\n\tborder: 2px solid #ccc;\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\t-webkit-transform: translate(-50%, -50%);\n\t        transform: translate(-50%, -50%);\n\tbox-shadow: 2px 2px 10px, -2px -2px 10px;\n}\n\n", ""]);
+exports.push([module.i, "\n#modalBackgound[data-v-824c3e70] {\n\tbackground: rgba(255,255,255,0.9);\n\tposition: fixed;\n\twidth: 100%;\n\theight: 100%;\n\ttop: 0;\n\tleft: 0;\n}\n#modalContent[data-v-824c3e70] {\n\twidth: 70vw;\n\tbackground: #fff;\n\tborder: 2px solid #ccc;\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\t-webkit-transform: translate(-50%, -50%);\n\t        transform: translate(-50%, -50%);\n\tbox-shadow: 2px 2px 10px #ccc, -2px -2px 10px #ccc;\n}\n\n", ""]);
 
 // exports
 

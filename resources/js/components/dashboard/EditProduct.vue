@@ -143,6 +143,7 @@ export default {
   	closeModal() {
   		this.singleProduct = [];
   		this.singleProductSizes = [];
+  		this.$parent.getData();
   		this.$nextTick(() => {
   		    this.openModal = false; 
   		});

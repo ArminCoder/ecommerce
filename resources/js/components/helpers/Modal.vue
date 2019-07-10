@@ -18,7 +18,7 @@ export default {
 
 <style scoped>
 	#modalBackgound {
-		background: rgba(0,0,0,0.5);
+		background: rgba(255,255,255,0.9);
 		position: fixed;
 		width: 100%;
 		height: 100%;
@@ -33,7 +33,7 @@ export default {
 		left: 50%;
 		top: 50%;
 		transform: translate(-50%, -50%);
-		box-shadow: 2px 2px 10px, -2px -2px 10px;
+		box-shadow: 2px 2px 10px #ccc, -2px -2px 10px #ccc;
 	}
 
 </style>
