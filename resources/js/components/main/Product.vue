@@ -120,13 +120,13 @@
 					return;
 				}
 				this.choosenProduct.size = e.target.textContent;
-				e.target.classList.add('selectedSizeBorder');
+				e.target.classList.add('selectedSizeBackground');
 
 				let productSizes = document.getElementsByClassName('pickedProductSizes');
 				for(let i = 0; i < productSizes.length; i++) {
-					productSizes[i].classList.remove('selectedSizeBorder');
+					productSizes[i].classList.remove('selectedSizeBackground');
 				}
-				e.target.classList.add('selectedSizeBorder');
+				e.target.classList.add('selectedSizeBackground');
 				console.log(this.choosenProduct.size);
 			},
 			changeSizeOptions() {
@@ -163,11 +163,16 @@
 				axios.post('/cart', data)
 					 .then((res) => {
 					 	console.log(res);
-					 	this.message = 'Product Added To Cart!';
+					 	this.message = res.data.message;
 					 	this.choosenProduct.id = '';
 					 	this.choosenProduct.image = '';
 					 	this.choosenProduct.size = '';
 					 }) 
+					 .catch((error) => {
+					 	this.isError = true;
+					 	this.message = 'Oops! Something went wrong!'
+					 	return; 
+					 })
 			}
 		},
 		filters: {
@@ -248,10 +253,11 @@
 		color: #fff;
 	}
 	.selectedImageBorder {
-		border-bottom: 2px solid #45c57b;
+		border-bottom: 2px solid black;
 	}
-	.selectedSizeBorder {
-		border: 1px solid #45c57b !important;
+	.selectedSizeBackground {
+		background: black;
+		color: #fff;
 	}
 	#backToProducts {
 		position: absolute;

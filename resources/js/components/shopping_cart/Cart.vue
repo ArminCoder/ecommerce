@@ -2,7 +2,7 @@
 	<div>
         <navbar></navbar>
 		<div id="cartContent" class="container-fluid">
-			Shopping Cart
+			
 		</div>
         <productsFooter></productsFooter> 
 	</div>

@@ -13,7 +13,7 @@ class ShoppingCartController extends Controller
 {
     public function index(Request $request)
     {
-    	dd('coming from cart Controller');
+
     }
 	
 	public function show(Product $product)
@@ -34,7 +34,25 @@ class ShoppingCartController extends Controller
      */
     public function store(Request $request)
     {
-    	dd('YOU HIT CART STORE METHOD!');
+    	dd(\Request::ip());
+    	if(Auth::user()) {
+    		$user_id = Auth::id();
+    		$guest = 0;
+    	}
+    	else {
+    		$user_id = null;
+    		$guest = 1;
+    	}
+
+    	$product = new Cart([
+    		'user_id' => $user_id,
+    		'isGuest' => $guest,
+    		'product_id' => $request->id
+    	]);
+
+    	$product->save();
+
+    	return response()->json(['message' => 'Product added to cart!']);
     }
     /**
      * Show the form for editing the specified resource.
