@@ -99,20 +99,17 @@
 					size: ''
 				},
 				message: '',
-				isError: false
+				isError: false,
+				cartData: []
 			}
 		},
 		created() {
 			this.requestedId = this.$route.params.id;
 		},
 		mounted() {
-			axios.get('/products/' + this.requestedId, {  
-			  	params: {
-			    	
-			 	}
-			 	}).then((res) => {
-					this.product = res.data;
-				})
+			this.getSessionData();
+			this.getProduct();
+			
 		},
 		methods: {
 			chooseSize(e) {
@@ -159,21 +156,65 @@
 					this.isError = true;
 					return;
 				}
-				let data = this.choosenProduct;
-				axios.post('/cart', data)
+				// let data = this.choosenProduct;
+				
+				let newProduct = new Object();
+				newProduct.id = this.choosenProduct.id;
+				newProduct.image = this.choosenProduct.image;
+				newProduct.size = this.choosenProduct.size;
+
+				this.cartData.push(newProduct);
+				console.log('CART DATA:::', this.cartData);
+				let data = new Object();
+				data.product = this.cartData;				
+				
+				axios.post('/cart', data
+					)
 					 .then((res) => {
-					 	console.log(res);
-					 	this.message = res.data.message;
+					 	console.log(res.data);
+
+					 	if(res.data.message) 
+					 	{
+					 		this.message = res.data.message;
+					 	}	
+					 	else {
+					 		this.message = 'Product added to cart.'
+					 	}
 					 	this.choosenProduct.id = '';
 					 	this.choosenProduct.image = '';
 					 	this.choosenProduct.size = '';
+					 	this.getSessionData();
 					 }) 
 					 .catch((error) => {
 					 	this.isError = true;
 					 	this.message = 'Oops! Something went wrong!'
 					 	return; 
 					 })
-			}
+			},
+			getProduct() {
+				axios.get('/products/' + this.requestedId, {  
+				  	params: {
+				    	
+				 	}
+				 	}).then((res) => {
+						this.product = res.data;
+					})
+            },
+            getSessionData() {
+            	axios.get('/cart').then((res) => {
+            		console.log('session data',res.data);
+            		// let newSessionProduct = new Object();
+            		// newSessionProduct.id = res.data.product_id;
+            		// newSessionProduct.color = res.data.product_color;
+            		// newSessionProduct.size = res.data.product_size;
+            		let sessionData = res.data;
+
+            		this.cartData.push(sessionData);
+            		
+            		// this.cartData.push(newSessionProduct);
+            		console.log('CART DATA', this.cartData);
+            	});
+            }
 		},
 		filters: {
 			capitalize: function (value) {
@@ -257,7 +298,7 @@
 	}
 	.selectedSizeBackground {
 		background: black;
-		color: #fff;
+		color: #fff !important;
 	}
 	#backToProducts {
 		position: absolute;

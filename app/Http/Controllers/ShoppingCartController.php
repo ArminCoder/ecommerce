@@ -13,7 +13,21 @@ class ShoppingCartController extends Controller
 {
     public function index(Request $request)
     {
+       // $product_id = $request->session()->get('product_id');
+       // $product_color = $request->session()->get('product_color');
+       // $product_size = $request->session()->get('product_size');
 
+        $product = session('product');
+        // dd(session('product'));
+
+
+        return response()->json($product);
+
+        // return response()->json([
+        //     'product_id' => $product_id,
+        //     'product_color' => $product_color,
+        //     'product_size' => $product_size
+        // ]);
     }
 	
 	public function show(Product $product)
@@ -33,26 +47,21 @@ class ShoppingCartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-    	dd(\Request::ip());
-    	if(Auth::user()) {
-    		$user_id = Auth::id();
-    		$guest = 0;
-    	}
-    	else {
-    		$user_id = null;
-    		$guest = 1;
-    	}
+    {   
+        session(['product' => $request->product]);
+        // $productID = session('product_id');
+        // $productID = array();
 
-    	$product = new Cart([
-    		'user_id' => $user_id,
-    		'isGuest' => $guest,
-    		'product_id' => $request->id
-    	]);
+        // array_push($productID, $request->id );
 
-    	$product->save();
+        // array_push( session('product_id'), $request->id);
 
-    	return response()->json(['message' => 'Product added to cart!']);
+        // session(['product_id']);
+
+        // session(['product_id' => $request->id ]);
+        // session(['product_color' => $request->image ]);
+        // session(['product_size' => $request->size ]);
+        return response()->json(session()->all());
     }
     /**
      * Show the form for editing the specified resource.

@@ -3125,20 +3125,16 @@ __webpack_require__.r(__webpack_exports__);
         size: ''
       },
       message: '',
-      isError: false
+      isError: false,
+      cartData: []
     };
   },
   created: function created() {
     this.requestedId = this.$route.params.id;
   },
   mounted: function mounted() {
-    var _this = this;
-
-    axios.get('/products/' + this.requestedId, {
-      params: {}
-    }).then(function (res) {
-      _this.product = res.data;
-    });
+    this.getSessionData();
+    this.getProduct();
   },
   methods: {
     chooseSize: function chooseSize(e) {
@@ -3183,7 +3179,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.choosenProduct.image);
     },
     addToCart: function addToCart() {
-      var _this2 = this;
+      var _this = this;
 
       this.choosenProduct.id = this.product.id;
       console.log('add to cart', this.choosenProduct);
@@ -3192,19 +3188,61 @@ __webpack_require__.r(__webpack_exports__);
         this.message = 'Please choose product color and size.';
         this.isError = true;
         return;
-      }
+      } // let data = this.choosenProduct;
 
-      var data = this.choosenProduct;
+
+      var newProduct = new Object();
+      newProduct.id = this.choosenProduct.id;
+      newProduct.image = this.choosenProduct.image;
+      newProduct.size = this.choosenProduct.size;
+      this.cartData.push(newProduct);
+      console.log('CART DATA:::', this.cartData);
+      var data = new Object();
+      data.product = this.cartData;
       axios.post('/cart', data).then(function (res) {
-        console.log(res);
-        _this2.message = res.data.message;
-        _this2.choosenProduct.id = '';
-        _this2.choosenProduct.image = '';
-        _this2.choosenProduct.size = '';
+        console.log(res.data);
+
+        if (res.data.message) {
+          _this.message = res.data.message;
+        } else {
+          _this.message = 'Product added to cart.';
+        }
+
+        _this.choosenProduct.id = '';
+        _this.choosenProduct.image = '';
+        _this.choosenProduct.size = '';
+
+        _this.getSessionData();
       })["catch"](function (error) {
-        _this2.isError = true;
-        _this2.message = 'Oops! Something went wrong!';
+        _this.isError = true;
+        _this.message = 'Oops! Something went wrong!';
         return;
+      });
+    },
+    getProduct: function getProduct() {
+      var _this2 = this;
+
+      axios.get('/products/' + this.requestedId, {
+        params: {}
+      }).then(function (res) {
+        _this2.product = res.data;
+      });
+    },
+    getSessionData: function getSessionData() {
+      var _this3 = this;
+
+      axios.get('/cart').then(function (res) {
+        console.log('session data', res.data); // let newSessionProduct = new Object();
+        // newSessionProduct.id = res.data.product_id;
+        // newSessionProduct.color = res.data.product_color;
+        // newSessionProduct.size = res.data.product_size;
+
+        var sessionData = res.data;
+
+        _this3.cartData.push(sessionData); // this.cartData.push(newSessionProduct);
+
+
+        console.log('CART DATA', _this3.cartData);
       });
     }
   },
@@ -8138,7 +8176,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#mainImageHolder[data-v-48a929c4] {\n\ttext-align: center;\n}\n#mainImage[data-v-48a929c4] {\n\twidth: 70%;\n}\n.d-flex[data-v-48a929c4] {\n\t-webkit-box-pack: justify;\n\t        justify-content: space-between;\n}\n#productName span[data-v-48a929c4] {\n\tfont-size: 2rem;\n\tfont-weight: 900;\n}\n.container[data-v-48a929c4] {\n\tpadding-top: 10vh;\n}\n#selectProductColor[data-v-48a929c4] {\n\tdisplay: -webkit-box;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t        flex-direction: column;\n}\n#selectProductColor img[data-v-48a929c4] {\n\twidth: 50px;\n\tcursor: pointer;\n}\n.borderImg[data-v-48a929c4] {\n\tborder: 1px solid black;\n}\n#selectProductSize select[data-v-48a929c4] {\n\tfloat: right;\n    background: none;\n    border: none;\n    font-size: 0.9rem;\n    color: inherit;\n    cursor: pointer;\n}\ndiv.productSizes[data-v-48a929c4] {\n\tdisplay: grid;\n\tgrid-template-columns: repeat(4,1fr);\n}\ndiv.productSizes span[data-v-48a929c4] {\n\tpadding: 5px 10px;\n    margin-left: 4px;\n    border: 1px solid #e2dede;\n    margin: 2px;\n    text-align: center;\n    color: #585353;\n    cursor: pointer;\n    border-radius: 2px;\n}\ndiv.productSizes span[data-v-48a929c4]:hover {\n\tborder: 1px solid black;\n\tborder-radius: 4px;\n}\n.disabled[data-v-48a929c4] {\n\tcolor: #c6c6c6 !important;\n\tbackground: #fff !important;\n\tcursor: not-allowed !important;\n}\ndiv.addToCart button.btn-block[data-v-48a929c4] {\n\tbackground-color: black;\n\tcolor: #fff;\n}\ndiv.addToCart button.btn-block[data-v-48a929c4]:hover {\n\tbackground: #343940;;\n\tcolor: #fff;\n}\n.selectedImageBorder[data-v-48a929c4] {\n\tborder-bottom: 2px solid black;\n}\n.selectedSizeBackground[data-v-48a929c4] {\n\tbackground: black;\n\tcolor: #fff;\n}\n#backToProducts[data-v-48a929c4] {\n\tposition: absolute;\n\tleft: 2vw;\n\tcolor: #0a0a0a;\n}\n#backToProducts[data-v-48a929c4]:hover {\n\ttext-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\n#mainImageHolder[data-v-48a929c4] {\n\ttext-align: center;\n}\n#mainImage[data-v-48a929c4] {\n\twidth: 70%;\n}\n.d-flex[data-v-48a929c4] {\n\t-webkit-box-pack: justify;\n\t        justify-content: space-between;\n}\n#productName span[data-v-48a929c4] {\n\tfont-size: 2rem;\n\tfont-weight: 900;\n}\n.container[data-v-48a929c4] {\n\tpadding-top: 10vh;\n}\n#selectProductColor[data-v-48a929c4] {\n\tdisplay: -webkit-box;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t        flex-direction: column;\n}\n#selectProductColor img[data-v-48a929c4] {\n\twidth: 50px;\n\tcursor: pointer;\n}\n.borderImg[data-v-48a929c4] {\n\tborder: 1px solid black;\n}\n#selectProductSize select[data-v-48a929c4] {\n\tfloat: right;\n    background: none;\n    border: none;\n    font-size: 0.9rem;\n    color: inherit;\n    cursor: pointer;\n}\ndiv.productSizes[data-v-48a929c4] {\n\tdisplay: grid;\n\tgrid-template-columns: repeat(4,1fr);\n}\ndiv.productSizes span[data-v-48a929c4] {\n\tpadding: 5px 10px;\n    margin-left: 4px;\n    border: 1px solid #e2dede;\n    margin: 2px;\n    text-align: center;\n    color: #585353;\n    cursor: pointer;\n    border-radius: 2px;\n}\ndiv.productSizes span[data-v-48a929c4]:hover {\n\tborder: 1px solid black;\n\tborder-radius: 4px;\n}\n.disabled[data-v-48a929c4] {\n\tcolor: #c6c6c6 !important;\n\tbackground: #fff !important;\n\tcursor: not-allowed !important;\n}\ndiv.addToCart button.btn-block[data-v-48a929c4] {\n\tbackground-color: black;\n\tcolor: #fff;\n}\ndiv.addToCart button.btn-block[data-v-48a929c4]:hover {\n\tbackground: #343940;;\n\tcolor: #fff;\n}\n.selectedImageBorder[data-v-48a929c4] {\n\tborder-bottom: 2px solid black;\n}\n.selectedSizeBackground[data-v-48a929c4] {\n\tbackground: black;\n\tcolor: #fff !important;\n}\n#backToProducts[data-v-48a929c4] {\n\tposition: absolute;\n\tleft: 2vw;\n\tcolor: #0a0a0a;\n}\n#backToProducts[data-v-48a929c4]:hover {\n\ttext-decoration: none;\n}\n", ""]);
 
 // exports
 
